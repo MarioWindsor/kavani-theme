@@ -1,0 +1,190 @@
+<!-- Intro Section -->
+<section id="intro-section" class="collection-section intro-section" style="margin-bottom: var(--space-100);">
+	<!-- Video Embed -->
+	<div class="bg-video-embed">
+		<iframe class="" src="https://www.youtube-nocookie.com/embed/0bt-4ooAu_M?playlist=0bt-4ooAu_M&html5=1&color=white&disablekb=0&fs=0&autoplay=1&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	</div>
+	<!-- END: Video Embed -->
+	<div class="collection-section-content">
+		<div class="container text-center">
+			<div class="row">
+				<div class="columns small-11 medium-8 large-6 xlarge-5">
+					<div class="heading h5 strong text-uppercase text-white space-250-top space-50-left-right">Pioneers in Christian Wedding Dresses &amp; Sarees</div>
+					<i class='bx bx-chevrons-down bx-fade-down h2 text-red'></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Intro Section -->
+
+
+{% section 'home-body' %}
+
+
+<style>
+
+.contact-section {
+	position: relative;
+	z-index: 1;
+}
+
+.contact-section .title-col {
+	position: relative;
+	z-index: 5;
+}
+
+.contact-section .form-col {
+	position: relative;
+	z-index: 1;
+}
+
+.contact-section .form-col .contact-form {
+	position: relative;
+	z-index: 5;
+}
+
+.contact-section .form-col:before {
+	content: '';
+	display: block;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: var(--space-200);
+	bottom: var(--space-200);
+	box-shadow: 0 0 0 var(--space-min) var(--orange);
+	transform: translate(calc(var(--space-75)*-1), calc(var(--space-75)*-1));
+	border-radius: var(--space-min);
+}
+
+@media( min-width: 640px )  {
+	.contact-section .form-col:before {
+		transform: translate(calc(var(--space-150)*-1), calc(var(--space-75)*-1));
+	}
+
+	.contact-section .form-col:after {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		right: var(--space-200);
+		bottom: 0;
+		background-color: var(--orange);
+		transform: translate(calc(var(--space-100)*10), calc(var(--space-100)*6));
+		border-radius: var(--space-min);
+		opacity: 0.5;
+	}
+}
+@media( min-width: 1040px ) {
+	.contact-section {
+		padding-top: var(--space-200);
+	}
+
+	.contact-section .title-col {
+		position: absolute;
+		width: auto;
+		top: calc(var(--space-100)*-0.5);
+		left: calc(var(--space-100)*-2.75);
+		text-align: right;
+		transform: rotate(-90deg) translate(-100%, 0);
+		transform-origin: top left;
+	}
+
+	.contact-section .title-col .title .h1 {
+		font-size: var(--h2);
+	}
+
+	.contact-section .title-col .title .label {
+		font-size: var(--h6);
+	}
+
+	.contact-section .form-col:before {
+		transform: translate(calc(var(--space-100)*-3), calc(var(--space-100)*-1.5));
+	}
+
+	.contact-section .form-col:after {
+		transform: translate(calc(var(--space-100)*12), calc(var(--space-100)*3));
+	}
+}
+@media( min-width: 1480px ) {
+	.contact-section .form-col:before {
+		transform: translate(calc(var(--space-100)*-3.5), calc(var(--space-100)*-1.5));
+	}
+
+	.contact-section .form-col:after {
+		transform: translate(calc(var(--space-100)*14), calc(var(--space-100)*3));
+	}
+}
+
+</style>
+
+
+<!-- Contact Section -->
+<section id="contact-section" class="contact-section">
+	<div class="container">
+		<div class="row">
+			<div class="title-col columns small-12 medium-10 medium-offset-1">
+				<div class="title space-25">
+					<div class="h1 text-uppercase line-height-one space-25-left-right space-25-bottom fill-light">Get in Touch</div>
+					<div class="label inline strong text-uppercase space-25-left-right space-min-bottom fill-light">Schedule a Consultation or Visit</div>
+				</div>
+			</div>
+			<div class="form-col columns small-12 medium-10 medium-offset-1 large-7 large-offset-2">
+				<div class="contact-form row space-75 fill-orange box-border-dark radius-25">
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Full Name</span>
+							<input type="text" class="input-field block">
+						</label>
+					</div>
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Email ID</span>
+							<input type="text" class="input-field block">
+						</label>
+					</div>
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Phone Number</span>
+							<input type="text" class="input-field block">
+						</label>
+					</div>
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Country</span>
+							<input type="text" class="input-field block">
+						</label>
+					</div>
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Wedding Date</span>
+							<input type="text" class="input-field block">
+						</label>
+					</div>
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Branch</span>
+							<input type="text" class="input-field block">
+						</label>
+					</div>
+					<div class="form-field columns small-12 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Your Requirement</span>
+							<textarea name="" id="" class="input-field block" rows="4"></textarea>
+						</label>
+					</div>
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label invisible small strong text-uppercase inline space-min-bottom text-dark">Branch</span>
+							<button type="submit" class="button fill-red text-white block text-left" style="padding-left: var(--space-75);">Submit <span class="h5">&rarr;</span></button>
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Contact Section -->

@@ -1,0 +1,60 @@
+<div class="footer row">
+	<div class="columns small-12">
+		<div class="h1">Lorem ipsum, dolor, sit amet.</div>
+		<div class="h2">Lorem ipsum, dolor, sit amet.</div>
+		<div class="h3">Lorem ipsum, dolor, sit amet.</div>
+		<div class="h4">Lorem ipsum, dolor, sit amet.</div>
+		<div class="h5">Lorem ipsum, dolor, sit amet.</div>
+		<div class="h6">Lorem ipsum, dolor, sit amet.</div>
+		<div class="p">Lorem ipsum, dolor, sit amet.</div>
+		<div class="label">Lorem ipsum, dolor, sit amet.</div>
+		<div class="small">Lorem ipsum, dolor, sit amet.</div>
+		<p class="p">Lorem ipsum, dolor, sit amet consectetur adipisicing elit. Maiores numquam aperiam officia impedit unde quasi, a ullam atque veritatis quod? Culpa sunt vel natus, eligendi consequatur itaque facere nesciunt fugit.</p>
+		<div class="footer-actions">
+			<!-- Navigation -->
+			<nav class="footer-nav">
+				<ul class="menu">
+				  {% for link in section.settings.menu.links %}
+				    <li class="menu-link">
+				      <a class="label text-uppercase text-dark" href="{{ link.url }}">{{ link.title }}</a>
+
+				      {% if link.links.size > 0 %}
+				        <ul class="menu dropdown-child">
+				          {% for child_link in link.links %}
+				            <li class="menu-link">
+				              <a class="label text-uppercase text-dark" href="{{ child_link.url }}">{{ child_link.title }}</a>
+
+				              {% if child_link.links.size > 0 %}
+				                <ul class="menu dropdown-grandchild">
+				                  {% for grandchild_link in child_link.links %}
+				                    <li class="menu-link">
+				                      <a class="label text-uppercase text-dark" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+				                    </li>
+				                  {% endfor %}
+				                </ul>
+				              {% endif %}
+				            </li>
+				          {% endfor %}
+				        </ul>
+				      {% endif %}
+				    </li>
+				  {% endfor %}
+				</ul>
+			</nav>
+			<!-- END: Navigation -->
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "Footer",
+	"settings": [
+		{
+			"type": "link_list",
+			"id": "menu",
+			"label": "Menu"
+		}
+	]
+}
+{% endschema %}

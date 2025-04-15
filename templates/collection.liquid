@@ -1,0 +1,105 @@
+<style type="text/css">
+	
+	.product-grid {
+	  display: grid;
+	  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	  gap: 20px;
+	  margin-top: 20px;
+	}
+
+	.product-card {
+	  border: 1px solid #ddd;
+	  padding: 15px;
+	  text-align: center;
+	}
+
+	.product-card img {
+	  max-width: 100%;
+	  height: auto;
+	  margin-bottom: 10px;
+	}
+
+	.pagination {
+	  margin-top: 30px;
+	  text-align: center;
+	}
+
+	.pagination ul {
+	  list-style: none;
+	  padding: 0;
+	  display: inline-block;
+	}
+
+	.pagination li {
+	  display: inline;
+	  margin: 0 5px;
+	}
+
+	.pagination a,
+	.pagination span {
+	  padding: 8px 12px;
+	  border: 1px solid #ccc;
+	  text-decoration: none;
+	  color: #333;
+	}
+
+	.pagination .current {
+	  background-color: #f0f0f0;
+	  font-weight: bold;
+	}
+
+</style>
+
+
+<div class="collection-template">
+	<div class="container">
+		<div class="collection-header">
+			<h1 class="collection-title">{{ collection.title }}</h1>
+			{% if collection.description != blank %}
+				<div class="collection-description">{{ collection.description }}</div>
+			{% endif %}
+		</div>
+
+		<div class="product-grid">
+			{% if collection.products.size > 0 %}
+				{% paginate collection.products by 5 %}
+					{% for product in collection.products %}
+						<div class="product-card">
+							<a href="{{ product.url }}">
+								{% if product.featured_image %}
+									<img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.featured_image.alt }}">
+								{% endif %}
+								<h3 class="product-title">{{ product.title }}</h3>
+								<div class="product-price">{{ product.price | money }}</div>
+							</a>
+							<form action="/cart/add" method="post" enctype="multipart/form-data">
+								{% if product.variants.size > 1 %}
+									<a href="{{ product.url }}" class="btn">View Options</a>
+								{% else %}
+									<input type="hidden" name="id" value="{{ product.variants.first.id }}">
+									<button type="submit" class="btn">Add to Cart</button>
+								{% endif %}
+							</form>
+						</div>
+					{% endfor %}
+				{% endpaginate %}
+			{% else %}
+				<p>No products found in this collection.</p>
+			{% endif %}
+		</div>
+
+		{% paginate collection.products by 5 %}
+			{% if paginate.pages > 1 %}
+				<div class="pagination">
+					{% for part in paginate.parts %}
+						{% if part.is_link %}
+							<a href="{{ part.url }}">{{ part.title }}</a>
+						{% else %}
+							<span>{{ part.title }}</span>
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endif %}
+		{% endpaginate %}
+	</div>
+</div>

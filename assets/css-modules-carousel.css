@@ -1,0 +1,111 @@
+/*
+ *
+ *	Carousel
+ *
+ */
+
+.carousel {
+	width: 100%;
+	position: relative;
+	z-index: 1;
+}
+
+.carousel:before,
+.carousel:after {
+	pointer-events: none;
+	content: '';
+	display: inline-block;
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	bottom: 0;
+	width: calc((100vw - var(--container-width) ) / 2);
+}
+
+.carousel .carousel-list {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-gap: var(--space-50);
+	grid-auto-flow: column;
+	grid-auto-columns: var(--card);
+	white-space: nowrap;
+	overflow-x: scroll; /* needs to be 'scroll' not 'auto' */
+	overflow-y: hidden;
+	font-size: 0;
+	-webkit-overflow-scrolling: touch;
+	padding: var(--space-50) calc((100vw - var(--container-width))/2 );
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.carousel .carousel-list .carousel-list-item {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	white-space: normal;
+	scroll-snap-align: center;
+}
+
+.carousel.small-card .carousel-list {
+	grid-auto-columns: calc(var(--card) * .666);
+}
+
+.carousel .carousel-list .carousel-list-item .card {
+	height: 100%;
+}
+
+/*.carousel .carousel-list .carousel-list-item * { pointer-events:  none; }*/
+
+
+/* -- Fade -- */
+.carousel.fade:before {
+	left: 0;
+	background-image: linear-gradient( to left, rgba(var(---light),0) 5%, rgba(var(---light),1) 95%);
+	opacity: 0.90;
+}
+
+.carousel.fade:after {
+	right: 0;
+	background-image: linear-gradient( to right, rgba(var(---light),0) 5%, rgba(var(---light),1) 95%);
+	opacity: 0.90;
+}
+
+.carousel.fade.dark-mode:before {
+	left: 0;
+	background-image: linear-gradient( to left, rgba(35, 31, 32, 0) 5%, rgba(35, 31, 32, 1) 95%);
+	opacity: 0.90;
+}
+
+.carousel.fade.dark-mode:after {
+	right: 0;
+	background-image: linear-gradient( to right, rgba(35, 31, 32, 0) 5%, rgba(35, 31, 32,1) 95%);
+	opacity: 0.90;
+}
+
+
+/* -- Controls -- */
+.carousel .carousel-controls {
+	pointer-events: none;
+/*	position: absolute;*/
+/*	z-index: 2;*/
+	width: 100%;
+}
+
+.carousel .carousel-controls .scroll-button {
+	pointer-events: all;
+/*	padding: 0 var(--space-25);*/
+	padding: var(--space-50);
+/*	transform: translateY(-100%);*/
+	transform: translateY(calc(-1 * var(--space-25)));
+	cursor: pointer;
+}
+
+.carousel .carousel-controls .scroll-button * {
+	pointer-events: none;
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}

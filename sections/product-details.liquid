@@ -1,0 +1,155 @@
+<style>
+
+.note-scroll {
+	position: absolute;
+	top: 0;
+	left: var(--container-margin);
+	letter-spacing: calc(var(--space-100) * 0.2);
+	text-shadow: 0 0 12px rgba(var(---black), 0.75);
+	transform: translateY(calc( ( var(--space-100) * 2 ) * -1 ) );
+}
+.note-scroll:after {
+	content: '';
+	display: block;
+	width: calc(var(--space-100) * 2);
+	height: calc(var(--space-min)/2);
+	background-color: var(--white);
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateX(112.5%);
+	box-shadow: 0 0 12px 0 rgba(var(---black), 0.75)
+}
+
+@media( min-width: 640px )  {
+	.note-scroll {
+		transform: translateY(0);
+		top: auto;
+		left: auto;
+		right: calc( 100% + var(--space-100) );
+		transform: rotate(-90deg);
+		transform-origin: right bottom;
+	}
+	.note-scroll:after {
+		right: auto;
+		left: 0;
+		transform: translateX(-125%);
+	}
+}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}
+</style>
+
+{% if product.images.size > 1 %}
+<div class="note-scroll label strong text-uppercase text-white">Scroll</div>
+{% endif %}
+
+{% if product.category %}
+	<div class="product-category small strong text-uppercase text-neutral-3 space-25-bottom"><small>{{ product.category }}</small></div>
+{% endif %}
+<div class="product-title h6 text-uppercase space-50-bottom"><h1>{{ product.title }}</h1></div>
+<div class="product-price label strong text-red space-25-bottom">{{ product.price | money }} {% if product.compare_at_price_max > product.price %} <span class="compare-at-price">{{ product.compare_at_price | money }}</span>{% endif %}</div>
+<div class="shipping-policy-link label text-neutral-3 space-50-bottom"><a class="text-underline text-black" herf="#">Shipping</a> calculated at checkout.</div>
+
+{% if product.variants.size > 1 %}
+	{% for option in product.options %}
+	<div class="product-variants form-field space-50-bottom">
+		<label class="form-label small strong text-uppercase inline space-min-bottom" for="variant-select">{{ option }}</label><br>
+		<select class="block fill-white" id="variant-select" name="id">
+			{% for variant in product.variants %}
+				<option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }} {% if variant.available == false %} (Out of Stock){% endif %}</option>
+			{% endfor %}
+		</select>
+	</div>
+	{% endfor %}
+{% else %}
+	<input type="hidden" name="id" value="{{ product.variants.first.id }}">
+{% endif %}
+
+{% if product.available %}
+	<form action="/cart/add" method="post" enctype="multipart/form-data">
+		<div class="product-quantity form-field space-50-bottom">
+			<label class="form-label small strong text-uppercase inline space-min-bottom" for="quantity">Quantity</label><br>
+			<input class="block text-center fill-white" type="text" id="quantity" name="quantity" value="1" min="1">
+		</div>
+		<div class="space-25-bottom">
+			<a class="button fill-dark block" href="">Add to Wishlist</a>
+		</div>
+		<div class="space-50-bottom">
+			<button type="submit" class="button fill-red block">Add to Cart</button>
+		</div>
+	</form>
+{% else %}
+	<p class="out-of-stock">Out of Stock</p>
+{% endif %}
+
+<div class="inline h3 w-800 text-orange line-height-one space-50-bottom">
+	<a class="inline" href="#">Next Steps <i class='inline-middle bx bxs-right-arrow-circle h1 text-orange' ></i></a>
+</div>
+
+{% if product.collections.size > 0 %}
+<div class="product-collections space-50-bottom">
+	<div class="small text-neutral-3 space-min-bottom text-uppercase">Shop More</div>
+	{% for collection in product.collections %}
+		<a class="label space-25-top-bottom space-50-left-right text-uppercase fill-neutral-5 radius-min" href="{{ collection.url }}" style="margin-right: var(--space-min);">{{ collection.title }}</a>
+	{% endfor %}
+</div>
+{% endif %}
+
+
+
+
+{% schema %}
+{
+	"name": "Product Details",
+	"settings": []
+}
+{% endschema %}
+
+{% comment %}
+<div class="breadcrumb hidden">
+	{% if product.category %}
+		<a class="p" href="{{ product.category.url }}">{{ product.category }}</a>
+	{% endif %}
+	{% for collection in product.collections %}
+		<a class="p" href="{{ collection.url }}">{{ collection.title }}</a>
+	{% endfor %}
+</div>
+<div class="product-info">
+	<h1 class="h1 product-title">{{ product.title }}</h1>
+	<div class="product-price">{{ product.price | money }} {% if product.compare_at_price_max > product.price %} <span class="compare-at-price">{{ product.compare_at_price | money }}</span>{% endif %}</div>
+	<div class="product-description">{{ product.description }}</div>
+
+	{% if product.variants.size > 1 %}
+		<div class="product-variants">
+			<label for="variant-select">Select Option:</label>
+			<select id="variant-select" name="id">
+				{% for variant in product.variants %}
+					<option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }} {% if variant.available == false %} (Out of Stock){% endif %}</option>
+				{% endfor %}
+			</select>
+		</div>
+	{% else %}
+		<input type="hidden" name="id" value="{{ product.variants.first.id }}">
+	{% endif %}
+
+	{% if product.available %}
+		<form action="/cart/add" method="post" enctype="multipart/form-data">
+			<div class="product-quantity">
+				<label for="quantity">Quantity:</label>
+				<input type="number" id="quantity" name="quantity" value="1" min="1">
+			</div>
+			<button type="submit" class="btn">Add to Cart</button>
+		</form>
+	{% else %}
+		<p class="out-of-stock">Out of Stock</p>
+	{% endif %}
+</div>
+
+{% schema %}
+{
+	"name": "Product Details",
+	"settings": []
+}
+{% endschema %}
+{% endcomment %}

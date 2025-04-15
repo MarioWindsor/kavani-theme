@@ -1,0 +1,39 @@
+
+
+
+{% if product.images %}
+	{% for image in product.images %}
+		<div class="product-image space-25-right space-25-bottom">
+			<img class="block" src="{{ image | img_url: 'original' }}" alt="{{ image.alt }}">
+		</div>
+	{% endfor %}
+{% endif %}
+
+{% schema %}
+{
+	"name": "Product Images",
+	"settings": []
+}
+{% endschema %}
+
+{% comment %}
+<div class="product-gallery">
+	{% if product.featured_image %}
+		<img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.featured_image.alt }}">
+	{% endif %}
+	{% if product.images.size > 1 %}
+		<div class="product-thumbnails">
+			{% for image in product.images %}
+				<img src="{{ image | img_url: 'small' }}" alt="{{ image.alt }}">
+			{% endfor %}
+		</div>
+	{% endif %}
+</div>
+
+{% schema %}
+{
+	"name": "Product Images",
+	"settings": []
+}
+{% endschema %}
+{% endcomment %}

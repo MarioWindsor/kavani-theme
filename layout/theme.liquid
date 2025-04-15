@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+
+	<title>{{ title | default: 'Kavani | Wedding Dresses &amp; Sarees' }}</title>
+	<base href="/">
+	
+	<!-- Metadata -->
+	<!-- Short description of the document (limit to 150 characters) -->
+	<!-- This content *may* be used as a part of search engine results. -->
+	<meta name="description" content="Discover exclusive Christian bridal wear in India at kavani.in. Explore exquisite designs for your special day. Visit our store in Kottayam, Kerala, or design studio in Bangalore. Find sarees, gowns, veils, and more with meticulous craftsmanship. Radiate elegance on your wedding day.">
+
+	<!-- Authors -->
+	<!-- Links to information about the author(s) of the document -->
+	<meta name="author" content="Mario Windsor">
+	<link rel="author" href="humans.txt">
+
+	<!-- SEO -->
+	<!-- Control the behavior of search engine crawling and indexing -->
+	<meta name="robots" content="index,follow"><!-- All Search Engines -->
+	<meta name="googlebot" content="index,follow"><!-- Google Specific -->
+
+	<!-- Favicons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ 'favicon-apple-touch-icon.png' | asset_url }}">
+	<link rel="icon" type="image/png" sizes="512x512"  href="{{ 'favicon-android-chrome-512x512.png' | asset_url }}">
+	<link rel="icon" type="image/png" sizes="192x192"  href="{{ 'favicon-android-chrome-192x192.png' | asset_url }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32x32.png' | asset_url }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon-16x16.png' | asset_url }}">
+	<link rel="icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}">
+
+	<!-- ~ iOS ~ -->
+	<!-- Disable automatic detection and formatting of possible phone numbers -->
+	<meta name="format-detection" content="telephone=no">
+	<!-- Launch Screen Image -->
+	<!-- <link rel="apple-touch-startup-image" href="/path/to/launch.png"> -->
+	<!-- Launch Icon Title -->
+	<meta name="apple-mobile-web-app-title" content="{{ title | default: 'Kavani | Wedding Dresses &amp; Sarees' }}">
+	<!-- Enable standalone (full-screen) mode -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- Status bar appearance (has no effect unless standalone mode is enabled) -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+	<!-- ~ Android ~ -->
+	<!-- Add to home screen -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<!-- More info: https://developer.chrome.com/multidevice/android/installtohomescreen -->
+
+	<!-- Social -->
+	<!-- Facebook Open Graph -->
+	<meta property="og:url" content="">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="{{ title | default: 'Kavani | Wedding Dresses &amp; Sarees' }}">
+	<meta property="og:description" content="Discover exclusive Christian bridal wear in India at kavani.in. Explore exquisite designs for your special day. Visit our store in Kottayam, Kerala, or design studio in Bangalore. Find sarees, gowns, veils, and more with meticulous craftsmanship. Radiate elegance on your wedding day.">
+	<meta property="og:image" content="">
+	<meta property="og:site_name" content="">
+
+	<!-- Schema.org / Google+ -->
+	<meta itemprop="name" content="{{ title | default: 'Kavani | Wedding Dresses &amp; Sarees' }}">
+	<meta itemprop="description" content="Discover exclusive Christian bridal wear in India at kavani.in. Explore exquisite designs for your special day. Visit our store in Kottayam, Kerala, or design studio in Bangalore. Find sarees, gowns, veils, and more with meticulous craftsmanship. Radiate elegance on your wedding day.">
+	<meta itemprop="image" content=" ">
+
+	<!-- Stylesheet -->
+	<!-- Base -->
+	{{ 'css-1-normalize.css' | asset_url | stylesheet_tag }}
+	{{ 'css-2-base.css' | asset_url | stylesheet_tag }}
+	{{ 'css-3-grid.css' | asset_url | stylesheet_tag }}
+	{{ 'css-4-helper.css' | asset_url | stylesheet_tag }}
+	{{ 'css-5-stylescape.css' | asset_url | stylesheet_tag }}
+
+	<!-- Modules -->
+	{{ 'css-modules-video-embed.css' | asset_url | stylesheet_tag }}
+	{{ 'css-modules-carousel.css' | asset_url | stylesheet_tag }}
+
+	<!-- Pages + Sections + Modals -->
+	{{ 'css-pages-page.css' | asset_url | stylesheet_tag }}
+	{{ 'css-pages-home.css' | asset_url | stylesheet_tag }}
+	{{ 'css-section-sample.css' | asset_url | stylesheet_tag }}
+	{{ 'css-section-header.css' | asset_url | stylesheet_tag }}
+	{{ 'css-section-collection.css' | asset_url | stylesheet_tag }}
+	{{ 'css-section-product-carousel.css' | asset_url | stylesheet_tag }}
+	{{ 'css-section-location.css' | asset_url | stylesheet_tag }}
+	{{ 'css-section-footer.css' | asset_url | stylesheet_tag }}
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,300;0,500;0,800;1,300;1,500;1,800&display=swap" rel="stylesheet">
+	
+	<!-- Icons -->
+	<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> --><!-- Old Material Icons -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
+
+	<!-- Box Icon -->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+	
+	<!-- Typing JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js" integrity="sha512-BdHyGtczsUoFcEma+MfXc71KJLv/cd+sUsUaYYf2mXpfG/PtBjNXsPo78+rxWjscxUYN2Qr2+DbeGGiJx81ifg==" crossorigin="anonymous"></script>
+	
+	{{ content_for_header }}
+
+</head>
+<body class="body" id="body">
+
+
+<!--  ★  MARKUP GOES HERE  ★  -->
+
+
+	<!-- Header -->
+	<header class="header-section">
+		<div class="container">
+			{% section 'header' %}
+		</div>
+	</header>
+	<!-- END: Header -->
+
+
+	<!-- Page Content -->
+	<main  id="page-content">
+		{{ content_for_layout }}		
+	</main>	
+	<!-- END: Page Content -->
+
+
+	<!-- Footer -->
+	<footer class="footer-section space-200-top-bottom">
+		<div class="container">
+			{% section 'footer' %}
+		</div>
+	</footer>
+	<!-- END: Footer -->
+
+
+	</div><!-- END: Page Content -->
+
+
+<!--  ☠  MARKUP ENDS HERE  ☠  -->
+
+
+{{ 'js-video-embed.js' | asset_url | script_tag }}
+{{ 'js-carousel.js' | asset_url | script_tag }}
+{{ 'js-cart.js' | asset_url | script_tag }}
+
+
+</body>
+</html>

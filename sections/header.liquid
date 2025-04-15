@@ -1,0 +1,102 @@
+<input type="checkbox" id="menu-checkbox" class="menu-checkbox hidden">
+<div class="header row clearfix">
+	<!-- Logo -->
+	<div class="logo columns small-6 medium-4 large-3 xlarge-2 inline-middle">
+		<a href="{{ shop.url }}">
+			{% if settings.logo %}
+				<img class="block" src="{{ settings.logo | image_url }}" alt="{{ shop.name }}">
+			{% else %}
+				{{ shop.name }}
+			{% endif %}
+		</a>
+	</div>
+	<!-- END: Logo -->
+	<!-- Navigation -->
+	<nav class="main-menu columns small-12 large-7 xlarge-8 inline-middle">
+		<ul class="menu">
+		  {% for link in section.settings.menu.links %}
+		    <li class="menu-link">
+		      <a class="h6 strong text-uppercase text-neutral-7" href="{{ link.url }}">{{ link.title }}</a>
+
+		      {% if link.links.size > 0 %}
+		        <ul class="menu dropdown-child">
+		          {% for child_link in link.links %}
+		            <li class="menu-link">
+		              <a class="h6 strong text-uppercase text-neutral-7" href="{{ child_link.url }}">{{ child_link.title }}</a>
+
+		              {% if child_link.links.size > 0 %}
+		                <ul class="menu dropdown-grandchild">
+		                  {% for grandchild_link in child_link.links %}
+		                    <li class="menu-link">
+		                      <a class="h6 strong text-uppercase text-neutral-7" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+		                    </li>
+		                  {% endfor %}
+		                </ul>
+		              {% endif %}
+		            </li>
+		          {% endfor %}
+		        </ul>
+		      {% endif %}
+		    </li>
+		  {% endfor %}
+		</ul>
+	</nav>
+	<!-- END: Navigation -->
+	<!-- Header Actions -->
+	<div class="header-actions columns small-5 small-offset-1 medium-6 medium-offset-2 large-2 large-offset-0 inline-middle text-right">
+		<!-- Search -->
+		<div class="search">
+			<a class="space-25 icon-button" href=""><i class='bx bx-search h3 text-dark' ></i></a>
+			{% comment %}
+			<form action="/search" method="get">
+				<input type="search" name="q" placeholder="Search..." value="{{ search.terms | escape }}">
+				<button type="submit">Search</button>
+			</form>
+			{% endcomment %}
+		</div>
+		<!-- END: Search -->
+		<!-- User -->
+		<div class="user">
+			<a class="space-25 icon-button" href=""><i class='bx bx-user-circle h3 text-dark' ></i></a>
+			{% comment %}
+			{% if customer %}
+				<a href="/account">Account</a>
+				<a href="/account/logout">Logout</a>
+			{% else %}
+				<a href="/account/login">Login</a>
+				<a href="/account/register">Register</a>
+			{% endif %}
+			{% endcomment %}
+		</div>
+		<!-- END: User -->
+		<!-- Cart -->
+		<div class="cart">
+			<a class="space-25 icon-button" href=""><i class='bx bx-shopping-bag h3 text-dark' ></i></a>
+			{% comment %}
+			<a href="/cart">
+				Cart ({{ cart.item_count }})
+			</a>
+			{% endcomment %}
+		</div>
+		<!-- END: Cart -->
+		<!-- Menu Toggle -->
+		<div class="menu-toggle hide-large hide-xlarge">
+			<label class="space-25 icon-button" for="menu-checkbox" href=""><i class='open bx bx-menu h3 text-dark' ></i> <i class='close bx bx-x h3 text-dark' ></i></label>
+		</div>
+		<!-- END: Menu Toggle -->
+	</div>
+	<!-- END: Header Actions -->
+</div>
+
+{% schema %}
+{
+	"name": "Header",
+	"settings": [
+		{
+			"type": "link_list",
+			"id": "menu",
+			"label": "Menu"
+		}
+	]
+}
+{% endschema %}

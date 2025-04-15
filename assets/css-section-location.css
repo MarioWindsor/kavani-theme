@@ -1,0 +1,49 @@
+/*
+ * Location Section
+ */
+
+.location-section { position: relative; }
+
+.location-section .locations {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-100);
+}
+
+.location-section .locations .location {
+	position: relative;
+}
+
+.location-section .locations .location .title ,
+.location-section .locations .location .description {
+	letter-spacing: calc(var(--space-100) * 0.05);
+	text-shadow: 0 0 12px rgba(var(---black), 0.4)
+}
+
+.location-section .bg-video-embed {
+	position: relative;
+	z-index: 1;
+	padding-top: 100%;
+}
+
+.location-section .bg-video-embed iframe {
+	width: 225%;
+}
+
+.location-section .location-actions {
+	position: absolute;
+	z-index: 2;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+}
+
+@media( min-width: 640px )  {
+	.location-section .locations {
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-50);
+	}
+}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}

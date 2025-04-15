@@ -1,0 +1,155 @@
+{% for block in section.blocks %}
+	{% case block.type %}
+		{% when "collection-banner" %}
+			<!-- Collection Section -->
+			<section id="{{ block.settings.collection }}-banner" class="collection-section space-100-left-right space-100-top-bottom">
+				<!-- Video Embed -->
+				<div class="bg-video-embed radius-50 box-shadow-red">
+					<iframe class="" src="https://www.youtube-nocookie.com/embed/{{ block.settings.video-id }}?playlist={{ block.settings.video-id }}&html5=1&color=white&disablekb=0&fs=0&autoplay=1&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+				<!-- END: Video Embed -->
+				<div class="collection-section-content">
+					<div class="container text-center">
+						<div class="row">
+							<div class="columns small-11 medium-8 large-6 xlarge-5">
+								<div class="heading h5 strong text-uppercase text-white space-250-top space-50-bottom space-50-left-right">{{ block.settings.title }}</div>
+								<a href="{{ block.settings.collection.url }}" class="button text-white box-shadow-white-2">Explore Collection</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- END: Collection Section -->
+		{% when "product-carousel" %}
+			<!-- Collection Items List Section -->
+			<section id="{{ block.settings.collection }}-items-list" class="collection-items-list-section space-100-top">
+				<div class="product-carousel">
+					<div class="h5 strong text-uppercase text-center space-50-bottom">{{ block.settings.title }}</div>
+
+					<!-- Carousel -->
+					<div class="carousel fade">
+						<div class="carousel-list">
+						{% if block.settings.collection != blank %}
+							{% assign collection = collections[block.settings.collection] %}
+							{% if collection.products.size > 0 %}
+								{% for product in collection.products %}
+								<div class="carousel-list-item">
+									<div class="card product-card fill-white radius-25 box-shadow-red no-overflow">
+										<a class="block" href="{{ product.url }}">
+											{% if product.featured_image %}
+											<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ product.featured_image | img_url: 'medium' }}');"></div>
+											{% endif %}
+											<div class="text-center space-75-top space-75-left-right">
+												<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ product.title }}</div>
+												<div class="price label text-red strong">{{ product.price | money }}/-</div>
+											</div>
+										</a>
+										<div class="product-actions row space-25 no-whitespace">
+											<div class="wishlist columns small-6 space-25">
+												{% if customer %}
+													<button class="button block fill-dark box-shadow-red" data-product-id="{{ product.id }}">
+														Wishlist
+													</button>
+												{% else %}
+													{% comment %}
+													<a href="/account/login?checkout_url=/products/{{ product.handle }}" class="wishlist-button">
+													{% endcomment %}
+													<a class="button block fill-dark box-shadow-red" href="/account/" class="wishlist-button">
+														Wishlist
+													</a>
+												{% endif %}
+											</div>
+											<div class="cart columns small-6 space-25">
+												{% if product.variants.size > 1 %}
+													<a class="button block fill-red text-white" href="{{ product.url }}">View Options</a>
+												{% elsif product.available %}
+													<form action="/cart/add" method="post" enctype="multipart/form-data">
+														<input type="hidden" name="id" value="{{ product.variants.first.id }}">
+														<button class="button block fill-red text-white box-shadow-black" type="submit">Add to Cart</button>
+													</form>
+												{% else %}
+													<a class="button block fill-red text-white box-shadow-black" href="{{ product.url }}">Pre-order</a>
+												{% endif %}
+											</div>
+
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+							{% else %}
+								<div class="label space-100">No products found in this collection.</div>
+							{% endif %}
+						{% else %}
+							<div class="label space-100">Please select a collection in the theme settings.</div>
+						{% endif %}
+						</div>
+						<div class="carousel-controls row">
+							<div class="container">
+								<div class="columns small-12 text-center">
+									<div class="scroll-button scroll-left inline" data-dir="left" tabindex="-1"><i class='bx bx-left-arrow-alt text-red h3' ></i></div>
+									<div class="scroll-button scroll-right inline" data-dir="right" tabindex="-1"><i class='bx bx-right-arrow-alt text-red h3' ></i></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- END: Collection Items List Section -->
+		{% when "location" %}
+			{% render 'location' %}
+	{% endcase %}
+{% endfor %}
+
+
+
+
+
+{% schema %}
+{
+	"name": "Home Body",
+	"blocks": [
+		{
+			"type": "collection-banner",
+			"name": "Collection Banner",
+			"settings": [
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Title"
+				},
+				{
+					"type": "text",
+					"id": "video-id",
+					"label": "Video ID",
+					"default": "eRQKZH-RYUA"
+				},
+				{
+					"type": "collection",
+					"id": "collection",
+					"label": "Collection"
+				},
+			]
+		},
+		{
+			"type": "product-carousel",
+			"name": "Product Carousel",
+			"settings": [
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Title"
+				},
+				{
+					"type": "collection",
+					"id": "collection",
+					"label": "Collection"
+				},
+			]
+		},
+		{
+			"type": "location",
+			"name": "Location",
+		},
+	]
+}
+{% endschema %}
