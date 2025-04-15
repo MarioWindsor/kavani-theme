@@ -39,8 +39,8 @@
           "product_carousel_H4VBKB": {
             "type": "product-carousel",
             "settings": {
-              "title": "",
-              "collection": ""
+              "title": "New Arrivals",
+              "collection": "sale"
             }
           },
           "collection_banner_ybNhMN": {
