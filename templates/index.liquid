@@ -74,7 +74,7 @@
 		right: var(--space-200);
 		bottom: 0;
 		background-color: var(--orange);
-		transform: translate(calc(var(--space-100)*4), calc(var(--space-100)*3));
+		transform: translate(calc(var(--space-100)*6), calc(var(--space-100)*3));
 		border-radius: var(--space-min);
 		opacity: 0.5;
 	}
@@ -190,8 +190,18 @@
 </section>
 <!-- END: Contact Section -->
 
-<!-- Contact Section -->
-<section id="contact-section" class="contact-section space-200-top-bottom">
+
+
+<style>
+.insta-section {}
+
+@media( min-width: 1040px ) {
+	.insta-section .description { font-size: var(--h5); }
+	.insta-section .handle { font-size: var(--h3); }
+}	
+</style>
+<!-- Insta Section -->
+<section id="insta-section" class="insta-section space-100-top space-200-bottom">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 space-50-bottom">
@@ -205,3 +215,4 @@
 		<div id="insta-feed"></div>
 	</div>
 </section>
+<!-- END: Insta Section -->
