@@ -1,0 +1,86 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "logo": "shopify://shop_images/logo-combination-new-red-dark.png",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "home-body": {
+        "type": "home-body",
+        "blocks": {
+          "collection_banner_HJDYhC": {
+            "type": "collection-banner",
+            "settings": {
+              "title": "Wedding Gowns",
+              "video-id": "eRQKZH-RYUA",
+              "collection": ""
+            }
+          },
+          "collection_banner_tcVzxm": {
+            "type": "collection-banner",
+            "settings": {
+              "title": "Wedding Sarees",
+              "video-id": "eRQKZH-RYUA",
+              "collection": ""
+            }
+          },
+          "product_carousel_H4VBKB": {
+            "type": "product-carousel",
+            "settings": {
+              "title": "New Arrivals",
+              "collection": "sale"
+            }
+          },
+          "collection_banner_ybNhMN": {
+            "type": "collection-banner",
+            "settings": {
+              "title": "Spring Collection 2025",
+              "video-id": "eRQKZH-RYUA",
+              "collection": ""
+            }
+          },
+          "location_8rVyHH": {
+            "type": "location",
+            "settings": {}
+          },
+          "collection_banner_ErHPFd": {
+            "type": "collection-banner",
+            "settings": {
+              "title": "Autumn Collection 2024",
+              "video-id": "eRQKZH-RYUA",
+              "collection": ""
+            }
+          }
+        },
+        "block_order": [
+          "collection_banner_HJDYhC",
+          "collection_banner_tcVzxm",
+          "product_carousel_H4VBKB",
+          "collection_banner_ybNhMN",
+          "location_8rVyHH",
+          "collection_banner_ErHPFd"
+        ],
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "menu": ""
+        }
+      }
+    },
+    "content_for_index": []
+  }
+}
