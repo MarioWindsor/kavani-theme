@@ -75,7 +75,7 @@
 		background-color: var(--orange);
 		transform: translate(calc(var(--space-100)*6), calc(var(--space-100)*3));
 		border-radius: var(--space-min);
-		opacity: 0.5;
+		opacity: 0.333;
 	}
 }
 @media( min-width: 1040px ) {
@@ -194,14 +194,18 @@
 <style>
 .insta-section {}
 .insta-section .handle {
-	transform: scale(2);
+	transform: scale(1.5);
 	transform-origin: bottom left;
+	filter: brightness(0.97);
 }
 
 @media( min-width: 1040px ) {
 	.insta-section .title { font-size: var(--h2); }
 	.insta-section .description { font-size: var(--h6); }
-	.insta-section .handle { font-size: var(--h2); }
+	.insta-section .handle {
+		font-size: var(--h2);
+		transform: translateX(calc(var(--space-100)*-1)) scale(1.75);
+	}
 }	
 </style>
 <!-- Insta Section -->
@@ -209,7 +213,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 medium-10 medium-offset-1 space-50-bottom">
-				<div class="handle h1 text-red space-25-top-bottom opacity-25">@kavani_bridals</div>
+				<div class="handle h1 strong em text-orange space-25-top-bottom line-height-one">@kavani_bridals</div>
 				<div class="title h1 text-uppercase line-height-one space-min-bottom">Follow the Gram</div>
 				<div class="description p text-uppercase strong">For more wedding vibes, stay in the loop</div>
 			</div>
