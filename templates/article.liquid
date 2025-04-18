@@ -1,88 +1,192 @@
-<div class="article-page">
-	<div class="container">
-		<div class="article-header">
-			<h1>{{ article.title }}</h1>
-			<p class="article-meta">
-				<span>Published on {{ article.published_at | date: '%B %d, %Y' }}</span>
-				{% if article.author %}
-					<span>by {{ article.author }}</span>
-				{% endif %}
-			</p>
-			{% if article.image %}
-				<div class="featured-image">
-					{{ article.image | img_url: 'large' | img_tag: article.title }}
+<style>
+.article-content h1 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h1); 
+}
+.article-content h2 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h2); 
+}
+.article-content h3 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h3); 
+}
+.article-content h4 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h4); 
+}
+.article-content h5 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h5); 
+}
+.article-content h6 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h6); 
+}
+.article-content p {
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--p);
+}
+.article-content label { 
+	display: inline-block;
+	font-size: var(--label);
+}
+.article-content small { 
+	display: inline-block;
+	font-size: var(--small);
+}
+
+.article-content img {
+	border-radius: var(--space-25);
+	box-shadow: 0 0 3px 1px rgba(var(---red), 0.125),  0 0 12px 4px rgba(var(---red), 0.2);
+}
+</style>
+
+<!-- Article Section -->
+<section id="article-section" class="article-section space-100-top-bottom">
+	<div class="row">
+		<div class="container">
+			<div class="article-info columns small-12 medium-10 medium-offset-1 large-8 large-offset-2 space-50-top-bottom">
+				<div class="title h2 text-center line-height-one space-50-bottom">{{ article.title }}</div>
+				<div class="article-meta label text-neutral-3 text-center">
+					<span>Published on {{ article.published_at | date: '%B %d, %Y' }}</span>
+					{% if article.author %}
+						<span>by {{ article.author }}</span>
+					{% endif %}
 				</div>
-			{% endif %}
-			{% if article.tags.size > 0 %}
-				<div class="article-tags">
-					<span>Tags:</span>
+				
+				{% comment %}
+				{% if article.tags.size > 0 %}
+				<div class="article-tags small">
+					<span class="inline text-uppercase text-neutral-3">Tags:</span>
 					{% for tag in article.tags %}
-						<a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %},{% endunless %}
+						<a class="tag inline space-min fill-neutral-3 text-uppercase" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %} &nbsp; {% endunless %}
 					{% endfor %}
 				</div>
-			{% endif %}
-		</div>
-
-		<div class="article-content">
-			{{ article.content }}
-		</div>
-
-		<div class="article-sharing">
-			</div>
-
-		{% if blog.comments_enabled? %}
-			<div class="article-comments">
-				{% if article.comments.size > 0 %}
-					<h3>Comments</h3>
-					{% for comment in article.comments %}
-						<div class="comment">
-							<p class="comment-author">{{ comment.author }} <span class="comment-date">on {{ comment.created_at | date: '%B %d, %Y at %I:%M%p' }}</span></p>
-							<div class="comment-body">{{ comment.content }}</div>
-						</div>
-					{% endfor %}
 				{% endif %}
-
-				{% if article.comments_allowed? %}
-					<h3>Leave a Comment</h3>
-					{% form 'article', article %}
-						{% if form.errors %}
-							<div class="errors">
-								{{ form.errors | default_errors }}
-							</div>
-						{% endif %}
-
-						<p>
-							<label for="CommentAuthor">Name</label>
-							<input type="text" id="CommentAuthor" name="comment[author]" value="{{ form.author }}">
-						</p>
-
-						<p>
-							<label for="CommentEmail">Email</label>
-							<input type="email" id="CommentEmail" name="comment[email]" value="{{ form.email }}">
-						</p>
-
-						<p>
-							<label for="CommentBody">Comment</label>
-							<textarea id="CommentBody" name="comment[body]">{{ form.body }}</textarea>
-						</p>
-
-						<p>
-							<input type="submit" class="button" value="Post Comment">
-						</p>
-					{% endform %}
-				{% endif %}
+				{% endcomment %}
 			</div>
-		{% endif %}
-
-		<div class="related-articles">
-			{% if blog.articles.size > 1 %}
-				<h3>Related Articles</h3>
-				{% for related_article in blog.articles limit: 3 %}
-					{% unless related_article.id == article.id %}
-						<p><a href="{{ related_article.url }}">{{ related_article.title }}</a></p>
-					{% endunless %}
-				{% endfor %}
-			{% endif %}
 		</div>
 	</div>
-</div>
+	{% if article.image %}
+	<div class="featured-image row space-50-top-bottom space-100-left-right">
+		{{ article.image | img_url: 'large' | img_tag: article.title, 'block radius-50 box-shadow-red' }}
+	</div>
+	{% endif %}
+	<div class="row">
+		<div class="container">
+			<div class="article-content columns small-12 medium-10 medium-offset-1 large-8 large-offset-2 space-50-top-bottom">
+				{{ article.content }}
+			</div>
+
+			{% comment %}
+			{% if blog.comments_enabled? %}
+				<div class="article-comments">
+					{% if article.comments.size > 0 %}
+						<h3>Comments</h3>
+						{% for comment in article.comments %}
+							<div class="comment">
+								<p class="comment-author">{{ comment.author }} <span class="comment-date">on {{ comment.created_at | date: '%B %d, %Y at %I:%M%p' }}</span></p>
+								<div class="comment-body">{{ comment.content }}</div>
+							</div>
+						{% endfor %}
+					{% endif %}
+
+					{% if article.comments_allowed? %}
+						<h3>Leave a Comment</h3>
+						{% form 'article', article %}
+							{% if form.errors %}
+								<div class="errors">
+									{{ form.errors | default_errors }}
+								</div>
+							{% endif %}
+
+							<p>
+								<label for="CommentAuthor">Name</label>
+								<input type="text" id="CommentAuthor" name="comment[author]" value="{{ form.author }}">
+							</p>
+
+							<p>
+								<label for="CommentEmail">Email</label>
+								<input type="email" id="CommentEmail" name="comment[email]" value="{{ form.email }}">
+							</p>
+
+							<p>
+								<label for="CommentBody">Comment</label>
+								<textarea id="CommentBody" name="comment[body]">{{ form.body }}</textarea>
+							</p>
+
+							<p>
+								<input type="submit" class="button" value="Post Comment">
+							</p>
+						{% endform %}
+					{% endif %}
+				</div>
+			{% endif %}
+			{% endcomment %}
+		</div>
+	</div>
+</section>
+<!-- END: Article Section -->
+
+<!-- Related Blog Section -->
+{% if blog.articles.size > 1 %}
+<section id="related-blog-section" class="related-blog-section space-100-top">
+	<div class="product-carousel">
+		<div class="row">
+			<div class="container">
+				<div class="columns small-12 text-center">
+					<div class="h5 strong text-uppercase text-center space-50-bottom">Related Articles</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Carousel -->
+		<div class="carousel fade">
+			<div class="carousel-list">
+				{% for related_article in blog.articles limit: 3 %}
+					{% unless related_article.id == article.id %}
+						<div class="carousel-list-item">
+							<div class="card article-card fill-white radius-25 box-shadow-red no-overflow">
+								<a class="block" href="{{ related_article.url }}">									
+									{% if related_article.image %}
+									<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ related_article.image | img_url: 'medium' }}');"></div>
+									{% endif %}
+									<div class="space-75">
+										<div class="title p strong text-red text-uppercase space-min-bottom">{{ related_article.title }}</div>
+										<div class="date small text-neutral-3 space-min-bottom">{{ related_article.published_at | date: '%B %d, %Y' }}</div>
+										<div class="summary label strong text-neutral-6 space-25-bottom">
+											{% if related_article.excerpt != blank %}
+												{{ related_article.excerpt }}
+											{% else %}
+												{{ related_article.content | strip_html | truncatewords: 35 }} 
+											{% endif %}
+										</div>
+										<div class="cta label strong text-red text-uppercase">View Post <span class="h6 line-height-one">&rarr;</span></div>
+									</div>
+								</a>
+							</div>
+						</div>
+					{% endunless %}
+				{% endfor %}
+			</div>
+			<div class="carousel-controls row">
+				<div class="container">
+					<div class="columns small-12 text-center">
+						<div class="scroll-button scroll-left inline" data-dir="left" tabindex="-1"><i class='bx bx-left-arrow-alt text-red h3' ></i></div>
+						<div class="scroll-button scroll-right inline" data-dir="right" tabindex="-1"><i class='bx bx-right-arrow-alt text-red h3' ></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endif %}
+<!-- END: Related Blog Section -->
