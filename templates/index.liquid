@@ -179,7 +179,7 @@
 					<div class="form-field columns small-12 medium-6 space-25">
 						<label>
 							<span class="form-label invisible small strong text-uppercase inline space-min-bottom text-dark">Branch</span>
-							<button type="submit" class="button fill-red text-white block text-left" style="padding-left: var(--space-75);">Submit <span class="h5 line-height-one">&rarr;</span></button>
+							<button type="submit" class="button fill-red text-white block text-left box-shadow-white-2" style="padding-left: var(--space-75);">Submit <span class="h5 line-height-one">&rarr;</span></button>
 						</label>
 					</div>
 				</div>
@@ -227,112 +227,44 @@
 
 
 
-<!-- XYZ Section -->
-<section id="xyz-section" class="xyz-section space-100-top">
+<!-- Blog Section -->
+{% if blogs.diaries.articles.size > 0 %}
+<section id="blog-section" class="blog-section space-100-top">
 	<div class="product-carousel">
-		<div class="h5 strong text-uppercase text-center space-50-bottom">Kavani Diaries</div>
-		
-
-		<div class="p">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, recusandae suscipit aut. Itaque cumque, nesciunt harum quisquam fugit amet laboriosam voluptatibus reiciendis non, omnis repudiandae quae illo officiis dolor dicta?
-		{% if blogs.main.articles.size > 0 %}
-			<div class="home-blog-preview">
-				<h2>Our Latest Blog Posts</h2>
-				<div class="article-list">
-					{% for article in blogs.main.articles limit: 3 %} <div class="article-preview">
-							{% if article.image %}
-								<a href="{{ article.url }}">
-									{{ article.image | img_url: 'medium' | img_tag: article.title }}
-								</a>
-							{% endif %}
-							<h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
-							<p class="article-meta">
-								<span>{{ article.published_at | date: '%B %d, %Y' }}</span>
-								{% if article.author %}
-									<span>by {{ article.author }}</span>
-								{% endif %}
-							</p>
-							{% if article.excerpt != blank %}
-								<p>{{ article.excerpt }}</p>
-							{% else %}
-								<p>{{ article.content | strip_html | truncatewords: 20 }}</p> {% endif %}
-							<p><a href="{{ article.url }}" class="read-more">Read More</a></p>
-						</div>
-					{% endfor %}
+		<div class="row">
+			<div class="container">
+				<div class="columns small-12 text-center">
+					<div class="h5 strong text-uppercase text-center space-50-bottom">Kavani Diaries</div>
 				</div>
-				<p class="view-all"><a href="{{ blogs.main.url }}">View All Blog Posts</a></p>
 			</div>
-		{% endif %}
 		</div>
 
 		<!-- Carousel -->
 		<div class="carousel fade">
 			<div class="carousel-list">
+				{% for article in blogs.diaries.articles limit: 10 %}
 				<div class="carousel-list-item">
 					<div class="card article-card fill-white radius-25 box-shadow-red no-overflow">
-						<a class="block" href="">
-							{%# if blog.featured_image %}
-							<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('https://kavani.in/cdn/shop/files/LACE.jpg');"></div>
-							{%# endif %}
-							<div class="text-center space-75-top space-75-left-right">
-								<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ #blog.title }}Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-								<div class="summary label strong">{{ #blog.summary }}Mollitia ex laboriosam consequatur, sapiente eligendi quia reprehenderit odit cumque? Iusto omnis magnam, sapiente fugit optio molestiae? Ad corrupti cumque, eius optio.</div>
+						<a class="block" href="{{ article.url }}">									
+							{% if article.image %}
+							<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ article.image | img_url: 'medium' }}');"></div>
+							{% endif %}
+							<div class="space-75">
+								<div class="title p strong text-red text-uppercase space-min-bottom">{{ article.title }}</div>
+								<div class="date small text-neutral-3 space-min-bottom">{{ article.published_at | date: '%B %d, %Y' }}</div>
+								<div class="summary label strong text-neutral-6 space-25-bottom">
+									{% if article.excerpt != blank %}
+										{{ article.excerpt }}
+									{% else %}
+										{{ article.content | strip_html | truncatewords: 35 }} 
+									{% endif %}
+								</div>
+								<div class="cta label strong text-red text-uppercase">View Post <span class="h6 line-height-one">&rarr;</span></div>
 							</div>
 						</a>
 					</div>
 				</div>
-				<div class="carousel-list-item">
-					<div class="card article-card fill-white radius-25 box-shadow-red no-overflow">
-						<a class="block" href="">
-							{%# if blog.featured_image %}
-							<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('https://kavani.in/cdn/shop/files/LACE.jpg');"></div>
-							{%# endif %}
-							<div class="text-center space-75-top space-75-left-right">
-								<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ #blog.title }}Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-								<div class="summary label strong">{{ #blog.summary }}Mollitia ex laboriosam consequatur, sapiente eligendi quia reprehenderit odit cumque? Iusto omnis magnam, sapiente fugit optio molestiae? Ad corrupti cumque, eius optio.</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="carousel-list-item">
-					<div class="card article-card fill-white radius-25 box-shadow-red no-overflow">
-						<a class="block" href="">
-							{%# if blog.featured_image %}
-							<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('https://kavani.in/cdn/shop/files/LACE.jpg');"></div>
-							{%# endif %}
-							<div class="text-center space-75-top space-75-left-right">
-								<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ #blog.title }}Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-								<div class="summary label strong">{{ #blog.summary }}Mollitia ex laboriosam consequatur, sapiente eligendi quia reprehenderit odit cumque? Iusto omnis magnam, sapiente fugit optio molestiae? Ad corrupti cumque, eius optio.</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="carousel-list-item">
-					<div class="card article-card fill-white radius-25 box-shadow-red no-overflow">
-						<a class="block" href="">
-							{%# if blog.featured_image %}
-							<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('https://kavani.in/cdn/shop/files/LACE.jpg');"></div>
-							{%# endif %}
-							<div class="text-center space-75-top space-75-left-right">
-								<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ #blog.title }}Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-								<div class="summary label strong">{{ #blog.summary }}Mollitia ex laboriosam consequatur, sapiente eligendi quia reprehenderit odit cumque? Iusto omnis magnam, sapiente fugit optio molestiae? Ad corrupti cumque, eius optio.</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="carousel-list-item">
-					<div class="card article-card fill-white radius-25 box-shadow-red no-overflow">
-						<a class="block" href="">
-							{%# if blog.featured_image %}
-							<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('https://kavani.in/cdn/shop/files/LACE.jpg');"></div>
-							{%# endif %}
-							<div class="text-center space-75-top space-75-left-right">
-								<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ #blog.title }}Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-								<div class="summary label strong">{{ #blog.summary }}Mollitia ex laboriosam consequatur, sapiente eligendi quia reprehenderit odit cumque? Iusto omnis magnam, sapiente fugit optio molestiae? Ad corrupti cumque, eius optio.</div>
-							</div>
-						</a>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 			<div class="carousel-controls row">
 				<div class="container">
@@ -343,6 +275,15 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="container">
+				<div class="columns small-12 text-center">
+					<a href="{{ blogs.diaries.url }}" class="button fill-dark box-shadow-red text-white inline text-left">Explore All Posts</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
-<!-- END: Collection Items List Section -->
+{% endif %}
+<!-- END: Blog Section -->

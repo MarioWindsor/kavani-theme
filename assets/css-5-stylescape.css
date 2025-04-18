@@ -816,13 +816,26 @@ select {
 }
 
 
+
+
 /*
  * Box Border
  */
 
+.box-border-white {
+	box-shadow: inset 0 0 0 1.5px rgba(var(---white), 1) ;
+}
+
+.box-border-red {
+	box-shadow: inset 0 0 0 1.5px rgba(var(---red), 1) ;
+}
+
 .box-border-dark {
 	box-shadow: inset 0 0 0 1.5px rgba(var(---dark), 1) ;
 }
+
+
+
 
 
 /*
