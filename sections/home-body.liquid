@@ -61,7 +61,7 @@
 											</div>
 											<div class="cart columns small-6 space-25">
 												{% if product.variants.size > 1 %}
-													<a class="button block fill-red text-white" href="{{ product.url }}">View Options</a>
+													<a class="button block fill-red text-white" href="{{ product.url }}">Options</a>
 												{% elsif product.available %}
 													<form action="/cart/add" method="post" enctype="multipart/form-data">
 														<input type="hidden" name="id" value="{{ product.variants.first.id }}">

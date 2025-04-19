@@ -481,7 +481,8 @@ button:focus,
 	.button {
 		height: var(--space-150);
 		padding: 0 var(--space-75);
-		font-size: var(--p);
+/*		font-size: var(--p);*/
+/*		font-size: var(--label);*/
 		line-height: var(--space-150);
 	}
 }

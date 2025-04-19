@@ -1,0 +1,69 @@
+<!-- Blog Section -->
+
+<section id="blog-section" class="blog-section space-100-top">
+	<div class="row">
+		<div class="container">
+			<div class="columns small-12">
+				<h1 class="collection-title block h5 strong text-uppercase text-center">{{ blog.title }}</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">		
+	{% if blogs.diaries.articles.size > 0 %}
+		{% paginate blog.articles by 12 %}
+			<!-- Card Grid -->
+			<div class="card-grid space-100">
+			{% for article in blogs.diaries.articles %}
+				<div class="card-grid-item card article-card fill-white radius-25 box-shadow-red no-overflow">
+					<a class="block" href="{{ article.url }}">									
+						{% if article.image %}
+						<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ article.image | img_url: 'medium' }}');"></div>
+						{% endif %}
+						<div class="space-75">
+							<div class="title p strong text-red text-uppercase space-min-bottom">{{ article.title }}</div>
+							<div class="date small text-neutral-3 space-min-bottom">{{ article.published_at | date: '%B %d, %Y' }}</div>
+							<div class="summary label strong text-neutral-6 space-25-bottom">
+								{% if article.excerpt != blank %}
+									{{ article.excerpt }}
+								{% else %}
+									{{ article.content | strip_html | truncatewords: 35 }} 
+								{% endif %}
+							</div>
+							<div class="cta label strong text-red text-uppercase">View Post <span class="h6 line-height-one">&rarr;</span></div>
+						</div>
+					</a>
+				</div>
+			{% endfor %}
+			</div>
+			<!-- END: Card Grid -->
+		{% endpaginate %}
+	{% else %}
+		<p class="p block text-center">No blog posts found.</p>
+	{% endif %}
+	</div>
+
+	<div class="row">
+		<div class="container">
+			<div class="columns small-12">
+				<!-- Pagination -->
+				{% paginate blog.articles by 12 %}
+					{% if paginate.pages > 1 %}
+						<div class="pagination">
+							{% for part in paginate.parts %}
+								{% if part.is_link %}
+									<a class="button fill-white box-border-dark" href="{{ part.url }}">{{ part.title }}</a>
+								{% else %}
+									<span class="button text-dark no-pointer">{{ part.title }}</span>
+								{% endif %}
+							{% endfor %}
+						</div>
+					{% endif %}
+				{% endpaginate %}
+				<!-- END: Pagination -->
+			</div>
+		</div>
+	</div>
+
+</section>
+
+<!-- END: Blog Section -->
