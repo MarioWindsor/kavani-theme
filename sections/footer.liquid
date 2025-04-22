@@ -1,7 +1,7 @@
 <div class="footer row">
-	<div class="columns small-12 medium-8">
+	<div class="columns small-12 medium-8 large-6">
 		<div class="row">
-			<div class="columns small-6 large-4">
+			<div class="columns small-6">
 				<div class="logo">
 					<a href="{{ shop.url }}">
 						{% if settings.logo %}
@@ -12,18 +12,29 @@
 					</a>
 				</div>				
 			</div>
-			<div class="columns small-12 large-8">
-				<div class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ad enim itaque delectus sit laboriosam molestiae quibusdam, nesciunt laudantium accusantium perspiciatis ducimus veniam officia placeat dignissimos aperiam blanditiis qui facilis.</div>
+			<div class="columns small-12">
+				<div class="p text-neutral-6 space-25">Discover exclusive Christian bridal wear in India at kavani.in. Explore exquisite designs for your special day. Visit our store in Kottayam, Kerala, or design studio in Bangalore. Find sarees, gowns, veils, and more with meticulous craftsmanship. Radiate elegance on your wedding day.</div>
+			</div>
+			<div class="columns small-12 space-100-top">
+				<div class="p strong text-netural-3 text-uppercase space-25-left-right">Connect With Us</div>
+				<div class="socials space-25">
+					<a class="space-min inline-middle fill-white radius-min box-shadow-orange" href="" style="margin-right: var(--space-min);"><i class='bx bxl-instagram h2 text-neutral-7 inline-middle' ></i></a>
+					<a class="space-min inline-middle fill-white radius-min box-shadow-orange" href="" style="margin-right: var(--space-min);"><i class='bx bxl-facebook h2 text-neutral-7 inline-middle' ></i></a>
+					<a class="space-min inline-middle fill-white radius-min box-shadow-orange" href="" style="margin-right: var(--space-min);"><i class='bx bxl-youtube h2 text-neutral-7 inline-middle' ></i></a>
+					<a class="space-min inline-middle fill-white radius-min box-shadow-orange" href="" style="margin-right: var(--space-min);"><i class='bx bxl-pinterest-alt h2 text-neutral-7 inline-middle' ></i></a>
+					<a class="space-min inline-middle fill-white radius-min box-shadow-orange" href="" style="margin-right: var(--space-min);"><i class='bx bxl-whatsapp h2 text-neutral-7 inline-middle' ></i></a>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="columns small-6 medium-4">
+	<div class="columns small-6 medium-4 space-200-top">
 		<div class="row">
 			<div class="columns small-6 medium-12 large-6">
+				<div class="p strong text-netural-3 text-uppercase space-25-left-right">{{ section.settings.quick-links.label  }}</div>
 				<!-- Navigation -->
 				<nav class="footer-nav">
 					<ul class="menu">
-					  {% for link in section.settings.footer-menu.links %}
+					  {% for link in section.settings.quick-links.links %}
 					    <li class="menu-link">
 					      <a class="label text-uppercase text-dark" href="{{ link.url }}">{{ link.title }}</a>
 
@@ -53,6 +64,7 @@
 				<!-- END: Navigation -->
 			</div>
 			<div class="columns small-6 medium-12 large-6">
+				<div class="p strong text-netural-3 text-uppercase space-25-left-right">{{ section.settings.policy-menu.label  }}</div>
 				<!-- Navigation -->
 				<nav class="footer-nav">
 					<ul class="menu">
@@ -95,8 +107,8 @@
 	"settings": [
 		{
 			"type": "link_list",
-			"id": "footer-menu",
-			"label": "Footer Menu"
+			"id": "quick-links",
+			"label": "Quick Links"
 		}, {
 			"type": "link_list",
 			"id": "policy-menu",
