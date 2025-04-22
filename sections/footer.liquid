@@ -16,7 +16,38 @@
 			<!-- Navigation -->
 			<nav class="footer-nav">
 				<ul class="menu">
-				  {% for link in section.settings.menu.links %}
+				  {% for link in section.settings.footer-menu.links %}
+				    <li class="menu-link">
+				      <a class="label text-uppercase text-dark" href="{{ link.url }}">{{ link.title }}</a>
+
+				      {% if link.links.size > 0 %}
+				        <ul class="menu dropdown-child">
+				          {% for child_link in link.links %}
+				            <li class="menu-link">
+				              <a class="label text-uppercase text-dark" href="{{ child_link.url }}">{{ child_link.title }}</a>
+
+				              {% if child_link.links.size > 0 %}
+				                <ul class="menu dropdown-grandchild">
+				                  {% for grandchild_link in child_link.links %}
+				                    <li class="menu-link">
+				                      <a class="label text-uppercase text-dark" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+				                    </li>
+				                  {% endfor %}
+				                </ul>
+				              {% endif %}
+				            </li>
+				          {% endfor %}
+				        </ul>
+				      {% endif %}
+				    </li>
+				  {% endfor %}
+				</ul>
+			</nav>
+			<!-- END: Navigation -->
+			<!-- Navigation -->
+			<nav class="footer-nav">
+				<ul class="menu">
+				  {% for link in section.settings.policy-menu.links %}
 				    <li class="menu-link">
 				      <a class="label text-uppercase text-dark" href="{{ link.url }}">{{ link.title }}</a>
 
@@ -54,8 +85,12 @@
 	"settings": [
 		{
 			"type": "link_list",
-			"id": "menu",
-			"label": "Menu"
+			"id": "footer-menu",
+			"label": "Footer Menu"
+		}{
+			"type": "link_list",
+			"id": "policy-menu",
+			"label": "Policy Menu"
 		}
 	]
 }
