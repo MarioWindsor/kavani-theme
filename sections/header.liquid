@@ -57,26 +57,23 @@
 		<!-- END: Search -->
 		<!-- User -->
 		<div class="user">
-			<a class="space-25 icon-button" href=""><i class='bx bx-user-circle h3 text-dark' ></i></a>
-			{% comment %}
 			{% if customer %}
-				<a href="/account">Account</a>
-				<a href="/account/logout">Logout</a>
+				<a class="space-25 icon-button" href="/account"><i class='bx bx-user-circle h3 text-dark' ></i><span class="visuallyhidden">Account</span></a>			
+				<!-- <a href="/account">Account</a> -->
+				<!-- <a href="/account/logout">Logout</a> -->
 			{% else %}
-				<a href="/account/login">Login</a>
-				<a href="/account/register">Register</a>
+				<a class="space-25 icon-button" href="/account/login"><i class='bx bx-user-circle h3 text-dark' ></i><span class="visuallyhidden">Login</span></a>			
+				<!-- <a href="/account/login">Login</a> -->
+				<!-- <a href="/account/register">Register</a> -->
 			{% endif %}
-			{% endcomment %}
 		</div>
 		<!-- END: User -->
 		<!-- Cart -->
-		<div class="cart">
-			<a class="space-25 icon-button" href=""><i class='bx bx-shopping-bag h3 text-dark' ></i></a>
-			{% comment %}
-			<a href="/cart">
-				Cart ({{ cart.item_count }})
-			</a>
-			{% endcomment %}
+		<div class="cart position-relative">
+			<a class="space-25 icon-button" href="/cart"><i class='bx bx-shopping-bag h3 text-dark' ></i><span class="visuallyhidden">Cart</span></a>
+			{% if cart.item_count.size > 0 %}
+			<div class="cart-count position-absolute space-min text-red strong" style="top: 0; right: 0;">{{ cart.item_count }}</div>
+			{% endif %}
 		</div>
 		<!-- END: Cart -->
 		<!-- Menu Toggle -->

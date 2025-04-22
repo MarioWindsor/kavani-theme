@@ -11,12 +11,20 @@
 	padding: 0;
 }
 
+.footer .opacity-75 {
+	transition: opacity .3s .3s ease-out;
+}
+.footer .opacity-75:hover,
+.footer .opacity-75:focus {
+	transition: opacity .3s ease-out;
+	opacity: 1;
+}
 
 </style>
 
 <div class="footer row">
 	<div class="columns small-6 medium-4 large-3 xlarge-2">
-		<div class="logo">
+		<div class="logo opacity-75">
 			<a href="{{ shop.url }}">
 				{% if settings.logo %}
 					<img class="block" src="{{ settings.logo | image_url }}" alt="{{ shop.name }}">
@@ -32,6 +40,20 @@
 				<div class="row">
 					<div class="columns small-12 large-6 space-100-bottom">
 						<div class="label text-neutral-6 space-25">Discover exclusive Christian bridal wear in India at kavani.in. Explore exquisite designs for your special day. Visit our store in Kottayam, Kerala, or design studio in Bangalore. Find sarees, gowns, veils, and more with meticulous craftsmanship. Radiate elegance on your wedding day.</div>
+						<!-- <div class="row hidden">
+							<div class="columns small-6">
+								<div class="small space-25">
+									<div class="strong">Bangalore, Karnataka</div>
+									First Floor, 51, Infantry Rd, Tasker Town, Shivaji Nagar, Bengaluru, Karnataka — 560001.
+								</div>
+							</div>
+							<div class="columns small-6">
+								<div class="small space-25">
+									<div class="strong">Kottayam, Kerala</div>
+									Kottayam - Kumily Rd, near Federal Bank, Kanjikuzhi, Kottayam, Kerala — 686004.
+								</div>
+							</div>
+						</div> -->
 					</div>
 					<div class="columns small-12 large-5 large-offset-1 space-100-bottom">
 						<div class="p strong text-netural-3 text-uppercase space-25">Connect With Us</div>
@@ -54,19 +76,19 @@
 							<ul class="menu">
 							  {% for link in section.settings.quick-links.links %}
 							    <li class="menu-link">
-							      <a class="label text-uppercase text-dark" href="{{ link.url }}">{{ link.title }}</a>
+							      <a class="label text-uppercase text-red strong opacity-75" href="{{ link.url }}">{{ link.title }}</a>
 
 							      {% if link.links.size > 0 %}
 							        <ul class="menu dropdown-child">
 							          {% for child_link in link.links %}
 							            <li class="menu-link">
-							              <a class="label text-uppercase text-dark" href="{{ child_link.url }}">{{ child_link.title }}</a>
+							              <a class="label text-uppercase text-red strong opacity-75" href="{{ child_link.url }}">{{ child_link.title }}</a>
 
 							              {% if child_link.links.size > 0 %}
 							                <ul class="menu dropdown-grandchild">
 							                  {% for grandchild_link in child_link.links %}
 							                    <li class="menu-link">
-							                      <a class="label text-uppercase text-dark" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+							                      <a class="label text-uppercase text-red strong opacity-75" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
 							                    </li>
 							                  {% endfor %}
 							                </ul>
@@ -88,19 +110,19 @@
 							<ul class="menu">
 							  {% for link in section.settings.policy-menu.links %}
 							    <li class="menu-link">
-							      <a class="label text-uppercase text-dark" href="{{ link.url }}">{{ link.title }}</a>
+							      <a class="label text-uppercase text-red strong opacity-75" href="{{ link.url }}">{{ link.title }}</a>
 
 							      {% if link.links.size > 0 %}
 							        <ul class="menu dropdown-child">
 							          {% for child_link in link.links %}
 							            <li class="menu-link">
-							              <a class="label text-uppercase text-dark" href="{{ child_link.url }}">{{ child_link.title }}</a>
+							              <a class="label text-uppercase text-red strong opacity-75" href="{{ child_link.url }}">{{ child_link.title }}</a>
 
 							              {% if child_link.links.size > 0 %}
 							                <ul class="menu dropdown-grandchild">
 							                  {% for grandchild_link in child_link.links %}
 							                    <li class="menu-link">
-							                      <a class="label text-uppercase text-dark" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+							                      <a class="label text-uppercase text-red strong opacity-75" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
 							                    </li>
 							                  {% endfor %}
 							                </ul>
