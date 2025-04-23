@@ -1,41 +1,74 @@
-{% layout settings.customer_layout %}
 
-<div id="template">
-  <div id="customer">
-	  <!-- Create Customer -->
-	  <div id="create-customer">
-	    <div class="template_header">
-	      <h2 class="title">Create Account</h2>
-	    </div>
+<!-- Register Section -->
+<section id="register-section" class="register-section space-250-top-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="columns small-12 space-100-bottom">
+				<h1 class="title block h3 text-uppercase text-center letter-space-2">Register</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="columns small-12 medium-8 medium-offset-2">
+				{% form 'create_customer' %}
+				<div class="form-box row fill-orange box-border-dark space-100 radius-25">
 
-	    {% form 'create_customer' %}
-	      {{ form.errors | default_errors }}
+					{% if form.errors %}
+						<style type="text/css">
+							.errors ul {
+								list-style: none;
+								margin: 0;
+								padding: 0;
+							}
+							.errors ul li {
+								margin-bottom: var(--space-50);
+							}
+						</style>
+						<div class="errors p strong text-red text-center">{{ form.errors | default_errors }}</div>
+					{% endif %}
 
-	      <div class="clearfix large_form">
-	        <label for="first_name" class="login">First Name</label>
-	        <input type="text" value="" name="customer[first_name]" id="first_name" class="large" size="30" />
-	      </div>
+					<div class="columns small-12 large-6 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom">First Name</span>
+							<input class="input-field block" type="text" value="" name="customer[first_name]" id="first_name" size="30">
+						</label>
+					</div>
 
-	      <div class="clearfix large_form">
-	        <label for="last_name" class="login">Last Name</label>
-	        <input type="text" value="" name="customer[last_name]" id="last_name" class="large" size="30" />
-	      </div>
+					<div class="columns small-12 large-6 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom">Last Name</span>
+							<input class="input-field block" type="text" value="" name="customer[last_name]" id="last_name" size="30">
+						</label>
+					</div>
 
-	      <div class="clearfix large_form">
-	        <label for="email" class="login">Email Address</label>
-	        <input type="email" value="" name="customer[email]" id="email" class="large" size="30" />
-	      </div>
+					<div class="columns small-12 large-6 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom">Email</span>
+							<input class="input-field block" type="email" value="" name="customer[email]" id="email" size="30">
+						</label>
+					</div>
 
-	      <div class="clearfix large_form">
-	        <label for="password" class="login">Password</label>
-	        <input type="password" value="" name="customer[password]" id="password" class="large password" size="30" />
-	      </div>
+					<div class="columns small-12 large-6 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom">Password</span>
+							<input class="input-field block" type="password" value="" name="customer[password]" id="password" size="30">
+						</label>
+					</div>
 
-	      <div class="action_bottom">
-	        <input class="btn" type="submit" value="Create" />
-	        <span class="note">or <a href="{{ shop.url }}">Return to Store</a></span>
-	      </div>
-	    {% endform %}
-	  </div><!-- /#create-customer -->
-  </div>
-</div>
+					<div class="columns small-12 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom invisible">Submit</span>
+							<button class="button block fill-red box-shadow-white-2">Create Account</button>
+						</label>
+					</div>
+
+				</div>
+				{% endform %}
+
+				<div class="text-center space-100">
+					<a href="{{ routes.account_login_url }}" class="inline label strong text-uppercase text-red">Already Have an Account? Login.</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Register Section -->

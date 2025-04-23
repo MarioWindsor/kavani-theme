@@ -596,7 +596,7 @@ select {
 
 
 /* -- Form Box -- */
-.form-box .form-label {
+/*.form-box .form-label {
 	transform-origin: bottom left;
 	transform: translate(0,10px);
 }
@@ -620,7 +620,7 @@ select {
 	pointer-events: none !important;
 	opacity: 0.75;
 	filter: blur(5px);
-}
+}*/
 
 /*
  * FAQs Component
@@ -843,6 +843,7 @@ select {
  * Box Border
  */
 .letter-space-1 { letter-spacing: calc(var(--space-100) * 0.1); }
+.letter-space-2 { letter-spacing: calc(var(--space-100) * 0.2); }
 
 /* -- accordion -- */
 

@@ -1,95 +1,143 @@
-{% layout settings.customer_layout %}
 
-<div id="template">
-  <div id="customer">
-    <div class="template_header">
-      <h2 class="title">Customer Login PEW PEW PEW</h2>
-    </div>
+<!-- Login Section -->
+<section id="login-section" class="login-section space-250-top-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="columns small-12 space-100-bottom">
+				<h1 class="title block h3 text-uppercase text-center letter-space-2">Login</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="columns small-12 medium-8 medium-offset-2 large-6 large-offset-3">
+				{% form 'customer_login' %}
+				<div class="form-box row fill-orange box-border-dark space-100 radius-25">
 
-    {% form 'customer_login' %}
-      {{ form.errors | default_errors }}
+					{% if form.errors %}
+						<style type="text/css">
+							.errors ul {
+								list-style: none;
+								margin: 0;
+								padding: 0;
+							}
+							.errors ul li {
+								margin-bottom: var(--space-50);
+							}
+						</style>
+						<div class="errors p strong text-red text-center">{{ form.errors | default_errors }}</div>
+					{% endif %}
 
-      <div id="login_email" class="clearfix large_form">
-        <label for="customer_email" class="login">Email Address</label>
-        <input type="email" value="" name="customer[email]" id="customer_email" class="large" size="30" />
-      </div>
+					<div class="columns small-12 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom">Email</span>
+							<input class="input-field block" type="email" value="" name="customer[email]" id="customer_email" size="30">
+						</label>
+					</div>
 
-      {% if form.password_needed %}
+					{% if form.password_needed %}
+					<div class="columns small-12 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom">Password</span>
+							<input class="input-field block" type="password" value="" name="customer[password]" id="customer_password" size="30">
+						</label>
+						<div class="space-50-top"><a class="label strong text-red text-uppercase" href="#" onclick="showRecoverPasswordForm();return false;">Forgot your password?</a></div>
+					</div>
+					{% endif %}
 
-        {% comment %}
-          Customer Account Login
-        {% endcomment %}
+					<div class="columns small-12 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom invisible">Submit</span>
+							<button class="button block fill-red box-shadow-white-2">Sign in</button>
+						</label>
+					</div>
 
-        <div id="login_password" class="clearfix large_form">
-          <label for="customer_password" class="login">Password</label>
-          <input type="password" value="" name="customer[password]" id="customer_password" class="large password" size="16" />
-          <div id="forgot_password">
-            <a href="#" onclick="showRecoverPasswordForm();return false;">Forgot your password?</a>
-          </div>
-        </div>
+				</div>
+				{% endform %}
+				
+				{% if shop.checkout.guest_login %}
+					{% form 'guest_login' %}
+					<div class="columns small-12 space-125">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom invisible">Guest Login</span>
+							<button class="button block fill-dark box-shadow-white-2">Continue as Guest</button>
+						</label>
+					</div>
+					{% endform %}
+				{% endif %}
 
-      {% endif %}
+				<div class="text-center space-100">
+					<a href="{{ routes.account_register_url }}" class="inline label strong text-uppercase text-red">Register New Account</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Login Section -->
 
-      <div class="action_bottom">
-        <input class="btn" type="submit" value="Sign In" />
-        <span class="note">or <a href="{{ shop.url }}">Return to Store</a></span>
-      </div>
-    {% endform %}
-  </div>
+<!-- Reset Password Section -->
+<section id="reset-password-section" class="reset-password-section space-250-top-bottom" style="display: none;">
+	<div class="container">
+		<div class="row">
+			<div class="columns small-12 space-100-bottom">
+				<h1 class="title block h3 text-uppercase text-center letter-space-2">Reset Password</h1>
+				<p class="note block p strong text-center">We will send you an email.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="columns small-12 medium-8 medium-offset-2 large-6 large-offset-3">
+				{% form 'recover_customer_password' %}
+				<div class="form-box row fill-orange box-border-dark space-100 radius-25">
 
-  {% comment %}
-    Recover Password Form
-  {% endcomment %}
+					{% if form.errors %}
+						<style type="text/css">
+							.errors ul {
+								list-style: none;
+								margin: 0;
+								padding: 0;
+							}
+							.errors ul li {
+								margin-bottom: var(--space-50);
+							}
+						</style>
+						<div class="errors p strong text-red text-center">{{ form.errors | default_errors }}</div>
+					{% endif %}
 
-  <div id="recover-password" style='display:none'>
-    <div class="template_header">
-      <h2 class="title">Reset Password</h2>
-      <p class="note">We will send you an email to reset your password.</p>
-    </div>
+					<div class="columns small-12 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom">Registered Email</span>
+							<input class="input-field block" type="email" value="" name="recover_email" id="recover_email" size="30">
+						</label>
+					</div>
 
-    {% form 'recover_customer_password' %}
-      {{ form.errors | default_errors }}
+					<div class="columns small-12 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom invisible">Submit</span>
+							<button class="button block fill-red box-shadow-white-2">Reset</button>
+						</label>
+					</div>
 
-      <div id="recover_email" class="clearfix large_form">
-        <label for="email" class="large">Email</label>
-        <input type="email" value="" size="30" name="email" id="recover-email" class="large" />
-      </div>
-      <div class="action_bottom">
-        <input class="btn" type="submit" value="Submit" />
-        <span class="note">or <a href="#" onclick="hideRecoverPasswordForm();return false;">Cancel</a></span>
-      </div>
-    {% endform %}
-  </div>
+				</div>
+				{% endform %}
 
-
-  {% comment %}
-    Guest Login form for shops with optional customer accounts. This form is displayed only when users click on the checkout link
-    on the cart page.
-  {% endcomment %}
-
-  {% if shop.checkout.guest_login %}
-  <div id="guest">
-    <div class="template_header">
-      <h3 class="title">Guest Login</h3>
-    </div>
-    {% form 'guest_login' %}
-      <input class="btn" type="submit" value="Continue as Guest" />
-    {% endform %}
-  </div>
-  {% endif %}
-</div>
+				<div class="text-center space-100">
+					<a href="#" onclick="hideRecoverPasswordForm();return false;" class="inline label strong text-uppercase text-red">Cancel</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Reset Password Section -->
 
 
 <script type="text/javascript">
-  function showRecoverPasswordForm() {
-    document.getElementById('recover-password').style.display = 'inline-block';
-    document.getElementById('customer').style.display='none';
-  }
+	function showRecoverPasswordForm() {
+		document.getElementById('reset-password-section').style.display = 'block';
+		document.getElementById('login-section').style.display='none';
+	}
 
-  function hideRecoverPasswordForm() {
-    document.getElementById('recover-password').style.display = 'none';
-    document.getElementById('customer').style.display = 'inline-block';
-  }
+	function hideRecoverPasswordForm() {
+		document.getElementById('reset-password-section').style.display = 'none';
+		document.getElementById('login-section').style.display = 'block';
+	}
 
-  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+	if (window.location.hash == '#reset') { showRecoverPasswordForm() }
 </script>

@@ -1,26 +1,64 @@
-{% layout settings.customer_layout %}
 
-<div id="template">
-  <div class="template_header">
-    <h2 class="title">Activate Account</h2>
-    <p class="note">Create your password to activate your account</p>
-  </div>
+<!-- Activate Account Section -->
+<section id="activate-account-section" class="activate-account-section space-250-top-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="columns small-12 space-100-bottom">
+				<h1 class="title block h3 text-uppercase text-center">Activate Account</h1>
+				<p class="note block p strong text-center">Create your password to activate your account</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="columns small-12 medium-8 medium-offset-2 large-6 large-offset-3">
+				{% form 'activate_customer_password' %}
+				<div class="form-box row fill-orange box-border-dark space-100 radius-25">
 
-  {% form 'activate_customer_password' %}
-    {{ form.errors | default_errors }}
+					{% if form.errors %}
+						<style type="text/css">
+							.errors ul {
+								list-style: none;
+								margin: 0;
+								padding: 0;
+							}
+							.errors ul li {
+								margin-bottom: var(--space-50);
+							}
+						</style>
+						<div class="errors p strong text-red text-center">{{ form.errors | default_errors }}</div>
+					{% endif %}
 
-    <div id="password" class="clearfix large_form">
-      <label class="large" for="password">Password</label>
-      <input type="password" value="" name="customer[password]" id="customer_password" class="large password" size="16" />
-    </div>
-    <div id="password_confirm" class="clearfix large_form">
-      <label class="large" for="password_confirmation">Password Confirmation</label>
-      <input type="password" value="" name="customer[password_confirmation]" id="customer_password_confirmation" class="large password" size="16" />
-    </div>
-    <div class="action_bottom">
-      <input class="btn" type="submit" value="Activate Account" />
-      <span class="note">or</span>
-      <input type="submit" class="cancel" name="decline" id="customer_decline" value="Decline Invitation" />
-    </div>
-  {% endform %}
-</div>
+					<div class="columns small-12 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom">Password</span>
+							<input class="input-field block" type="password" value="" name="customer[password]" id="customer_password" size="30">
+						</label>
+						<div class="space-50-top"><a class="label strong text-red text-uppercase" href="#" onclick="showRecoverPasswordForm();return false;">Forgot your password?</a></div>
+					</div>
+
+					<div class="columns small-12 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom">Confirm Password</span>
+							<input class="input-field block" type="password" value="" name="customer[password_confirmation]" id="customer_password_confirmation" size="30">
+						</label>
+					</div>
+
+					<div class="columns small-12 space-25">
+						<label class="form-field">
+							<span class="form-label inline small strong text-dark text-uppercase space-min-bottom invisible">Submit</span>
+							<button class="button block fill-red box-shadow-white-2">Activate Account</button>
+						</label>
+					</div>
+
+				</div>
+				{% endform %}
+
+				<div class="text-center space-100">
+					<a href="{{ shop.url }}" class="inline label strong text-uppercase text-red">Return Home</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Activate Account Section -->
+
+
