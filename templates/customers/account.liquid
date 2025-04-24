@@ -98,15 +98,21 @@
 					<div class="address label note space-50-bottom">
 						<span class="small text-uppercase">Address:</span>
 						{% if customer.default_address != nil %}
-							<p class="block">{{ customer.default_address.address1 }}</p>
+						<div class="label strong space-25-bottom">
+							<p>{{ customer.default_address.address1 }}</p>
 							{% if customer.default_address.address2 != "" %}
-								<p class="block">{{ customer.default_address.address2 }}</p>
+								<p>{{ customer.default_address.address2 }}</p>
 							{% endif %}
-							<p class="block">{{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}</p>
-							<p class="block">{{ customer.default_address.zip}}</p>
-							<p class="block">{{ customer.default_address.phone }}</p>
+							<p>{{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}</p>
+							<p>{{ customer.default_address.zip}}</p>
+						</div>
+						<label class="block">
+							<span class="small text-uppercase">Phone</span>
+							<div class="email block label strong note">{{ customer.default_address.phone }}</div>
+						</label>
 						{% endif %}
 					</div>
+
 					<a class="button block fill-dark" id="view_address" href="/account/addresses">View Addresses ({{ customer.addresses_count }})</a>
 					</div>
 				</div>
