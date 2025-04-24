@@ -80,7 +80,7 @@
 						</tbody>
 					</table>
 					{% else %}
-						<p>You haven't placed any orders yet.</p>
+						<div class="p text-center">You haven't placed any orders yet.</div>
 					{% endif %}
 				</div>
 				<div id="customer_detail" class="customer-detail space-100 text-dark fill-orange radius-25 box-border-dark">
@@ -111,8 +111,15 @@
 					</div>
 				</div>
 			</div>
-			<div class="columns small-12 text-center space-100-top">
-				<a class="inline button fill-red box-shadow-white-2" href="{{ shop.url }}"><span class="h5 line-height-one">&larr;</span> Return to Store</a>
+			<div class="columns small-12 medium-10 medium-offset-1 large-6 large-offset-3 text-center space-100-top">
+				<div class="row">
+					<div class="columns small-6 space-25">
+						<a href="{{ shop.url }}" class="block button fill-red box-shadow-white-2">Return Home</a>
+					</div>
+					<div class="columns small-6 space-25">
+						<a href="{{ routes.account_logout_url }}" class="block button fill-dark box-shadow-white-2">Sign Out</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
