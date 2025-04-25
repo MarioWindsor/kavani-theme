@@ -77,8 +77,8 @@
       "footer": {
         "type": "footer",
         "settings": {
-          "quick-links": "main-menu",
-          "policy-menu": "footer"
+          "quick-links": "footer",
+          "policy-menu": "policies"
         }
       }
     },
