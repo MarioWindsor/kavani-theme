@@ -1,0 +1,218 @@
+
+<style>
+	/* Minimal cart styling */
+	.cart-template {
+		padding: 20px;
+	}
+
+	.cart__table {
+		width: 100%;
+		border-collapse: collapse;
+		margin-bottom: 20px;
+	}
+
+	.cart__table th,
+	.cart__table td {
+		padding: 10px;
+		border-bottom: 1px solid #ccc;
+		text-align: left;
+	}
+
+	.cart__image {
+		max-width: 50px;
+		height: auto;
+		vertical-align: middle;
+		margin-right: 10px;
+	}
+
+	.cart__quantity-wrapper {
+		display: flex;
+		align-items: center;
+		max-width: 120px;
+	}
+
+	.cart__quantity-button {
+		padding: 5px 10px;
+		border: 1px solid #ccc;
+		background: none;
+		cursor: pointer;
+	}
+
+	.cart__quantity-input {
+		width: 50px;
+		text-align: center;
+		padding: 5px;
+		border: 1px solid #ccc;
+		margin: 0 5px;
+	}
+
+	.cart__subtotal {
+		text-align: right;
+		margin-bottom: 10px;
+	}
+
+	.btn {
+		padding: 10px 20px;
+		background-color: #000;
+		color: #fff;
+		border: none;
+		cursor: pointer;
+	}
+
+	.cart__remove-button {
+		text-decoration: none;
+		color: #333;
+	}
+</style>
+
+
+
+<div class="cart-template">
+	<div class="container">
+		<h1>Your Cart</h1>
+
+		{% if cart.item_count > 0 %}
+			<form action="{{ routes.cart_url }}" method="post" novalidate class="cart__form">
+				<table class="cart__table">
+					<thead>
+						<tr>
+							<th>Product</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Total</th>
+							<th>Remove</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in cart.items %}
+							<tr class="cart__item" data-key="{{ item.key }}">
+								<td>
+									{% if item.image %}
+										<a href="{{ item.url }}">
+											<img src="{{ item.image | img_url: 'small' }}" alt="{{ item.image.alt | escape }}">
+										</a>
+									{% endif %}
+									<a href="{{ item.url }}">{{ item.product.title | escape }}</a>
+									{% if item.variant.title != 'Default Title' %}
+										<p>{{ item.variant.title | escape }}</p>
+									{% endif %}
+								</td>
+								<td>
+									<div class="cart__quantity-wrapper">
+										<button type="button" class="cart__quantity-button cart__quantity-button--minus" aria-label="Decrease quantity" data-id="{{ item.key }}">
+											-
+										</button>
+										<input class="cart__quantity-input" type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" aria-label="Quantity for {{ item.title | escape }}" data-id="{{ item.key }}">
+										<button type="button" class="cart__quantity-button cart__quantity-button--plus" aria-label="Increase quantity" data-id="{{ item.key }}">
+											+
+										</button>
+									</div>
+								</td>
+								<td class="cart__price" data-price="{{ item.price }}">{{ item.price | money }}</td>
+								<td class="cart__total" data-line-price="{{ item.final_line_price }}">{{ item.final_line_price | money }}</td>
+								<td>
+									<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart__remove-button" aria-label="Remove {{ item.title | escape }}" data-id="{{ item.key }}">
+										Remove
+									</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+				<p class="cart__subtotal">Subtotal: <span class="cart__subtotal-amount">{{ cart.total_price | money }}</span></p>
+
+				<button type="submit" name="checkout" class="btn">Check Out</button>
+			</form>
+		{% else %}
+			<p>Your cart is currently empty.</p>
+			<p><a href="{{ routes.all_products_collection_url }}">Continue shopping</a></p>
+		{% endif %}
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', () => {
+		const cartItems = document.querySelectorAll('.cart__item');
+		const cartSubtotal = document.querySelector('.cart__subtotal-amount');
+
+		const updateItemQuantity = (key, quantity) => {
+			fetch(`${routes.cart_change_url}.js`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					id: key,
+					quantity: quantity
+				})
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.item_count === 0) {
+					window.location.reload(); // Simple reload if cart is empty
+					return;
+				}
+
+				cartItems.forEach(itemRow => {
+					if (itemRow.dataset.key === key) {
+						const pricePerItem = parseFloat(itemRow.querySelector('.cart__price').dataset.price);
+						const lineTotalPriceElement = itemRow.querySelector('.cart__total');
+						const newLineTotalPrice = pricePerItem * quantity;
+						lineTotalPriceElement.textContent = Shopify.formatMoney(newLineTotalPrice, theme.moneyFormat);
+						lineTotalPriceElement.dataset.linePrice = newLineTotalPrice;
+					}
+				});
+
+				cartSubtotal.textContent = Shopify.formatMoney(data.total_price, theme.moneyFormat);
+
+				// Optionally update cart item count in header
+				const cartItemCountElement = document.querySelector('.cart-item-count');
+				if (cartItemCountElement) {
+					cartItemCountElement.textContent = data.item_count;
+				}
+			})
+			.catch(error => {
+				console.error('Error updating cart item:', error);
+				alert('There was an error updating your cart. Please try again.');
+			});
+		};
+
+		cartItems.forEach(itemRow => {
+			const quantityInput = itemRow.querySelector('.cart__quantity-input');
+			const quantityMinusButton = itemRow.querySelector('.cart__quantity-button--minus');
+			const quantityPlusButton = itemRow.querySelector('.cart__quantity-button--plus');
+			const itemKey = itemRow.dataset.key;
+
+			quantityInput.addEventListener('change', () => {
+				const newQuantity = parseInt(quantityInput.value);
+				if (!isNaN(newQuantity) && newQuantity >= 0) {
+					updateItemQuantity(itemKey, newQuantity);
+				}
+			});
+
+			quantityMinusButton.addEventListener('click', () => {
+				let currentQuantity = parseInt(quantityInput.value);
+				if (currentQuantity > 0) {
+					quantityInput.value = currentQuantity - 1;
+					updateItemQuantity(itemKey, currentQuantity - 1);
+				}
+			});
+
+			quantityPlusButton.addEventListener('click', () => {
+				let currentQuantity = parseInt(quantityInput.value);
+				quantityInput.value = currentQuantity + 1;
+				updateItemQuantity(itemKey, currentQuantity + 1);
+			});
+
+			const removeButton = itemRow.querySelector('.cart__remove-button');
+			removeButton.addEventListener('click', (event) => {
+				event.preventDefault();
+				updateItemQuantity(itemKey, 0); // Setting quantity to 0 removes the item
+			});
+		});
+	});
+</script>
