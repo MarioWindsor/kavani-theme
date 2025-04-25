@@ -1,218 +1,95 @@
 
-<style>
-	/* Minimal cart styling */
-	.cart-template {
-		padding: 20px;
-	}
-
-	.cart__table {
-		width: 100%;
-		border-collapse: collapse;
-		margin-bottom: 20px;
-	}
-
-	.cart__table th,
-	.cart__table td {
-		padding: 10px;
-		border-bottom: 1px solid #ccc;
-		text-align: left;
-	}
-
-	.cart__image {
-		max-width: 50px;
-		height: auto;
-		vertical-align: middle;
-		margin-right: 10px;
-	}
-
-	.cart__quantity-wrapper {
-		display: flex;
-		align-items: center;
-		max-width: 120px;
-	}
-
-	.cart__quantity-button {
-		padding: 5px 10px;
-		border: 1px solid #ccc;
-		background: none;
-		cursor: pointer;
-	}
-
-	.cart__quantity-input {
-		width: 50px;
-		text-align: center;
-		padding: 5px;
-		border: 1px solid #ccc;
-		margin: 0 5px;
-	}
-
-	.cart__subtotal {
-		text-align: right;
-		margin-bottom: 10px;
-	}
-
-	.btn {
-		padding: 10px 20px;
-		background-color: #000;
-		color: #fff;
-		border: none;
-		cursor: pointer;
-	}
-
-	.cart__remove-button {
-		text-decoration: none;
-		color: #333;
-	}
-</style>
-
-
-
-<div class="cart-template">
-	<div class="container">
-		<h1>Your Cart</h1>
-
-		{% if cart.item_count > 0 %}
-			<form action="{{ routes.cart_url }}" method="post" novalidate class="cart__form">
-				<table class="cart__table">
-					<thead>
-						<tr>
-							<th>Product</th>
-							<th>Quantity</th>
-							<th>Price</th>
-							<th>Total</th>
-							<th>Remove</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for item in cart.items %}
-							<tr class="cart__item" data-key="{{ item.key }}">
-								<td>
-									{% if item.image %}
-										<a href="{{ item.url }}">
-											<img src="{{ item.image | img_url: 'small' }}" alt="{{ item.image.alt | escape }}">
-										</a>
-									{% endif %}
-									<a href="{{ item.url }}">{{ item.product.title | escape }}</a>
-									{% if item.variant.title != 'Default Title' %}
-										<p>{{ item.variant.title | escape }}</p>
-									{% endif %}
-								</td>
-								<td>
-									<div class="cart__quantity-wrapper">
-										<button type="button" class="cart__quantity-button cart__quantity-button--minus" aria-label="Decrease quantity" data-id="{{ item.key }}">
-											-
-										</button>
-										<input class="cart__quantity-input" type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" aria-label="Quantity for {{ item.title | escape }}" data-id="{{ item.key }}">
-										<button type="button" class="cart__quantity-button cart__quantity-button--plus" aria-label="Increase quantity" data-id="{{ item.key }}">
-											+
-										</button>
-									</div>
-								</td>
-								<td class="cart__price" data-price="{{ item.price }}">{{ item.price | money }}</td>
-								<td class="cart__total" data-line-price="{{ item.final_line_price }}">{{ item.final_line_price | money }}</td>
-								<td>
-									<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart__remove-button" aria-label="Remove {{ item.title | escape }}" data-id="{{ item.key }}">
-										Remove
-									</a>
-								</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
-
-				<p class="cart__subtotal">Subtotal: <span class="cart__subtotal-amount">{{ cart.total_price | money }}</span></p>
-
-				<button type="submit" name="checkout" class="btn">Check Out</button>
-			</form>
-		{% else %}
-			<p>Your cart is currently empty.</p>
-			<p><a href="{{ routes.all_products_collection_url }}">Continue shopping</a></p>
-		{% endif %}
+<!-- Cart Section -->
+<section id="cart-section" class="cart-section space-100-top">
+	<div class="row">
+		<div class="container">
+			<div class="columns small-12 space-100-bottom">
+				<h1 class="collection-title block h5 strong text-uppercase text-center">Cart</h1>
+			</div>
+		</div>
 	</div>
-</div>
+	<div class="row">
+		<div class="container">
+			{% if cart.item_count > 0 %}
+			<div class="columns small-12">
+				<form action="{{ routes.cart_url }}" method="post" novalidate class="">
+					<div class="cart fill-orange text-dark space-100 radius-25 box-border-dark">
+						<!-- Cart Item -->
+						{% for item in cart.items %}
+							<div class="cart-item row space">
+								<div class="columns small-12 medium-9 large-10">
+									<div class="row">
+										<div class="columns small-4 medium-3 large-2 space-50-bottom">
+										{% if item.image %}
+											<a class="block" href="{{ item.url }}">
+												<img class="block radius-25 box-shadow-red" src="{{ item.image | img_url: 'medium' }}" alt="{{ item.image.alt | escape }}">
+											</a>
+										{% endif %}
+										</div>
+										<div class="columns small-8 medium-9 large-10 space-50-left">
+											<div class="row">
+												<div class="columns small-12 large-7">
+													<div class="small space-min-bottom text-uppercase">{{ item.product.category | escape }}</div>
+													<a class="block p text-red text-uppercase strong space-25-bottom" href="{{ item.url }}">{{ item.product.title | escape }}</a>
+													{% if item.variant.title != 'Default Title' %}
+														<div class="block label strong text-uppercase space-min-bottom">{{ item.variant.title | escape }}</div>
+													{% endif %}
+													<div class="block label strong space-50-bottom no-wrap">{{ item.price | money }}</div>
+												</div>
+												<div class="columns small-9 large-5 xlarge-4">
+													<label class="quantity form-field block space-50-bottom">
+														<span class="form-label block small text-uppercase space-min-bottom">Quantity</span>
+														<div class="quantity-buttons" style="display: flex; gap: var(--space-25);">
+															<button type="button" class="button inline-bottom fill-white text-dark box-border-dark" aria-label="Decrease quantity" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
+																<i class='bx bx-minus h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+															</button>
+															<input class="input-field inline-bottom text-center" type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" aria-label="Quantity for {{ item.title | escape }}" style="width: var(--space-250); flex-grow: 2; flex-shrink: 2;">
+															<button type="button" class="button inline-bottom fill-white text-dark box-border-dark" aria-label="Increase quantity" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
+																<i class='bx bx-plus h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+															</button>
+															<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="button inline-bottom icon-button fill-white text-dark box-border-dark" aria-label="Remove {{ item.title | escape }}" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
+																<span class="visuallyhidden">Remove</span>
+																<i class='bx bx-trash h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+															</a>
+														</div>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="columns small-8 small-offset-4 medium-3 medium-offset-0 large-2 space-50-bottom space-50-left">
+									<label class="block">
+										<span class="small text-uppercase space-min-bottom">Total</span>
+										<div class="p strong no-wrap">{{ item.final_line_price | money }}</div>
+									</label>
+								</div>
+							</div>
+							<hr style="margin: var(--space-50) 0 var(--space-100);">
+						{% endfor %}
+						<!-- END: Cart Item -->
+						<div class="row">
+							<div class="columns small-6 medium-8 large-9">
+								<div class="car-subtotal">
+									<div class="label strong text-uppercase">Subtotal:</div>
+									<span class="h5 strong car-subtotal-amount">{{ cart.total_price | money }}</span>
+								</div>		
+							</div>
+							<div class="columns small-6 medium-4 large-3">
+								<button type="submit" name="checkout" class="block button fill-red box-shadow-white-2">Check Out</button>		
+							</div>
+						</div>						
+					</div>
+				</form>
+			</div>
+			{% else %}
+			<div class="text-center columns small-12">
+				<div class="p strong space-100-bottom">Your cart is currently empty.</div>
+				<a class="button inline fill-dark box-shadow-white-2" href="{{ routes.all_products_collection_url }}">Continue shopping</a>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</section>
+<!-- END: Cart Section -->
 
-
-
-
-<script type="text/javascript">
-	document.addEventListener('DOMContentLoaded', () => {
-		const cartItems = document.querySelectorAll('.cart__item');
-		const cartSubtotal = document.querySelector('.cart__subtotal-amount');
-
-		const updateItemQuantity = (key, quantity) => {
-			fetch(`${routes.cart_change_url}.js`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					id: key,
-					quantity: quantity
-				})
-			})
-			.then(response => response.json())
-			.then(data => {
-				if (data.item_count === 0) {
-					window.location.reload(); // Simple reload if cart is empty
-					return;
-				}
-
-				cartItems.forEach(itemRow => {
-					if (itemRow.dataset.key === key) {
-						const pricePerItem = parseFloat(itemRow.querySelector('.cart__price').dataset.price);
-						const lineTotalPriceElement = itemRow.querySelector('.cart__total');
-						const newLineTotalPrice = pricePerItem * quantity;
-						lineTotalPriceElement.textContent = Shopify.formatMoney(newLineTotalPrice, theme.moneyFormat);
-						lineTotalPriceElement.dataset.linePrice = newLineTotalPrice;
-					}
-				});
-
-				cartSubtotal.textContent = Shopify.formatMoney(data.total_price, theme.moneyFormat);
-
-				// Optionally update cart item count in header
-				const cartItemCountElement = document.querySelector('.cart-item-count');
-				if (cartItemCountElement) {
-					cartItemCountElement.textContent = data.item_count;
-				}
-			})
-			.catch(error => {
-				console.error('Error updating cart item:', error);
-				alert('There was an error updating your cart. Please try again.');
-			});
-		};
-
-		cartItems.forEach(itemRow => {
-			const quantityInput = itemRow.querySelector('.cart__quantity-input');
-			const quantityMinusButton = itemRow.querySelector('.cart__quantity-button--minus');
-			const quantityPlusButton = itemRow.querySelector('.cart__quantity-button--plus');
-			const itemKey = itemRow.dataset.key;
-
-			quantityInput.addEventListener('change', () => {
-				const newQuantity = parseInt(quantityInput.value);
-				if (!isNaN(newQuantity) && newQuantity >= 0) {
-					updateItemQuantity(itemKey, newQuantity);
-				}
-			});
-
-			quantityMinusButton.addEventListener('click', () => {
-				let currentQuantity = parseInt(quantityInput.value);
-				if (currentQuantity > 0) {
-					quantityInput.value = currentQuantity - 1;
-					updateItemQuantity(itemKey, currentQuantity - 1);
-				}
-			});
-
-			quantityPlusButton.addEventListener('click', () => {
-				let currentQuantity = parseInt(quantityInput.value);
-				quantityInput.value = currentQuantity + 1;
-				updateItemQuantity(itemKey, currentQuantity + 1);
-			});
-
-			const removeButton = itemRow.querySelector('.cart__remove-button');
-			removeButton.addEventListener('click', (event) => {
-				event.preventDefault();
-				updateItemQuantity(itemKey, 0); // Setting quantity to 0 removes the item
-			});
-		});
-	});
-</script>
