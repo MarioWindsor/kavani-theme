@@ -1,39 +1,156 @@
-<div id="searchresults">  
-  <form action="/search" method="get">
-    <p><input type="text" name="q" value="{{search.terms  | escape}}" id="result-q" /> <input type="submit" value="Search" style="width:100px" /></p>
-  </form>
-  
-  {% if search.performed %}
-    
-    {% paginate search.results by 10 %}  
-  
-    {% if search.results == empty %}  
-      <p>Your search for "{{search.terms | escape}}" did not yield any results</p>              
-    {% else %}  
 
-        <ol>
-        {% for item in search.results %}      
-        <li>
-          <h3>{{ item.title | link_to: item.url }}</h3>
-          {% if item.featured_image %}
-          <div class="result-image"><a href="{{item.url}}" title="">{{ item.featured_image | product_img_url: 'small' | img_tag }}</a></div>
-          {% endif %}
-          <span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>
-          <div style="clear:left"></div>          
-        </li>
-        {% endfor %}
-        </ol>      
+<!-- Search Section -->
+<section id="search-section" class="search-section space-100-top">
+	<div class="row">
+		<div class="container">
+			<div class="columns small-12">
+				<h1 class="search-title block h5 strong text-uppercase text-center">Search</h1>
+				<form class="block row" action="/search" method="get" style="display: flex;">
+					<div class="search-bar columns small-12 large-8 large-offset-2 space-100-top" style="display: flex; gap: var(--space-50);">
+						<input class="input-field block" type="text" name="q" value="{{search.terms  | escape}}" id="result-q" />
+						<button type="submit" class="button inline-bottom icon-button fill-white text-dark box-border-dark" style="position: relative; padding: 0 var(--space-25); width: var(--space-200); flex-grow: 0; flex-shrink: 0;">
+							<span class="visuallyhidden">Search</span>
+							<i class='bx bx-search h3 hide-large hide-xlarge' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+							<i class='bx bx-search h4 hide-small hide-medium' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+						</button>
+					</div>
+				</form>
+				{% if search.terms != blank %}
+					{% if search.results == empty %}  
+						<div class="search-description block label text-center space-50-top">No Results for ... "{{ search.terms | escape }}"</div>
+					{% else %}
+						<div class="search-description block label text-center space-50-top">Results Matching ... "{{ search.terms | escape }}"</div>
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
 
-    {% endif %}
-    
-    
-    <p>{{ paginate | default_pagination }}</p>
-    
-    {% endpaginate %}    
-    
-  {% endif %}
-  
-  
-  
+		<div class="row hidden">
+			
+			<div id="searchresults" class="columns small-12">  
+				
+				{% #if search.performed %}
+					
+					{% paginate search.results by 10 %}  
+				
+					{% if search.results != empty %}  
+							<ol>
+							{% for item in search.results %}      
+							<li>
+								<h3>{{ item.title | link_to: item.url }}</h3>
+								{% if item.featured_image %}
+								<div class="result-image"><a href="{{item.url}}" title="">{{ item.featured_image | product_img_url: 'small' | img_tag }}</a></div>
+								{% endif %}
+								<span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>
+								<div style="clear:left"></div>          
+							</li>
+							{% endfor %}
+							</ol>      
 
-</div>
+					{% endif %}
+										
+					{% endpaginate %}    
+					
+				{% #endif %}
+
+			</div>
+
+		</div>
+
+	{% if search.performed %}
+	<div class="row">
+		{% if search.results != empty %}
+			{% paginate search.results by 12 %}
+				<!-- Card Grid -->
+				<div class="card-grid space-100">
+				{% for item in search.results %}
+					<div class="card-grid-item">
+						{% if item.object_type == 'product' %}
+							<div class="card item-card fill-white radius-25 box-shadow-red no-overflow">
+								<a class="block" href="{{ item.url }}">
+									{% if item.featured_image %}
+									<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ item.featured_image | img_url: 'medium' }}');"></div>
+									{% endif %}
+									<div class="text-center space-75-top space-75-left-right">
+										<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ item.title }}</div>
+										<div class="price label text-red strong">{{ item.price | money }}/-</div>
+									</div>
+								</a>
+								<div class="item-actions row space-25 no-whitespace">
+									<div class="wishlist columns small-6 space-25">
+										{% if customer %}
+											<button class="button block fill-dark box-shadow-red" data-item-id="{{ item.id }}">
+												Wishlist
+											</button>
+										{% else %}
+											<a class="button block fill-dark box-shadow-red" href="/account/" class="wishlist-button">
+												Wishlist
+											</a>
+										{% endif %}
+									</div>
+									<div class="cart columns small-6 space-25">
+										{% if item.variants.size > 1 %}
+											<a class="button block fill-red text-white" href="{{ item.url }}">Options</a>
+										{% elsif item.available %}
+											<form action="/cart/add" method="post" enctype="multipart/form-data">
+												<input type="hidden" name="id" value="{{ item.variants.first.id }}">
+												<button class="button block fill-red text-white box-shadow-black" type="submit">Add to Cart</button>
+											</form>
+										{% else %}
+											<a class="button block fill-red text-white box-shadow-black" href="{{ item.url }}">Pre-order</a>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						{% else %}
+							<div class="card-grid-item card item-card fill-white radius-25 box-shadow-red no-overflow">
+								<a class="block" href="{{ item.url }}">									
+									{% if item.image %}
+									<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ item.image | img_url: 'medium' }}');"></div>
+									{% endif %}
+									<div class="space-75">
+										<div class="title p strong text-red text-uppercase space-min-bottom">{{ item.title }}</div>
+										<div class="date small text-neutral-3 space-min-bottom">{{ item.published_at | date: '%B %d, %Y' }}</div>
+										<div class="summary label strong text-neutral-6 space-25-bottom">
+											{% if item.excerpt != blank %}
+												{{ item.excerpt }}
+											{% else %}
+												{{ item.content | strip_html | truncatewords: 35 }} 
+											{% endif %}
+										</div>
+										<div class="cta label strong text-red text-uppercase">Learn More</div>
+									</div>
+								</a>
+							</div>
+						{% endif %}
+						
+					</div>
+				{% endfor %}
+				</div>
+				<!-- END: Card Grid -->
+				
+				<!-- Pagination -->
+				<div class="container">
+					<div class="columns small-12">
+					{% if paginate.pages > 1 %}
+						<div class="pagination">
+							{% for part in paginate.parts %}
+								{% if part.is_link %}
+									<a class="button fill-white box-border-dark" href="{{ part.url }}">{{ part.title }}</a>
+								{% else %}
+									<span class="button text-dark no-pointer">{{ part.title }}</span>
+								{% endif %}
+							{% endfor %}
+						</div>
+					{% endif %}
+					</div>
+				</div>
+				<!-- END: Pagination -->
+
+			{% endpaginate %}
+		{% endif %}
+	</div>
+	{% endif %}
+</section>
+<!-- END: Search Section -->
