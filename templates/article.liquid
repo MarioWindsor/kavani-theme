@@ -53,9 +53,9 @@
 <section id="article-section" class="article-section space-100-top-bottom">
 	<div class="row">
 		<div class="container">
-			<div class="article-info columns small-12 medium-10 medium-offset-1 large-8 large-offset-2 space-50-top-bottom">
-				<div class="title h2 text-center line-height-one space-50-bottom">{{ article.title }}</div>
-				<div class="article-meta label text-neutral-3 text-center">
+			<div class="article-info columns small-12 medium-10 medium-offset-1 large-8 large-offset-2">
+				<div class="title h2 text-center space-50-bottom">{{ article.title }}</div>
+				<div class="article-meta label text-neutral-3 text-center space-50-bottom">
 					<span>Published on {{ article.published_at | date: '%B %d, %Y' }}</span>
 					{% comment %}
 					{% if article.author %}

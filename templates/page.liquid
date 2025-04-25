@@ -1,1 +1,74 @@
-<div class="h1">PEWPEWPEW</div>
+<style>
+.page-content h1 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h1); 
+}
+.page-content h2 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h2); 
+}
+.page-content h3 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h3); 
+}
+.page-content h4 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h4); 
+}
+.page-content h5 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h5); 
+}
+.page-content h6 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h6); 
+}
+.page-content p {
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--p);
+}
+.page-content label { 
+	display: inline-block;
+	font-size: var(--label);
+}
+.page-content small { 
+	display: inline-block;
+	font-size: var(--small);
+}
+
+.page-content img {
+	border-radius: var(--space-25);
+	box-shadow: 0 0 3px 1px rgba(var(---red), 0.125),  0 0 12px 4px rgba(var(---red), 0.2);
+}
+</style>
+
+<!-- Page Section -->
+<section id="page-section" class="page-section space-100-top-bottom">
+	<div class="row">
+		<div class="container">
+			<div class="page-info columns small-12 medium-10 medium-offset-1 large-8 large-offset-2">
+				<div class="title h2 text-center space-50-bottom">{{ page.title }}</div>
+			</div>
+		</div>
+	</div>
+	{% if page.image %}
+	<div class="featured-image row space-50-top-bottom space-100-left-right">
+		{{ page.image | img_url: 'large' | img_tag: page.title, 'block radius-50 box-shadow-red' }}
+	</div>
+	{% endif %}
+	<div class="row">
+		<div class="container">
+			<div class="page-content columns small-12 medium-10 medium-offset-1 large-8 large-offset-2 space-50-top-bottom">
+				{{ page.content }}
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Page Section -->
