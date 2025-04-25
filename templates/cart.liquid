@@ -1,4 +1,11 @@
-
+<style>
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+	  -webkit-appearance: none; 
+	  margin: 0; 
+	  opacity: 1;
+	}
+</style>
 <!-- Cart Section -->
 <section id="cart-section" class="cart-section space-100-top">
 	<div class="row">
@@ -17,55 +24,59 @@
 						<!-- Cart Item -->
 						{% for item in cart.items %}
 							<div class="cart-item row space">
-								<div class="columns small-12 medium-9 large-10">
+								<div class="columns small-12">
 									<div class="row">
-										<div class="columns small-4 medium-3 large-2 space-50-bottom">
-										{% if item.image %}
-											<a class="block" href="{{ item.url }}">
-												<img class="block radius-25 box-shadow-red" src="{{ item.image | img_url: 'medium' }}" alt="{{ item.image.alt | escape }}">
-											</a>
-										{% endif %}
+										<div class="columns small-4 large-2">
+											{% if item.image %}
+												<a class="block" href="{{ item.url }}">
+													<img class="block radius-25 box-shadow-red" src="{{ item.image | img_url: 'medium' }}" alt="{{ item.image.alt | escape }}">
+												</a>
+											{% endif %}
 										</div>
-										<div class="columns small-8 medium-9 large-10 space-50-left">
+										<div class="columns small-7 small-offset-1 large-9">
 											<div class="row">
-												<div class="columns small-12 large-7">
-													<div class="small space-min-bottom text-uppercase">{{ item.product.category | escape }}</div>
-													<a class="block p text-red text-uppercase strong space-25-bottom" href="{{ item.url }}">{{ item.product.title | escape }}</a>
-													{% if item.variant.title != 'Default Title' %}
-														<div class="block label strong text-uppercase space-min-bottom">{{ item.variant.title | escape }}</div>
-													{% endif %}
-													<div class="block label strong space-50-bottom no-wrap">{{ item.price | money }}</div>
-												</div>
-												<div class="columns small-9 large-5 xlarge-4">
-													<label class="quantity form-field block space-50-bottom">
-														<span class="form-label block small text-uppercase space-min-bottom">Quantity</span>
-														<div class="quantity-buttons" style="display: flex; gap: var(--space-25);">
-															<button type="button" class="button inline-bottom fill-white text-dark box-border-dark" aria-label="Decrease quantity" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
-																<i class='bx bx-minus h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
-															</button>
-															<input class="input-field inline-bottom text-center" type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" aria-label="Quantity for {{ item.title | escape }}" style="width: var(--space-250); flex-grow: 2; flex-shrink: 2;">
-															<button type="button" class="button inline-bottom fill-white text-dark box-border-dark" aria-label="Increase quantity" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
-																<i class='bx bx-plus h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
-															</button>
-															<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="button inline-bottom icon-button fill-white text-dark box-border-dark" aria-label="Remove {{ item.title | escape }}" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
-																<span class="visuallyhidden">Remove</span>
-																<i class='bx bx-trash h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
-															</a>
+												<div class="columns small-12 large-8">
+													<div class="row">
+														<div class="columns small-12">
+															<div class="small space-min-bottom text-uppercase">{{ item.product.category | escape }}</div>
+															<a class="block p text-red text-uppercase strong space-25-bottom" href="{{ item.url }}">{{ item.product.title | escape }}</a>
+															{% if item.variant.title != 'Default Title' %}
+																<div class="block label strong text-uppercase space-min-bottom">{{ item.variant.title | escape }}</div>
+															{% endif %}
+															<div class="block label strong space-50-bottom no-wrap">{{ item.price | money }}</div>
 														</div>
+														<div class="columns small-12 medium-9 large-4">
+															<label class="quantity form-field block space-50-bottom">
+																<span class="form-label block small text-uppercase space-min-bottom">Quantity</span>
+																<div class="quantity-buttons" style="display: flex; gap: var(--space-25);">
+																	<button type="button" class="button inline-bottom fill-white text-dark box-border-dark" aria-label="Decrease quantity" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
+																		<i class='bx bx-minus h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+																	</button>
+																	<input class="input-field inline-bottom text-center" type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" aria-label="Quantity for {{ item.title | escape }}" style="width: var(--space-250); flex-grow: 2; flex-shrink: 2;">
+																	<button type="button" class="button inline-bottom fill-white text-dark box-border-dark" aria-label="Increase quantity" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
+																		<i class='bx bx-plus h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+																	</button>
+																	<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="button inline-bottom icon-button fill-white text-dark box-border-dark" aria-label="Remove {{ item.title | escape }}" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
+																		<span class="visuallyhidden">Remove</span>
+																		<i class='bx bx-trash h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+																	</a>
+																</div>
+															</label>
+														</div>
+													</div>
+												</div>
+												<div class="columns small-12 large-3 large-offset-1">
+													<label class="block">
+														<span class="small text-uppercase space-min-bottom">Total</span>
+														<div class="p strong no-wrap">{{ item.final_line_price | money }}</div>
 													</label>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="columns small-8 small-offset-4 medium-3 medium-offset-0 large-2 space-50-bottom space-50-left">
-									<label class="block">
-										<span class="small text-uppercase space-min-bottom">Total</span>
-										<div class="p strong no-wrap">{{ item.final_line_price | money }}</div>
-									</label>
-								</div>
 							</div>
-							<hr style="margin: var(--space-50) 0 var(--space-100);">
+							<hr style="margin: var(--space-100) 0;">
 						{% endfor %}
 						<!-- END: Cart Item -->
 						<div class="row">
