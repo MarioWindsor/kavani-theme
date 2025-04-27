@@ -28,6 +28,44 @@
 	box-shadow: 0 0 0 4px var(--orange);
 }*/
 
+
+@supports (animation-timeline: view()) {
+	.collection-section:not(.intro-section) .bg-video-embed {
+		scale: 0.8;
+		opacity: 0;
+		animation: scale-in linear forwards;
+		animation-timeline: view();
+		animation-range: entry;
+	}
+
+	@keyframes scale-in {
+		to {
+			scale: 1;
+			opacity: 1;
+		}
+	}
+
+	.collection-section.intro-section {
+		overflow: clip;
+	}
+	
+	.collection-section.intro-section .bg-video-embed {
+		scale: 1;
+		opacity: 1;
+		animation: scale-out linear forwards;
+		animation-timeline: view();
+		animation-range: exit;
+		transform-origin: bottom;
+	}
+
+	@keyframes scale-out {
+		to {
+			scale: 1.5;
+			opacity: 0;
+		}
+	}
+}
+
 @media( min-width: 640px )  {}
 @media( min-width: 1040px ) {}
 @media( min-width: 1480px ) {}

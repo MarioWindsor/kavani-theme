@@ -90,6 +90,10 @@
     text-overflow: ellipsis;
 }
 
+.no-overflow-clip {
+	overflow: clip;
+}
+
 /*
  * Float
  */

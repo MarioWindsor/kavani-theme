@@ -69,13 +69,13 @@
 		position: absolute;
 		z-index: 1;
 		top: 0;
-		left: 0;
+		left: calc(var(--space-200)*5);
 		right: var(--space-200);
 		bottom: 0;
-		background-color: var(--orange);
+		background-color: rgba(var(---orange), 0.3);
 		transform: translate(calc(var(--space-100)*6), calc(var(--space-100)*3));
 		border-radius: var(--space-min);
-		opacity: 0.333;
+		background-image: url('{{ 'floral-bg-01.png' | asset_url }}'); background-position: bottom center; background-size: cover; background-repeat: no-repeat; background-attachment: fixed;
 	}
 }
 @media( min-width: 1040px ) {
@@ -106,6 +106,7 @@
 	}
 
 	.contact-section .form-col:after {
+		left: 0;
 		transform: translate(calc(var(--space-100)*12), calc(var(--space-100)*3));
 	}
 }
@@ -124,7 +125,7 @@
 
 <!-- Contact Section -->
 <section id="contact-section" class="contact-section space-200-top-bottom">
-	<div class="container">
+	<div class="container fade-up-animation">
 		<div class="row">
 			<div class="title-col columns small-12 medium-10 medium-offset-1">
 				<div class="title space-25">
@@ -209,7 +210,7 @@
 }	
 </style>
 <!-- Insta Section -->
-<section id="insta-section" class="insta-section space-100-top-bottom">
+<section id="insta-section" class="insta-section space-100-top-bottom fade-up-animation">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 medium-10 medium-offset-1 large-6 space-50-bottom">
@@ -229,18 +230,18 @@
 
 <!-- Blog Section -->
 {% if blogs.diaries.articles.size > 0 %}
-<section id="blog-section" class="blog-section space-100-top">
-	<div class="product-carousel">
+<section id="blog-section" class="blog-section space-100-top no-overflow-clip">
+	<div class="blog-carousel">
 		<div class="row">
 			<div class="container">
-				<div class="columns small-12 text-center">
+				<div class="columns small-12 text-center fade-in-animation slow">
 					<div class="h5 strong text-uppercase text-center space-50-bottom">Kavani Diaries</div>
 				</div>
 			</div>
 		</div>
 
 		<!-- Carousel -->
-		<div class="carousel fade">
+		<div class="carousel fade fade-up-animation">
 			<div class="carousel-list">
 				{% for article in blogs.diaries.articles limit: 10 %}
 				<div class="carousel-list-item">

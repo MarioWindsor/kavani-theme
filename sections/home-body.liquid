@@ -22,12 +22,12 @@
 			<!-- END: Collection Section -->
 		{% when "product-carousel" %}
 			<!-- Collection Items List Section -->
-			<section id="{{ block.settings.collection }}-items-list" class="collection-items-list-section space-100-top">
+			<section id="{{ block.settings.collection }}-items-list" class="collection-items-list-section space-100-top no-overflow-clip">
 				<div class="product-carousel">
-					<div class="h5 strong text-uppercase text-center space-50-bottom">{{ block.settings.title }}</div>
+					<div class="h5 strong text-uppercase text-center space-50-bottom fade-in-animation slow">{{ block.settings.title }}</div>
 
 					<!-- Carousel -->
-					<div class="carousel fade">
+					<div class="carousel fade  slide-in-left-animation">
 						<div class="carousel-list">
 						{% if block.settings.collection != blank %}
 							{% assign collection = collections[block.settings.collection] %}

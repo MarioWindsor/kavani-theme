@@ -888,3 +888,59 @@ select {
 /*	height: auto;*/
 	max-height: 800px;
 }
+
+
+/*
+ *	Slide In Animation 
+ */
+
+@supports (animation-timeline: view()) {
+	.fade-up-animation {
+		scale: 0.8;
+		opacity: 0;
+		animation: ani-fade-up linear forwards;
+		animation-timeline: view();
+		animation-range: entry;
+	}
+
+	@keyframes ani-fade-up {
+		to {
+			scale: 1;
+			opacity: 1;
+		}
+	}
+
+	.fade-in-animation {
+		opacity: 0;
+		animation: ani-fade-up linear forwards;
+		animation-timeline: view();
+		animation-range: entry;
+	}
+
+	.fade-in-animation.slow {
+		animation-range: contain 25vh;
+	}
+
+	@keyframes ani-fade-in {
+		to {
+			opacity: 1;
+		}
+	}
+
+	.slide-in-left-animation {
+		translate: 10%;
+		scale: 0.9;
+		opacity: 0;
+		animation: ani-slide-in-left linear forwards;
+		animation-timeline: view();
+		animation-range: entry;
+	}
+
+	@keyframes ani-slide-in-left {
+		to {
+			translate: 0;
+			scale: 1;
+			opacity: 1;
+		}
+	}
+}
