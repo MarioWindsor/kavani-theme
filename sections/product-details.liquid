@@ -45,11 +45,11 @@
 {% endif %}
 
 {% if product.category %}
-	<div class="product-category small strong text-uppercase text-neutral-3 space-25-bottom"><small>{{ product.category }}</small></div>
+	<div class="product-category small strong text-uppercase text-neutral-4 space-25-bottom"><small>{{ product.category }}</small></div>
 {% endif %}
 <div class="product-title h6 text-uppercase space-50-bottom"><h1>{{ product.title }}</h1></div>
 <div class="product-price label strong text-red space-25-bottom">{{ product.price | money }} {% if product.compare_at_price_max > product.price %} <span class="compare-at-price">{{ product.compare_at_price | money }}</span>{% endif %}</div>
-<div class="shipping-policy-link label text-neutral-3 space-50-bottom"><a class="text-underline text-black" herf="{{ shop.shipping_policy.url }}">Shipping</a> calculated at checkout.</div>
+<div class="shipping-policy-link label text-neutral-4 space-50-bottom"><a class="inline text-underline text-black" href="{{ shop.shipping_policy.url }}" target="_blank">Shipping</a> calculated at checkout.</div>
 
 {% if product.variants.size > 1 %}
 	{% for option in product.options %}
@@ -83,18 +83,24 @@
 	<p class="out-of-stock">Out of Stock</p>
 {% endif %}
 
-<div class="inline h3 w-800 text-orange line-height-one space-50-bottom">
+<!-- <div class="inline h3 w-800 text-orange line-height-one space-50-bottom">
 	<a class="inline" href="#">Next Steps <i class='inline-middle bx bxs-right-arrow-circle h1 text-orange' ></i></a>
-</div>
+</div> -->
 
 {% if product.collections.size > 0 %}
 <div class="product-collections space-50-bottom">
-	<div class="small text-neutral-3 space-min-bottom text-uppercase">Shop More</div>
+	<div class="small text-neutral-4 space-min-bottom text-uppercase">Shop More</div>
 	{% for collection in product.collections %}
-		<a class="label space-25-top-bottom space-50-left-right text-uppercase fill-neutral-5 radius-min" href="{{ collection.url }}" style="margin-right: var(--space-min);">{{ collection.title }}</a>
+		<a class="label space-25-top-bottom space-50-left-right text-uppercase fill-dark radius-min" href="{{ collection.url }}" style="margin-right: var(--space-min);">{{ collection.title }}</a>
 	{% endfor %}
 </div>
 {% endif %}
+
+<div class="space-50-bottom">
+	<a class="inline row" href="#more">
+		<span class="inline-middle h5 strong text-red text-uppercase line-height-one">More Detail</span>
+		<i class='inline-middle bx bx-right-arrow-alt h1 text-red' ></i></a>
+</div>
 
 
 
