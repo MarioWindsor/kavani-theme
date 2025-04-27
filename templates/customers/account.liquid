@@ -52,6 +52,15 @@
 				<h1 class="title block h3 text-uppercase text-center letter-space-2">Account</h1>
 			</div>
 		</div>
+		<div class="p">
+			
+			{{ customer.metafields.custom.wishlist.list? }}
+			
+			ppp
+			{% for thing in customer.metafields.custom.wishlist.value %}
+			{{thing.title}}aaa
+			{% endfor %}
+		</div>
 		<div class="row">
 			<div class="account columns small-12">
 				<div id="customer_orders" class="customer-orders space-100 text-dark fill-orange radius-25 box-border-dark">
