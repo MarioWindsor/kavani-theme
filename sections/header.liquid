@@ -71,11 +71,11 @@
 		<!-- User -->
 		<div class="wishlist">
 			{% if customer %}
-				<a class="space-25 icon-button" href="{{ routes.page.wishlist }}"><i class='bx bx-user-heart h3 text-dark' ></i><span class="visuallyhidden">Account</span></a>			
+				<a class="space-25 icon-button" href="/pages/wishlist"><i class='bx bx-heart h3 text-dark' ></i><span class="visuallyhidden">Account</span></a>			
 				<!-- <a href="/account">Account</a> -->
 				<!-- <a href="/account/logout">Logout</a> -->
 			{% else %}
-				<a class="space-25 icon-button" href="{{ routes.account_login_url }}"><i class='bx bx-user-heart h3 text-dark' ></i><span class="visuallyhidden">Login</span></a>			
+				<a class="space-25 icon-button" href="{{ routes.account_login_url }}"><i class='bx bx-heart h3 text-dark' ></i><span class="visuallyhidden">Login</span></a>			
 				<!-- <a href="/account/login">Login</a> -->
 				<!-- <a href="/account/register">Register</a> -->
 			{% endif %}
