@@ -46,7 +46,7 @@
 	<div class="header-actions columns small-5 small-offset-1 medium-6 medium-offset-2 large-2 large-offset-0 inline-middle text-right">
 		<!-- Search -->
 		<div class="search">
-			<a class="space-25 icon-button" href=""><i class='bx bx-search h3 text-dark' ></i></a>
+			<a class="space-25 icon-button" href="{{ routes.search_url }}"><i class='bx bx-search h3 text-dark' ></i></a>
 			{% comment %}
 			<form action="/search" method="get">
 				<input type="search" name="q" placeholder="Search..." value="{{ search.terms | escape }}">

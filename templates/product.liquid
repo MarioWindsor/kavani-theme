@@ -28,6 +28,7 @@
 		padding-top: var(--space-100);
 		padding-bottom: var(--space-50);
 		padding-left: var(--space-50);
+		padding-right: var(--container-margin);
 		position: sticky;
 		top: calc(var(--space-100) * 3);
 		left: 0;
@@ -71,33 +72,165 @@
 }
 @media( min-width: 1040px ) {}
 @media( min-width: 1480px ) {}
+
+
+.product-more {
+	position: relative;
+}
+
+.more-sidebar {
+	font-size: 0;
+}
+.more-sidebar .sidebar-icon {
+	display: inline-block;
+	width: 50%;
+	padding-bottom: var(--space-50);
+}
+.more-sidebar .sidebar-icon:nth-child(2n+1) {
+	padding-right: var(--space-25);
+}
+.more-sidebar .sidebar-icon:nth-child(2n+2) {
+	padding-left: var(--space-25);
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {
+	.more-sidebar {
+		float: right;
+		padding-left: var(--space-125);
+	}
+	.more-sidebar .sidebar-icon,
+	.more-sidebar .sidebar-icon:nth-child(2n+1),
+	.more-sidebar .sidebar-icon:nth-child(2n+2) {
+		width: 100%;
+		padding: 0;
+		padding-bottom: var(--space-50);
+	}
+	.more-main {
+		float: left;
+	}
+}
+@media( min-width: 1480px ) {
+	.more-sidebar {
+		padding-left: var(--space-175);
+	}
+}
+
 </style>
 
+<!-- Product Essentials -->
 <div class="product-essentials row">
 	<div class="product-gallery columns small-12 medium-6 large-8">
 		{% section 'product-images' %}
 	</div>
-	<div class="product-info columns small-12 medium-5 large-3">
+	<div class="product-info columns small-12 medium-6 large-4">
 		{% section 'product-details' %}
 	</div>
 </div>
-<div id="more" class="product-extras row space-200-top-bottom">
+<!-- END: Product Essentials -->
+<!-- Product More -->
+<div id="more" class="product-more row">
+	<div class="stitch-pattern space-200 opacity-50 hide-small hide-large hide-xlarge " style="background-image: url('{{ 'stitch-pattern-orange.png' | asset_url }}'); background-size: auto 33%; background-repeat: repeat-x; background-position: center center;"></div>
+	<div class="stitch-pattern space-150 opacity-50 hide-small hide-medium " style="background-image: url('{{ 'stitch-pattern-orange.png' | asset_url }}'); background-size: auto 33%; background-repeat: repeat-x; background-position: center center;"></div>
 	<div class="container">
 		<div class="row">
-			{% if product.description %}
-			<div class="product-description columns small-12">
-				<div class="label text-uppercase opacity-50">Description</div>
-				<div class="label">{{ product.description }}</div>
+			<div class="more-sidebar columns small-12 large-4 space-50-top-bottom clearfix">
+				<div class="sidebar-icon">
+					<img class="block" src="https://placehold.co/400x150" alt="">
+				</div>
+				<div class="sidebar-icon">
+					<img class="block" src="https://placehold.co/400x150" alt="">
+				</div>
+				<div class="sidebar-icon">
+					<img class="block" src="https://placehold.co/400x150" alt="">
+				</div>
+				<div class="sidebar-icon">
+					<img class="block" src="https://placehold.co/400x150" alt="">
+				</div>
 			</div>
-			{% endif %}
-		</div>
-		<div class="row">
-			<div class="p strong text-uppercase space-150-top position-relative space-50-left"><span class="inline h1 w-800 text-orange position-absolute line-height-one" style="z-index: -1; bottom: var(--space-min); left: 0;">Step 1</span> Place your Order</div>
-			<div class="p strong text-uppercase space-150-top position-relative space-50-left"><span class="inline h1 w-800 text-orange position-absolute line-height-one" style="z-index: -1; bottom: var(--space-min); left: 0;">Step 2</span> Taking Measurements</div>
-			<div class="p strong text-uppercase space-150-top position-relative space-50-left"><span class="inline h1 w-800 text-orange position-absolute line-height-one" style="z-index: -1; bottom: var(--space-min); left: 0;">Step 3</span> Customization</div>
+			<div class="more-main columns small-12 large-8">
+				{% if product.description %}
+				<div class="product-description space-50-top-bottom">
+					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Product Description</div>
+					<div class="label">{{ product.description }}</div>
+				</div>
+				{% endif %}
+				<div class="row">
+					<div class="p strong text-uppercase space-150-top position-relative space-50-left"><span class="inline h1 w-800 text-orange position-absolute line-height-one" style="z-index: -1; bottom: var(--space-min); left: 0;">Step 1</span> Place your Order</div>
+					<div class="p strong text-uppercase space-150-top position-relative space-50-left"><span class="inline h1 w-800 text-orange position-absolute line-height-one" style="z-index: -1; bottom: var(--space-min); left: 0;">Step 2</span> Taking Measurements</div>
+					<div class="p strong text-uppercase space-150-top position-relative space-50-left"><span class="inline h1 w-800 text-orange position-absolute line-height-one" style="z-index: -1; bottom: var(--space-min); left: 0;">Step 3</span> Customization</div>
+				</div>
+			</div> 
 		</div>
 	</div>
-
-	{% #section 'product-recommendations' %}
-	{% #section 'product-reviews' %}
 </div>
+<!-- END: Product More -->
+<!-- Related Products -->
+{% if product.collections.size > 0 %}
+{% assign first_collection = product.collections.first %}
+<div class="related-product row">
+	<div class="product-carousel">
+		<div class="h5 strong text-uppercase text-center space-50-bottom">Related Products</div>
+		<!-- Carousel -->
+		<div class="carousel fade">
+			<div class="carousel-list">
+				{% for related_product in first_collection.products | limit : 6 %}
+					{% unless related_product.handle == product.handle %}
+					<div class="carousel-list-item">
+						<div class="card product-card fill-white radius-25 box-shadow-red no-overflow">
+							<a class="block" href="{{ related_product.url }}">
+								{% if related_product.featured_image %}
+								<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ related_product.featured_image | img_url: 'medium' }}');"></div>
+								{% endif %}
+								<div class="text-center space-75-top space-75-left-right">
+									<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ related_product.title }}</div>
+									<div class="price label text-red strong">{{ related_product.price | money }}/-</div>
+								</div>
+							</a>
+							<div class="product-actions row space-25 no-whitespace">
+								<div class="wishlist columns small-6 space-25">
+									{% if customer %}
+										<button class="button block fill-dark box-shadow-red" data-product-id="{{ related_product.id }}">
+											Wishlist
+										</button>
+									{% else %}
+										{% comment %}
+										<a href="/account/login?checkout_url=/products/{{ related_product.handle }}" class="wishlist-button">
+										{% endcomment %}
+										<a class="button block fill-dark box-shadow-red" href="/account/" class="wishlist-button">
+											Wishlist
+										</a>
+									{% endif %}
+								</div>
+								<div class="cart columns small-6 space-25">
+									{% if related_product.variants.size > 1 %}
+										<a class="button block fill-red text-white" href="{{ related_product.url }}">Options</a>
+									{% elsif related_product.available %}
+										<form action="/cart/add" method="post" enctype="multipart/form-data">
+											<input type="hidden" name="id" value="{{ related_product.variants.first.id }}">
+											<button class="button block fill-red text-white box-shadow-black" type="submit">Add to Cart</button>
+										</form>
+									{% else %}
+										<a class="button block fill-red text-white box-shadow-black" href="{{ related_product.url }}">Pre-order</a>
+									{% endif %}
+								</div>
+
+							</div>
+						</div>
+					</div>
+					{% endunless %}
+				{% endfor %}
+			</div>
+			<div class="carousel-controls row">
+				<div class="container">
+					<div class="columns small-12 text-center">
+						<div class="scroll-button scroll-left inline" data-dir="left" tabindex="-1"><i class='bx bx-left-arrow-alt text-red h3' ></i></div>
+						<div class="scroll-button scroll-right inline" data-dir="right" tabindex="-1"><i class='bx bx-right-arrow-alt text-red h3' ></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}
+<!-- END: Related Products -->
