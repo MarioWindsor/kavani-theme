@@ -33,7 +33,8 @@
 :root {
 	---white: 255,255,255;
 	--white: rgb(var(---white));
-	---light: 250,240,220;
+/*	---light: 250,240,220;*/
+	---light: 255,240,250;
 	--light: rgb(var(---light));
 	--neutral-1: #E1DFE3;
 	--neutral-2: #C6C4C8;
@@ -46,7 +47,8 @@
 	--dark: rgb(var(---dark));
 	---black: 0,0,0;
 	--black: rgb(var(---black));
-	---red: 250,50,50;
+/*	---red: 250,50,50;*/
+	---red: 195,55,70;
 	--red: rgb(var(---red));
 	---orange: 250,200,150;
 	--orange: rgb(var(---orange));
