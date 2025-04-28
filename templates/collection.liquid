@@ -1,4 +1,6 @@
 
+{% assign wishlist_list = customer.metafields.custom.wishlist.value %}
+
 <!-- Collection Section -->
 <section id="collection-section" class="collection-section space-100-top">
 	<div class="row">
@@ -31,14 +33,26 @@
 							<div class="product-actions row space-25 no-whitespace">
 								<div class="wishlist columns small-6 space-25">
 									{% if customer %}
-										<button class="button block fill-dark box-shadow-red" data-product-id="{{ product.id }}">
-											Wishlist
-										</button>
+										{% for element in wishlist_list %}
+											{% if element.handle == product.handle %}
+												{% assign fav = true %}
+												{% break %}
+											{% else %}
+												{% assign fav = false %}
+											{% endif %}
+										{% endfor %}
+
+										{% if fav == true %}
+											<button class="button block fill-dark box-shadow-red" data-product-id="{{ product.id }}">
+												Remove
+											</button>
+										{% else %}
+											<button class="button block fill-dark box-shadow-red" data-product-id="{{ product.id }}">
+												Favourite
+											</button>
+										{% endif %}
 									{% else %}
-										{% comment %}
-										<a href="/account/login?checkout_url=/products/{{ product.handle }}" class="wishlist-button">
-										{% endcomment %}
-										<a class="button block fill-dark box-shadow-red" href="/account/" class="wishlist-button">
+										<a class="button block fill-dark box-shadow-red" href="{{ routes.account_login_url }}" class="wishlist-button">
 											Wishlist
 										</a>
 									{% endif %}

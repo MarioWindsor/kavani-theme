@@ -1,87 +1,108 @@
-<style>
-.page-content h1 { 
-	display: block;
-	margin-bottom: var(--p);
-	font-size: var(--h1); 
-}
-.page-content h2 { 
-	display: block;
-	margin-bottom: var(--p);
-	font-size: var(--h2); 
-}
-.page-content h3 { 
-	display: block;
-	margin-bottom: var(--p);
-	font-size: var(--h3); 
-}
-.page-content h4 { 
-	display: block;
-	margin-bottom: var(--p);
-	font-size: var(--h4); 
-}
-.page-content h5 { 
-	display: block;
-	margin-bottom: var(--p);
-	font-size: var(--h5); 
-}
-.page-content h6 { 
-	display: block;
-	margin-bottom: var(--p);
-	font-size: var(--h6); 
-}
-.page-content p {
-	display: block;
-	margin-bottom: var(--p);
-	font-size: var(--p);
-}
-.page-content label { 
-	display: inline-block;
-	font-size: var(--label);
-}
-.page-content small { 
-	display: inline-block;
-	font-size: var(--small);
-}
 
-.page-content img {
-	border-radius: var(--space-25);
-	box-shadow: 0 0 3px 1px rgba(var(---red), 0.125),  0 0 12px 4px rgba(var(---red), 0.2);
-}
-</style>
+{% if customer %}
 
-<!-- Page Section -->
-<section id="page-section" class="page-section space-100-top-bottom">
-	<div class="row">
-		<div class="container">
-			<div class="page-info columns small-12 medium-10 medium-offset-1 large-8 large-offset-2">
-				<div class="title h2 text-center space-50-bottom">{{ page.title }}</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="container">
-			<div class="page-content columns small-12 medium-10 medium-offset-1 large-8 large-offset-2 space-50-top-bottom">
-				{{ page.content }}
-			</div>
-		</div>
-	</div>
-</section>
-<!-- END: Page Section -->
+	{% assign wishlist_list = customer.metafields.custom.wishlist.value %}
 
-
-<!-- Back Home Section -->
-<div id="back-home-section" class="back-home-section">
-	<div class="container">
+	<!-- Wishlist Section -->
+	<section id="wishlist-section" class="wishlist-section space-100-top">
 		<div class="row">
-			<div class="columns small-12 text-center">
-				<div class="row text-center">
-					<div class="columns small-6 space-25">
-						<a href="{{ shop.url }}" class="inline-middle label strong text-red text-uppercase"><span class="inline h6 line-height-one space-25-right">&larr;</span> Back to Home Page</a>
-					</div>
+			<div class="container">
+				<div class="columns small-12">
+					<h1 class="collection-title block h5 strong text-uppercase text-center">{{ page.title }}</h1>
+					<div class="collection-description block p text-center">{{ page.content }}</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<!-- END: Back Home Section -->
+		<div class="row">
+			{% if wishlist_list.count > 0 %}
+				{% paginate wishlist_list by 12 %}
+					<!-- Card Grid -->
+					<div class="card-grid space-100">
+					{% #for product in collection.products %}
+					{% for thing in wishlist_list %}
+						<div class="card-grid-item">
+							<div class="card product-card fill-white radius-25 box-shadow-red no-overflow">
+								<a class="block" href="{{ thing.url }}">
+									{% if thing.featured_image %}
+									<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ thing.featured_image | img_url: 'medium' }}');"></div>
+									{% endif %}
+									<div class="text-center space-75-top space-75-left-right">
+										<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ thing.title }}</div>
+										<div class="price label text-red strong">{{ thing.price | money }}/-</div>
+									</div>
+								</a>
+								<div class="product-actions row space-25 no-whitespace">
+									<div class="wishlist columns small-6 space-25">
 
+										{% if customer %}
+											<button class="button block fill-dark box-shadow-red" data-product-id="{{ thing.id }}">
+												Remove
+											</button>
+										{% else %}
+											{% comment %}
+											<a href="/account/login?checkout_url=/products/{{ product.handle }}" class="wishlist-button">
+											{% endcomment %}
+											<a class="button block fill-dark box-shadow-red" href="/account/" class="wishlist-button">
+												Wishlist
+											</a>
+										{% endif %}
+									</div>
+									<div class="cart columns small-6 space-25">
+										{% if thing.variants.size > 1 %}
+											<a class="button block fill-red text-white" href="{{ thing.url }}">Options</a>
+										{% elsif thing.available %}
+											<form action="/cart/add" method="post" enctype="multipart/form-data">
+												<input type="hidden" name="id" value="{{ thing.variants.first.id }}">
+												<button class="button block fill-red text-white box-shadow-black" type="submit">Add to Cart</button>
+											</form>
+										{% else %}
+											<a class="button block fill-red text-white box-shadow-black" href="{{ thing.url }}">Pre-order</a>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+					</div>
+					<!-- END: Card Grid -->
+				{% endpaginate %}
+			{% else %}
+				<p class="p block text-center">No products found in this collection.</p>
+			{% endif %}
+		</div>
+		<div class="row">
+			<div class="container">
+				<div class="columns small-12">
+					<!-- Pagination -->
+					{% paginate wishlist_list by 12 %}
+						{% if paginate.pages > 1 %}
+							<div class="pagination">
+								{% for part in paginate.parts %}
+									{% if part.is_link %}
+										<a class="button fill-white box-border-dark" href="{{ part.url }}">{{ part.title }}</a>
+									{% else %}
+										<span class="button text-dark no-pointer">{{ part.title }}</span>
+									{% endif %}
+								{% endfor %}
+							</div>
+						{% endif %}
+					{% endpaginate %}
+					<!-- END: Pagination -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- END: Wishlist Section -->
+
+{% else %}
+
+	<!-- Wishlist Section -->
+	<section id="wishlist-section" class="wishlist-section space-250-top-bottom">
+		<div class="row">
+			<div class="container text-center">
+				<a class="button fill-dark" href="{{ routes.account_url }}">Login to View Wishlist</a>
+			</div>
+		</div>
+	</section>
+	<!-- END: Wishlist Section -->
+{% endif %}
