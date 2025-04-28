@@ -34,7 +34,8 @@
 	---white: 255,255,255;
 	--white: rgb(var(---white));
 /*	---light: 250,240,220;*/
-	---light: 255,240,250;
+/*	---light: 255,240,250;*/
+	---light: 255,245,245;
 	--light: rgb(var(---light));
 	--neutral-1: #E1DFE3;
 	--neutral-2: #C6C4C8;
@@ -50,7 +51,8 @@
 /*	---red: 250,50,50;*/
 	---red: 195,55,70;
 	--red: rgb(var(---red));
-	---orange: 250,200,150;
+/*	---orange: 250,200,150;*/
+	---orange: 225,205,200;
 	--orange: rgb(var(---orange));
 	--yellow: #FFEB3B;
 	--green: #1FCD46;
