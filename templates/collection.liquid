@@ -17,21 +17,32 @@
 		{% if collection.products.size > 0 %}
 			{% paginate collection.products by 12 %}
 				<!-- Card Grid -->
-				<div class="card-grid space-100">
+				<!-- <div class="card-grid space-100"> -->
+				<div class="card-grid space-100-top-bottom">
 				{% for product in collection.products %}
 					<div class="card-grid-item">
 						<!-- <div class="card product-card fill-white radius-25 box-shadow-red no-overflow"> -->
-						<div class="card product-card fill-white radius-25 no-overflow">
+						<!-- <div class="card product-card fill-white radius-25 no-overflow"> -->
+						<div class="card product-card fill-white no-overflow">
 							<a class="block" href="{{ product.url }}">
 								{% if product.featured_image %}
+								{% comment %}
 								<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ product.featured_image | img_url: 'medium' }}');"></div>
+								{% endcomment %}
+								<div class="thumbnail block no-whitespace" style="padding-top: 125%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ product.featured_image | img_url: 'large' }}');"></div>
 								{% endif %}
+								{% comment %}
 								<div class="text-center space-75-top space-75-left-right">
-									<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ product.title }}</div>
+									<div class="title p text-uppercase no-overflow-text space-min-bottom">{{ product.title }}</div>
 									<div class="price label text-red strong">{{ product.price | money }}/-</div>
 								</div>
+								{% endcomment %}
+								<div class="text-center space-50">
+									<div class="title label text-uppercase space-min-bottom no-overflow-text">{{ product.title }}</div>
+									<div class="price small text-red strong">{{ product.price | money }}/-</div>
+								</div>
 							</a>
-							<div class="product-actions row space-25 no-whitespace">
+							<div class="product-actions row space-25 no-whitespace hidden">
 								<div class="wishlist columns small-6 space-25">
 									{% if customer %}
 										{% for element in wishlist_list %}

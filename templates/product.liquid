@@ -151,20 +151,109 @@
 			<div class="more-main columns small-12 large-8">
 				{% if product.description %}
 				<div class="product-description space-50-top-bottom">
-					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Product Description</div>
+					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Material & Description</div>
 					<div class="label">{{ product.description }}</div>
 				</div>
 				{% endif %}
-				<div class="row">
+				<div class="product-description space-50-top-bottom">
+					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Measurements & Customisation</div>
+					<div class="video">
+						<img class="block" src="https://placehold.co/1920x1080" alt="">
+					</div>
+				</div>
+				<div class="product-description space-50-top-bottom">
+					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Shipping & Returns</div>
+					<div class="label">
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis natus esse suscipit non quidem excepturi rem magni dolores aspernatur recusandae doloribus consequuntur quod, omnis doloremque repellendus iusto ab a reprehenderit.
+					</div>
+				</div>
+				<!-- <div class="row">
 					<div class="p strong text-uppercase space-150-top position-relative space-50-left"><span class="inline h1 w-800 text-red position-absolute line-height-one opacity-50" style="z-index: -1; bottom: var(--space-min); left: 0;">Step 1</span> Place your Order</div>
 					<div class="p strong text-uppercase space-150-top position-relative space-50-left"><span class="inline h1 w-800 text-red position-absolute line-height-one opacity-50" style="z-index: -1; bottom: var(--space-min); left: 0;">Step 2</span> Taking Measurements</div>
 					<div class="p strong text-uppercase space-150-top position-relative space-50-left"><span class="inline h1 w-800 text-red position-absolute line-height-one opacity-50" style="z-index: -1; bottom: var(--space-min); left: 0;">Step 3</span> Customization</div>
-				</div>
+				</div> -->
 			</div> 
 		</div>
 	</div>
 </div>
 <!-- END: Product More -->
+<!-- Style With Products -->
+{% if product.collections.size > 0 %}
+{% assign first_collection = product.collections.first %}
+<div class="related-product row">
+	<div class="product-carousel">
+		<div class="h5 strong text-uppercase text-center space-50-bottom">Style With</div>
+		<!-- Carousel -->
+		<div class="carousel fade">
+			<div class="carousel-list fill-white">
+				{% for related_product in first_collection.products | limit : 6 %}
+					{% unless related_product.handle == product.handle %}
+					<div class="carousel-list-item">
+						<!-- <div class="card product-card fill-white radius-25 box-shadow-red no-overflow"> -->
+						<div class="card product-card fill-white no-overflow">
+							<a class="block" href="{{ related_product.url }}">
+								{% if related_product.featured_image %}
+								<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ related_product.featured_image | img_url: 'medium' }}');"></div>
+								{% endif %}
+								<!-- <div class="text-center space-75-top space-75-left-right"> -->
+								{% comment %}
+								<div class="text-center space-50">
+									<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ related_product.title }}</div>
+									<div class="price label text-red strong">{{ related_product.price | money }}/-</div>
+								</div>
+								{% endcomment %}
+								<div class="text-center space-50">
+									<div class="title p text-uppercase no-overflow-text space-min-bottom">{{ related_product.title }}</div>
+									<div class="price small text-red strong">{{ related_product.price | money }}/-</div>
+								</div>
+							</a>
+							<div class="product-actions row space-25 no-whitespace hidden">
+								<div class="wishlist columns small-6 space-25">
+									{% if customer %}
+										<button class="button block fill-dark box-shadow-red" data-product-id="{{ related_product.id }}">
+											Wishlist
+										</button>
+									{% else %}
+										{% comment %}
+										<a href="/account/login?checkout_url=/products/{{ related_product.handle }}" class="wishlist-button">
+										{% endcomment %}
+										<a class="button block fill-dark box-shadow-red" href="/account/" class="wishlist-button">
+											Wishlist
+										</a>
+									{% endif %}
+								</div>
+								<div class="cart columns small-6 space-25">
+									{% if related_product.variants.size > 1 %}
+										<a class="button block fill-red text-white" href="{{ related_product.url }}">Options</a>
+									{% elsif related_product.available %}
+										<form action="/cart/add" method="post" enctype="multipart/form-data">
+											<input type="hidden" name="id" value="{{ related_product.variants.first.id }}">
+											<button class="button block fill-red text-white box-shadow-black" type="submit">Add to Cart</button>
+										</form>
+									{% else %}
+										<a class="button block fill-red text-white box-shadow-black" href="{{ related_product.url }}">Pre-order</a>
+									{% endif %}
+								</div>
+
+							</div>
+						</div>
+					</div>
+					{% endunless %}
+				{% endfor %}
+			</div>
+			<div class="carousel-controls row">
+				<div class="container">
+					<div class="columns small-12 text-center">
+						<div class="scroll-button scroll-left inline" data-dir="left" tabindex="-1"><i class='bx bx-left-arrow-alt text-red h3' ></i></div>
+						<div class="scroll-button scroll-right inline" data-dir="right" tabindex="-1"><i class='bx bx-right-arrow-alt text-red h3' ></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}
+<!-- END: Style With Products -->
 <!-- Related Products -->
 {% if product.collections.size > 0 %}
 {% assign first_collection = product.collections.first %}
@@ -173,21 +262,29 @@
 		<div class="h5 strong text-uppercase text-center space-50-bottom">Related Products</div>
 		<!-- Carousel -->
 		<div class="carousel fade">
-			<div class="carousel-list">
+			<div class="carousel-list fill-white">
 				{% for related_product in first_collection.products | limit : 6 %}
 					{% unless related_product.handle == product.handle %}
 					<div class="carousel-list-item">
-						<div class="card product-card fill-white radius-25 box-shadow-red no-overflow">
+						<!-- <div class="card product-card fill-white radius-25 box-shadow-red no-overflow"> -->
+						<div class="card product-card fill-white no-overflow">
 							<a class="block" href="{{ related_product.url }}">
 								{% if related_product.featured_image %}
 								<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ related_product.featured_image | img_url: 'medium' }}');"></div>
 								{% endif %}
-								<div class="text-center space-75-top space-75-left-right">
+								<!-- <div class="text-center space-75-top space-75-left-right"> -->
+								{% comment %}
+								<div class="text-center space-50">
 									<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ related_product.title }}</div>
 									<div class="price label text-red strong">{{ related_product.price | money }}/-</div>
 								</div>
+								{% endcomment %}
+								<div class="text-center space-50">
+									<div class="title p text-uppercase no-overflow-text space-min-bottom">{{ related_product.title }}</div>
+									<div class="price small text-red strong">{{ related_product.price | money }}/-</div>
+								</div>
 							</a>
-							<div class="product-actions row space-25 no-whitespace">
+							<div class="product-actions row space-25 no-whitespace hidden">
 								<div class="wishlist columns small-6 space-25">
 									{% if customer %}
 										<button class="button block fill-dark box-shadow-red" data-product-id="{{ related_product.id }}">

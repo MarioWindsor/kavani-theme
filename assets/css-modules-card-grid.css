@@ -6,7 +6,9 @@
 
 .card-grid {
 	display: grid;
-	gap: var(--space-50);
+/*	gap: var(--space-50);*/
+/*	row-gap: var(--space-250);*/
+	row-gap: var(--space-100);
 	grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 .card-grid .card-grid-item .card .button {

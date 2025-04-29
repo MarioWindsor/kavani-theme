@@ -263,13 +263,14 @@
 		<!-- Carousel -->
 		<!-- <div class="carousel fade fade-up-animation"> -->
 		<div class="carousel fade">
-			<div class="carousel-list">
+			<div class="carousel-list fill-white">
 				{% for article in blogs.diaries.articles limit: 10 %}
 				<div class="carousel-list-item">
 					{% comment %}
 					<div class="card article-card fill-white radius-25 box-shadow-red no-overflow">
 					{% endcomment %}
-					<div class="card article-card fill-white radius-25 no-overflow">
+					<!-- <div class="card article-card fill-white radius-25 no-overflow"> -->
+					<div class="card article-card fill-white no-overflow">
 						<a class="block" href="{{ article.url }}">									
 							{% if article.image %}
 							<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ article.image | img_url: 'medium' }}');"></div>
