@@ -76,19 +76,19 @@
 							<ul class="menu">
 							  {% for link in section.settings.quick-links.links %}
 							    <li class="menu-link">
-							      <a class="label text-uppercase text-red strong opacity-75" href="{{ link.url }}">{{ link.title }}</a>
+							      <a class="label text-uppercase text-red space-min-top-bottom opacity-75" href="{{ link.url }}">{{ link.title }}</a>
 
 							      {% if link.links.size > 0 %}
 							        <ul class="menu dropdown-child">
 							          {% for child_link in link.links %}
 							            <li class="menu-link">
-							              <a class="label text-uppercase text-red strong opacity-75" href="{{ child_link.url }}">{{ child_link.title }}</a>
+							              <a class="label text-uppercase text-red space-min-top-bottom opacity-75" href="{{ child_link.url }}">{{ child_link.title }}</a>
 
 							              {% if child_link.links.size > 0 %}
 							                <ul class="menu dropdown-grandchild">
 							                  {% for grandchild_link in child_link.links %}
 							                    <li class="menu-link">
-							                      <a class="label text-uppercase text-red strong opacity-75" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+							                      <a class="label text-uppercase text-red space-min-top-bottom opacity-75" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
 							                    </li>
 							                  {% endfor %}
 							                </ul>
@@ -110,19 +110,19 @@
 							<ul class="menu">
 							  {% for link in section.settings.policy-menu.links %}
 							    <li class="menu-link">
-							      <a class="label text-uppercase text-red strong opacity-75" href="{{ link.url }}">{{ link.title }}</a>
+							      <a class="label text-uppercase text-red space-min-top-bottom opacity-75" href="{{ link.url }}">{{ link.title }}</a>
 
 							      {% if link.links.size > 0 %}
 							        <ul class="menu dropdown-child">
 							          {% for child_link in link.links %}
 							            <li class="menu-link">
-							              <a class="label text-uppercase text-red strong opacity-75" href="{{ child_link.url }}">{{ child_link.title }}</a>
+							              <a class="label text-uppercase text-red space-min-top-bottom opacity-75" href="{{ child_link.url }}">{{ child_link.title }}</a>
 
 							              {% if child_link.links.size > 0 %}
 							                <ul class="menu dropdown-grandchild">
 							                  {% for grandchild_link in child_link.links %}
 							                    <li class="menu-link">
-							                      <a class="label text-uppercase text-red strong opacity-75" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+							                      <a class="label text-uppercase text-red space-min-top-bottom opacity-75" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
 							                    </li>
 							                  {% endfor %}
 							                </ul>
