@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/logo-combination-new-red-dark.png",
+    "logo": "shopify://shop_images/logo-combination-legacy-brown.png",
     "sections": {
       "header": {
         "type": "header",
