@@ -20,7 +20,8 @@
 				<div class="card-grid space-100">
 				{% for product in collection.products %}
 					<div class="card-grid-item">
-						<div class="card product-card fill-white radius-25 box-shadow-red no-overflow">
+						<!-- <div class="card product-card fill-white radius-25 box-shadow-red no-overflow"> -->
+						<div class="card product-card fill-white radius-25 no-overflow">
 							<a class="block" href="{{ product.url }}">
 								{% if product.featured_image %}
 								<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ product.featured_image | img_url: 'medium' }}');"></div>
@@ -42,17 +43,29 @@
 											{% endif %}
 										{% endfor %}
 
-										{% if fav == true %}
+										{% if fav == true %} 
+
+										{% comment %}
 											<button class="button block fill-dark box-shadow-red" data-product-id="{{ product.id }}">
+										{% endcomment %}
+											<button class="button block fill-dark" data-product-id="{{ product.id }}">
 												Remove
 											</button>
-										{% else %}
+										{% else %} 
+
+										{% comment %}
 											<button class="button block fill-dark box-shadow-red" data-product-id="{{ product.id }}">
+										{% endcomment %}
+											<button class="button block fill-dark" data-product-id="{{ product.id }}">
 												Favourite
 											</button>
 										{% endif %}
-									{% else %}
+									{% else %} 
+
+									{% comment %}
 										<a class="button block fill-dark box-shadow-red" href="{{ routes.account_login_url }}" class="wishlist-button">
+									{% endcomment %}
+										<a class="button block fill-dark" href="{{ routes.account_login_url }}" class="wishlist-button">
 											Wishlist
 										</a>
 									{% endif %}
@@ -63,10 +76,16 @@
 									{% elsif product.available %}
 										<form action="/cart/add" method="post" enctype="multipart/form-data">
 											<input type="hidden" name="id" value="{{ product.variants.first.id }}">
+											{% comment %}
 											<button class="button block fill-red text-white box-shadow-black" type="submit">Add to Cart</button>
+											{% endcomment %}
+											<button class="button block fill-red text-white" type="submit">Add to Cart</button>
 										</form>
 									{% else %}
+										{% comment %}
 										<a class="button block fill-red text-white box-shadow-black" href="{{ product.url }}">Pre-order</a>
+										{% endcomment %}
+										<a class="button block fill-red text-white" href="{{ product.url }}">Pre-order</a>
 									{% endif %}
 								</div>
 							</div>
