@@ -125,6 +125,7 @@
 		font-size: var(--label);
 	}
 	.header-section .header .header-actions .icon-button i {
+/*		font-size: var(--h5);*/
 		font-size: var(--h5);
 	}
 
@@ -139,6 +140,7 @@
 		font-size: var(--label);
 	}
 	.header-section .header .header-actions .icon-button i {
+/*		font-size: var(--h5);*/
 		font-size: var(--h5);
 	}
 

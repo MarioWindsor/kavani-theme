@@ -125,7 +125,8 @@
 
 <!-- Contact Section -->
 <section id="contact-section" class="contact-section space-200-top-bottom">
-	<div class="container fade-up-animation">
+	<!-- <div class="container fade-up-animation"> -->
+	<div class="container">
 		<div class="row">
 			<div class="title-col columns small-12 medium-10 medium-offset-1">
 				<div class="title space-25">
@@ -180,7 +181,10 @@
 					<div class="form-field columns small-12 medium-6 space-25">
 						<label>
 							<span class="form-label invisible small strong text-uppercase inline space-min-bottom text-dark">Branch</span>
+							{% comment %}
 							<button type="submit" class="button fill-red text-white block text-left box-shadow-white-2" style="padding-left: var(--space-75);">Submit <span class="h5 line-height-one">&rarr;</span></button>
+							{% endcomment %}
+							<button type="submit" class="button fill-red text-white block text-left" style="padding-left: var(--space-75);">Submit <span class="h5 line-height-one">&rarr;</span></button>
 						</label>
 					</div>
 				</div>
@@ -210,7 +214,8 @@
 }	
 </style>
 <!-- Insta Section -->
-<section id="insta-section" class="insta-section space-100-top-bottom fade-up-animation">
+<!-- <section id="insta-section" class="insta-section space-100-top-bottom fade-up-animation"> -->
+<section id="insta-section" class="insta-section space-100-top-bottom">
 	<div class="container">
 		<div class="row">
 			<div class="columns small-12 medium-10 medium-offset-1 large-6 space-50-bottom">
@@ -234,18 +239,23 @@
 	<div class="blog-carousel">
 		<div class="row">
 			<div class="container">
-				<div class="columns small-12 text-center fade-in-animation slow">
+				<!-- <div class="columns small-12 text-center fade-in-animation slow"> -->
+				<div class="columns small-12 text-center">
 					<div class="h5 strong text-uppercase text-center space-50-bottom">Kavani Diaries</div>
 				</div>
 			</div>
 		</div>
 
 		<!-- Carousel -->
-		<div class="carousel fade fade-up-animation">
+		<!-- <div class="carousel fade fade-up-animation"> -->
+		<div class="carousel fade">
 			<div class="carousel-list">
 				{% for article in blogs.diaries.articles limit: 10 %}
 				<div class="carousel-list-item">
+					{% comment %}
 					<div class="card article-card fill-white radius-25 box-shadow-red no-overflow">
+					{% endcomment %}
+					<div class="card article-card fill-white radius-25 no-overflow">
 						<a class="block" href="{{ article.url }}">									
 							{% if article.image %}
 							<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ article.image | img_url: 'medium' }}');"></div>
@@ -280,7 +290,10 @@
 		<div class="row">
 			<div class="container">
 				<div class="columns small-12 text-center">
+					{% comment %}
 					<a href="{{ blogs.diaries.url }}" class="button fill-dark box-shadow-red text-white inline text-left">Explore All Stories</a>
+					{% endcomment %}
+					<a href="{{ blogs.diaries.url }}" class="button fill-dark text-white inline text-left">Explore All Stories</a>
 				</div>
 			</div>
 		</div>

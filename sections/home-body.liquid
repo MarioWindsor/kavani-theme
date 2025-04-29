@@ -2,9 +2,14 @@
 	{% case block.type %}
 		{% when "collection-banner" %}
 			<!-- Collection Section -->
+			{% comment %}
 			<section id="{{ block.settings.collection }}-banner" class="collection-section space-100-left-right space-100-top-bottom">
+			{% endcomment %}
+			<section id="{{ block.settings.collection }}-banner" class="collection-section space-150-top-bottom">
 				<!-- Video Embed -->
-				<div class="bg-video-embed radius-50 box-shadow-red">
+				<!-- <div class="bg-video-embed radius-50 box-shadow-red"> -->
+				<!-- <div class="bg-video-embed radius-25"> -->
+				<div class="bg-video-embed">
 					<iframe class="" src="https://www.youtube-nocookie.com/embed/{{ block.settings.video-id }}?playlist={{ block.settings.video-id }}&html5=1&color=white&disablekb=0&fs=0&autoplay=1&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				</div>
 				<!-- END: Video Embed -->
@@ -24,17 +29,20 @@
 			<!-- Collection Items List Section -->
 			<section id="{{ block.settings.collection }}-items-list" class="collection-items-list-section space-100-top no-overflow-clip">
 				<div class="product-carousel">
-					<div class="h5 strong text-uppercase text-center space-50-bottom fade-in-animation slow">{{ block.settings.title }}</div>
+					<!-- <div class="h5 strong text-uppercase text-center space-50-bottom fade-in-animation slow">{{ block.settings.title }}</div> -->
+					<div class="h5 strong text-uppercase text-center space-50-bottom slow">{{ block.settings.title }}</div>
 
 					<!-- Carousel -->
-					<div class="carousel fade  slide-in-left-animation">
+					<!-- <div class="carousel fade  slide-in-left-animation"> -->
+					<div class="carousel fade">
 						<div class="carousel-list">
 						{% if block.settings.collection != blank %}
 							{% assign collection = collections[block.settings.collection] %}
 							{% if collection.products.size > 0 %}
 								{% for product in collection.products %}
 								<div class="carousel-list-item">
-									<div class="card product-card fill-white radius-25 box-shadow-red no-overflow">
+									<!-- <div class="card product-card fill-white radius-25 box-shadow-red no-overflow"> -->
+									<div class="card product-card fill-white radius-25 no-overflow">
 										<a class="block" href="{{ product.url }}">
 											{% if product.featured_image %}
 											<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ product.featured_image | img_url: 'medium' }}');"></div>
@@ -47,14 +55,18 @@
 										<div class="product-actions row space-25 no-whitespace">
 											<div class="wishlist columns small-6 space-25">
 												{% if customer %}
-													<button class="button block fill-dark box-shadow-red" data-product-id="{{ product.id }}">
+												{% comment %}
+													<!-- <button class="button block fill-dark box-shadow-red" data-product-id="{{ product.id }}"> -->
+												{% endcomment %}
+													<button class="button block fill-dark" data-product-id="{{ product.id }}">
 														Wishlist
 													</button>
 												{% else %}
 													{% comment %}
 													<a href="/account/login?checkout_url=/products/{{ product.handle }}" class="wishlist-button">
 													{% endcomment %}
-													<a class="button block fill-dark box-shadow-red" href="/account/" class="wishlist-button">
+													<!-- <a class="button block fill-dark box-shadow-red" href="/account/" class="wishlist-button"> -->
+													<a class="button block fill-dark" href="/account/" class="wishlist-button">
 														Wishlist
 													</a>
 												{% endif %}
@@ -65,10 +77,16 @@
 												{% elsif product.available %}
 													<form action="/cart/add" method="post" enctype="multipart/form-data">
 														<input type="hidden" name="id" value="{{ product.variants.first.id }}">
+														{% comment %}
 														<button class="button block fill-red text-white box-shadow-black" type="submit">Add to Cart</button>
+														{% endcomment %}
+														<button class="button block fill-red text-white" type="submit">Add to Cart</button>
 													</form>
 												{% else %}
+													{% comment %}
 													<a class="button block fill-red text-white box-shadow-black" href="{{ product.url }}">Pre-order</a>
+													{% endcomment %}
+													<a class="button block fill-red text-white" href="{{ product.url }}">Pre-order</a>
 												{% endif %}
 											</div>
 

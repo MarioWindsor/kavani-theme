@@ -35,7 +35,8 @@
 	--white: rgb(var(---white));
 /*	---light: 250,240,220;*/
 /*	---light: 255,240,250;*/
-	---light: 255,245,245;
+/*	---light: 255,245,245;*/
+	---light: 242,233,228;
 	--light: rgb(var(---light));
 	--neutral-1: #E1DFE3;
 	--neutral-2: #C6C4C8;
@@ -44,15 +45,18 @@
 	--neutral-5: #747377;
 	--neutral-6: #59585C;
 	--neutral-7: #3E3D41;
-	---dark: 33,44,55;
+/*	---dark: 33,44,55;*/
+	---dark: 33,06,03;
 	--dark: rgb(var(---dark));
 	---black: 0,0,0;
 	--black: rgb(var(---black));
 /*	---red: 250,50,50;*/
-	---red: 195,55,70;
+/*	---red: 195,55,70;*/
+	---red: 91,17,8;
 	--red: rgb(var(---red));
 /*	---orange: 250,200,150;*/
-	---orange: 225,205,200;
+/*	---orange: 225,205,200;*/
+	---orange: 226,214,207;
 	--orange: rgb(var(---orange));
 	--yellow: #FFEB3B;
 	--green: #1FCD46;
