@@ -20,18 +20,18 @@
       "home-body": {
         "type": "home-body",
         "blocks": {
-          "collection_banner_HJDYhC": {
-            "type": "collection-banner",
-            "settings": {
-              "title": "Wedding Gowns",
-              "video-id": "eRQKZH-RYUA",
-              "collection": ""
-            }
-          },
           "collection_banner_tcVzxm": {
             "type": "collection-banner",
             "settings": {
               "title": "Wedding Sarees",
+              "video-id": "eRQKZH-RYUA",
+              "collection": ""
+            }
+          },
+          "collection_banner_HJDYhC": {
+            "type": "collection-banner",
+            "settings": {
+              "title": "Wedding Gowns",
               "video-id": "eRQKZH-RYUA",
               "collection": ""
             }
@@ -73,8 +73,8 @@
           }
         },
         "block_order": [
-          "collection_banner_HJDYhC",
           "collection_banner_tcVzxm",
+          "collection_banner_HJDYhC",
           "product_carousel_H4VBKB",
           "collection_banner_hFQMxE",
           "collection_banner_ybNhMN",
