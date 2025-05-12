@@ -19,68 +19,6 @@
       },
       "home-body": {
         "type": "home-body",
-        "blocks": {
-          "collection_banner_HJDYhC": {
-            "type": "collection-banner",
-            "settings": {
-              "title": "Wedding Gowns",
-              "video-id": "eRQKZH-RYUA",
-              "collection": ""
-            }
-          },
-          "collection_banner_tcVzxm": {
-            "type": "collection-banner",
-            "settings": {
-              "title": "Wedding Sarees",
-              "video-id": "eRQKZH-RYUA",
-              "collection": ""
-            }
-          },
-          "product_carousel_H4VBKB": {
-            "type": "product-carousel",
-            "settings": {
-              "title": "New Arrivals",
-              "collection": "sale"
-            }
-          },
-          "collection_banner_hFQMxE": {
-            "type": "collection-banner",
-            "settings": {
-              "title": "New Collection",
-              "video-id": "eRQKZH-RYUA",
-              "collection": "wedding-sarees-summer-2025"
-            }
-          },
-          "collection_banner_ybNhMN": {
-            "type": "collection-banner",
-            "settings": {
-              "title": "Spring Collection 2025",
-              "video-id": "eRQKZH-RYUA",
-              "collection": ""
-            }
-          },
-          "location_8rVyHH": {
-            "type": "location",
-            "settings": {}
-          },
-          "collection_banner_ErHPFd": {
-            "type": "collection-banner",
-            "settings": {
-              "title": "Autumn Collection 2024",
-              "video-id": "eRQKZH-RYUA",
-              "collection": ""
-            }
-          }
-        },
-        "block_order": [
-          "collection_banner_HJDYhC",
-          "collection_banner_tcVzxm",
-          "product_carousel_H4VBKB",
-          "collection_banner_hFQMxE",
-          "collection_banner_ybNhMN",
-          "location_8rVyHH",
-          "collection_banner_ErHPFd"
-        ],
         "settings": {}
       },
       "footer": {
