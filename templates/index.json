@@ -106,9 +106,9 @@
       "type": "collection-banner",
       "name": "Collection Banner",
       "settings": {
-        "title": "Collection Name",
+        "title": "Cosmic Bloom 2025",
         "title_size": "h5",
-        "collection": "",
+        "collection": "sale",
         "button_text": "Explore Collection",
         "background_type": "video",
         "video_id": "eRQKZH-RYUA",
