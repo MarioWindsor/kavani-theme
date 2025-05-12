@@ -1,0 +1,34 @@
+{
+	"sections": {
+		"collection_banner": {
+			"type": "collection-banner"
+		},
+		"quote_text": {
+			"type": "quote-text"
+		},
+		"collection_carousel": {
+			"type": "collection-carousel"
+		},
+		"store_location": {
+			"type": "store-location"
+		},
+		"contact_form": {
+			"type": "contact-form"
+		},
+		"instagram_feed": {
+			"type": "instagram-feed"
+		},
+		"articles_carousel": {
+			"type": "articles-carousel"
+		}
+	},
+	"order": [
+		"collection_banner",
+		"quote_text",
+		"collection_carousel",
+		"store_location",
+		"contact_form",
+		"instagram_feed",
+		"articles_carousel"
+	]
+}

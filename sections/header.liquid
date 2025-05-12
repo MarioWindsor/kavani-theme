@@ -1,7 +1,7 @@
 <input type="checkbox" id="menu-checkbox" class="menu-checkbox hidden">
 <div class="header row clearfix">
 	<!-- Logo -->
-	<div class="logo columns small-6 medium-4 large-3 xlarge-2 inline-middle">
+	<div class="logo columns small-6 medium-4 large-2 inline-middle">
 		<a href="{{ shop.url }}">
 			{% if settings.logo %}
 				<img class="block" src="{{ settings.logo | image_url }}" alt="{{ shop.name }}">
@@ -12,7 +12,7 @@
 	</div>
 	<!-- END: Logo -->
 	<!-- Navigation -->
-	<nav class="main-menu columns small-12 large-7 xlarge-8 inline-middle">
+	<nav class="main-menu columns small-12 large-8 inline-middle">
 		<ul class="menu">
 		  {% for link in section.settings.menu.links %}
 		    <li class="menu-link">
@@ -59,12 +59,8 @@
 		<div class="user">
 			{% if customer %}
 				<a class="space-25 icon-button" href="{{ routes.account_url }}"><i class='bx bx-user-circle h3 text-dark' ></i><span class="visuallyhidden">Account</span></a>			
-				<!-- <a href="/account">Account</a> -->
-				<!-- <a href="/account/logout">Logout</a> -->
 			{% else %}
 				<a class="space-25 icon-button" href="{{ routes.account_login_url }}"><i class='bx bx-user-circle h3 text-dark' ></i><span class="visuallyhidden">Login</span></a>			
-				<!-- <a href="/account/login">Login</a> -->
-				<!-- <a href="/account/register">Register</a> -->
 			{% endif %}
 		</div>
 		<!-- END: User -->
@@ -72,12 +68,8 @@
 		<div class="wishlist">
 			{% if customer %}
 				<a class="space-25 icon-button" href="/pages/wishlist"><i class='bx bx-heart h3 text-dark' ></i><span class="visuallyhidden">Account</span></a>			
-				<!-- <a href="/account">Account</a> -->
-				<!-- <a href="/account/logout">Logout</a> -->
 			{% else %}
 				<a class="space-25 icon-button" href="{{ routes.account_login_url }}"><i class='bx bx-heart h3 text-dark' ></i><span class="visuallyhidden">Login</span></a>			
-				<!-- <a href="/account/login">Login</a> -->
-				<!-- <a href="/account/register">Register</a> -->
 			{% endif %}
 		</div>
 		<!-- END: User -->

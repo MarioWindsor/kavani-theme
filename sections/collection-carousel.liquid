@@ -1,0 +1,67 @@
+<section class="collection-carousel-section space-250-top no-overflow-clip">
+	<div class="product-carousel">
+		<div class="heading {{ section.settings.title_size }} strong text-uppercase text-center space-50-bottom slow">{{ section.settings.title }}</div>
+		<div class="carousel fade">
+			<div class="carousel-list fill-white">
+			{% if section.settings.collection != blank %}
+				{% assign collection = collections[section.settings.collection] %}
+				{% if collection.products.size > 0 %}
+					{% for product in collection.products %}
+					<div class="carousel-list-item">
+						{% render 'product-card', product: product %}
+					</div>
+					{% endfor %}
+				{% else %}
+					<div class="label space-100">No products found in this collection.</div>
+				{% endif %}
+			{% else %}
+				<div class="label space-100">Please select a collection in the theme settings.</div>
+			{% endif %}
+			</div>
+			<div class="carousel-controls row">
+				<div class="container">
+					<div class="columns small-12 text-center">
+						<div class="scroll-button scroll-left inline" data-dir="left" tabindex="-1"><i class='bx bx-left-arrow-alt text-red h3' ></i></div>
+						<div class="scroll-button scroll-right inline" data-dir="right" tabindex="-1"><i class='bx bx-right-arrow-alt text-red h3' ></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "Collection Carousel",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Heading Title",
+			"default": "Collection Name"
+		},
+		{
+			"type": "select",
+			"id": "title_size",
+			"label": "Heading Size",
+			"options": [
+				{ "value": "h6", "label": "Small" },
+				{ "value": "h5", "label": "Medium" },
+				{ "value": "h4", "label": "Large" },
+				{ "value": "h3", "label": "xLarge" }
+			],
+			"default": "h5"
+		},
+		{
+			"type": "collection",
+			"id": "collection",
+			"label": "Collection to Link",
+		}
+	],
+	"presets": [
+		{
+			"name": "Collection Carousel"
+		}
+	]
+}
+{% endschema %}

@@ -189,54 +189,7 @@
 				{% for related_product in first_collection.products | limit : 6 %}
 					{% unless related_product.handle == product.handle %}
 					<div class="carousel-list-item">
-						<!-- <div class="card product-card fill-white radius-25 box-shadow-red no-overflow"> -->
-						<div class="card product-card fill-white no-overflow">
-							<a class="block" href="{{ related_product.url }}">
-								{% if related_product.featured_image %}
-								<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ related_product.featured_image | img_url: 'medium' }}');"></div>
-								{% endif %}
-								<!-- <div class="text-center space-75-top space-75-left-right"> -->
-								{% comment %}
-								<div class="text-center space-50">
-									<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ related_product.title }}</div>
-									<div class="price label text-red strong">{{ related_product.price | money }}/-</div>
-								</div>
-								{% endcomment %}
-								<div class="text-center space-50">
-									<div class="title p text-uppercase no-overflow-text space-min-bottom">{{ related_product.title }}</div>
-									<div class="price small text-red strong">{{ related_product.price | money }}/-</div>
-								</div>
-							</a>
-							<div class="product-actions row space-25 no-whitespace hidden">
-								<div class="wishlist columns small-6 space-25">
-									{% if customer %}
-										<button class="button block fill-dark box-shadow-red" data-product-id="{{ related_product.id }}">
-											Wishlist
-										</button>
-									{% else %}
-										{% comment %}
-										<a href="/account/login?checkout_url=/products/{{ related_product.handle }}" class="wishlist-button">
-										{% endcomment %}
-										<a class="button block fill-dark box-shadow-red" href="/account/" class="wishlist-button">
-											Wishlist
-										</a>
-									{% endif %}
-								</div>
-								<div class="cart columns small-6 space-25">
-									{% if related_product.variants.size > 1 %}
-										<a class="button block fill-red text-white" href="{{ related_product.url }}">Options</a>
-									{% elsif related_product.available %}
-										<form action="/cart/add" method="post" enctype="multipart/form-data">
-											<input type="hidden" name="id" value="{{ related_product.variants.first.id }}">
-											<button class="button block fill-red text-white box-shadow-black" type="submit">Add to Cart</button>
-										</form>
-									{% else %}
-										<a class="button block fill-red text-white box-shadow-black" href="{{ related_product.url }}">Pre-order</a>
-									{% endif %}
-								</div>
-
-							</div>
-						</div>
+						{% render 'product-card', product: related_product %}
 					</div>
 					{% endunless %}
 				{% endfor %}
@@ -266,54 +219,7 @@
 				{% for related_product in first_collection.products | limit : 6 %}
 					{% unless related_product.handle == product.handle %}
 					<div class="carousel-list-item">
-						<!-- <div class="card product-card fill-white radius-25 box-shadow-red no-overflow"> -->
-						<div class="card product-card fill-white no-overflow">
-							<a class="block" href="{{ related_product.url }}">
-								{% if related_product.featured_image %}
-								<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ related_product.featured_image | img_url: 'medium' }}');"></div>
-								{% endif %}
-								<!-- <div class="text-center space-75-top space-75-left-right"> -->
-								{% comment %}
-								<div class="text-center space-50">
-									<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ related_product.title }}</div>
-									<div class="price label text-red strong">{{ related_product.price | money }}/-</div>
-								</div>
-								{% endcomment %}
-								<div class="text-center space-50">
-									<div class="title p text-uppercase no-overflow-text space-min-bottom">{{ related_product.title }}</div>
-									<div class="price small text-red strong">{{ related_product.price | money }}/-</div>
-								</div>
-							</a>
-							<div class="product-actions row space-25 no-whitespace hidden">
-								<div class="wishlist columns small-6 space-25">
-									{% if customer %}
-										<button class="button block fill-dark box-shadow-red" data-product-id="{{ related_product.id }}">
-											Wishlist
-										</button>
-									{% else %}
-										{% comment %}
-										<a href="/account/login?checkout_url=/products/{{ related_product.handle }}" class="wishlist-button">
-										{% endcomment %}
-										<a class="button block fill-dark box-shadow-red" href="/account/" class="wishlist-button">
-											Wishlist
-										</a>
-									{% endif %}
-								</div>
-								<div class="cart columns small-6 space-25">
-									{% if related_product.variants.size > 1 %}
-										<a class="button block fill-red text-white" href="{{ related_product.url }}">Options</a>
-									{% elsif related_product.available %}
-										<form action="/cart/add" method="post" enctype="multipart/form-data">
-											<input type="hidden" name="id" value="{{ related_product.variants.first.id }}">
-											<button class="button block fill-red text-white box-shadow-black" type="submit">Add to Cart</button>
-										</form>
-									{% else %}
-										<a class="button block fill-red text-white box-shadow-black" href="{{ related_product.url }}">Pre-order</a>
-									{% endif %}
-								</div>
-
-							</div>
-						</div>
+						{% render 'product-card', product: related_product %}
 					</div>
 					{% endunless %}
 				{% endfor %}
