@@ -37,7 +37,8 @@
         "title_size": "h5",
         "collection": "sale",
         "button_text": "Explore Collection",
-        "background_type": "video",
+        "background_type": "image",
+        "background_image": "shopify://shop_images/IMG_2545.png",
         "video_id": "eRQKZH-RYUA",
         "is_intro": false
       }
