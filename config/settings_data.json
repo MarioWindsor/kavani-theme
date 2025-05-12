@@ -17,10 +17,6 @@
           "menu": "main-menu"
         }
       },
-      "home-body": {
-        "type": "home-body",
-        "settings": {}
-      },
       "footer": {
         "type": "footer",
         "settings": {
