@@ -1,34 +1,66 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-	"sections": {
-		"collection_banner": {
-			"type": "collection-banner"
-		},
-		"quote_text": {
-			"type": "quote-text"
-		},
-		"collection_carousel": {
-			"type": "collection-carousel"
-		},
-		"store_location": {
-			"type": "store-location"
-		},
-		"contact_form": {
-			"type": "contact-form"
-		},
-		"instagram_feed": {
-			"type": "instagram-feed"
-		},
-		"articles_carousel": {
-			"type": "articles-carousel"
-		}
-	},
-	"order": [
-		"collection_banner",
-		"quote_text",
-		"collection_carousel",
-		"store_location",
-		"contact_form",
-		"instagram_feed",
-		"articles_carousel"
-	]
+  "sections": {
+    "collection_banner": {
+      "type": "collection-banner",
+      "settings": {
+        "title": "My Wedding My Way",
+        "title_size": "h3",
+        "collection": "",
+        "button_text": "Explore Collection",
+        "background_type": "image",
+        "background_image": "shopify://shop_images/IMG_2538.png",
+        "video_id": "eRQKZH-RYUA",
+        "is_intro": true
+      }
+    },
+    "quote_text": {
+      "type": "quote-text",
+      "settings": {
+        "title": "Pioneers in Christian Wedding Dresses &amp; Sarees",
+        "title_size": "p"
+      }
+    },
+    "collection_carousel": {
+      "type": "collection-carousel",
+      "settings": {
+        "title": "Collection Name",
+        "title_size": "h5",
+        "collection": ""
+      }
+    },
+    "store_location": {
+      "type": "store-location",
+      "settings": {}
+    },
+    "contact_form": {
+      "type": "contact-form",
+      "settings": {}
+    },
+    "instagram_feed": {
+      "type": "instagram-feed",
+      "settings": {}
+    },
+    "articles_carousel": {
+      "type": "articles-carousel",
+      "settings": {}
+    }
+  },
+  "order": [
+    "collection_banner",
+    "quote_text",
+    "collection_carousel",
+    "store_location",
+    "contact_form",
+    "instagram_feed",
+    "articles_carousel"
+  ]
 }
