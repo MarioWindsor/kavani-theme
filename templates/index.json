@@ -100,10 +100,6 @@
         "collection": "wedding-sarees-summer-2025"
       }
     },
-    "store_location": {
-      "type": "store-location",
-      "settings": {}
-    },
     "collection_banner_rpmJiK": {
       "type": "collection-banner",
       "name": "Collection Banner",
@@ -117,6 +113,10 @@
         "video_id": "eRQKZH-RYUA",
         "is_intro": false
       }
+    },
+    "store_location": {
+      "type": "store-location",
+      "settings": {}
     },
     "contact_form": {
       "type": "contact-form",
@@ -140,8 +140,8 @@
     "collection_banner_cTQ4Uh",
     "collection_banner_MC6pR8",
     "collection_carousel_warJmk",
-    "store_location",
     "collection_banner_rpmJiK",
+    "store_location",
     "contact_form",
     "instagram_feed",
     "articles_carousel"
