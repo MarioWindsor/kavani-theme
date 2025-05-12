@@ -1,0 +1,329 @@
+<style>
+@media( max-width: 639px )  {
+	.intro-section .bg-video-embed {
+		padding-top: 125%;
+	}
+	.intro-section .bg-video-embed iframe {
+		width: 190%;
+        transform: translateY(-50%);
+        left: -45%;
+	}
+}
+
+@media( min-width: 640px )  {
+	.intro-section .heading {
+		font-size: var(--h3);
+	}
+}
+</style>
+
+<!-- Intro Section -->
+<section id="intro-section" class="collection-section intro-section" style="margin-bottom: var(--space-100);">
+	<!-- Video Embed -->
+	<div class="bg-video-embed">
+		<iframe class="" src="https://www.youtube-nocookie.com/embed/0bt-4ooAu_M?playlist=0bt-4ooAu_M&html5=1&color=white&disablekb=0&fs=0&autoplay=1&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	</div>
+	<!-- END: Video Embed -->
+	<div class="collection-section-content">
+		<div class="container text-center">
+			<div class="row">
+				<div class="columns small-12 large-10">
+					<div class="heading h1 strong text-uppercase text-white space-250-top space-50-left-right" style="letter-spacing: calc( var(--p)*0.5);">My Wedding<br class="hide-large hide-xlarge"> My Way</div>
+					<i class='bx bx-chevrons-down bx-fade-down h2 text-red'></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Intro Section -->
+
+<section class="row">
+	<div class="container">
+		<div class="columns small-10 small-offset-1 heading p strong text-center space-100-top space-50-bottom space-50-left-right">Pioneers in Christian Wedding Dresses &amp; Sarees</div>
+	</div>
+</section>
+
+
+{% section 'home-body' %}
+
+
+<style>
+
+.contact-section {
+	position: relative;
+	z-index: 1;
+}
+
+.contact-section .title-col {
+	position: relative;
+	z-index: 5;
+}
+
+.contact-section .form-col {
+	position: relative;
+	z-index: 1;
+}
+
+.contact-section .form-col .contact-form {
+	position: relative;
+	z-index: 5;
+}
+
+.contact-section .form-col:before {
+	content: '';
+	display: block;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: var(--space-200);
+	bottom: var(--space-200);
+	box-shadow: 0 0 0 var(--space-min) var(--orange);
+	transform: translate(calc(var(--space-75)*-1), calc(var(--space-75)*-1));
+	border-radius: var(--space-min);
+}
+
+@media( min-width: 640px )  {
+	.contact-section .form-col:before {
+		transform: translate(calc(var(--space-150)*-1), calc(var(--space-75)*-1));
+	}
+
+	.contact-section .form-col:after {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: calc(var(--space-200)*5);
+		right: var(--space-200);
+		bottom: 0;
+		background-color: rgba(var(---orange), 0.3);
+		transform: translate(calc(var(--space-100)*6), calc(var(--space-100)*3));
+		border-radius: var(--space-min);
+		background-image: url('{{ 'floral-bg-01.png' | asset_url }}'); background-position: bottom center; background-size: cover; background-repeat: no-repeat; background-attachment: fixed;
+	}
+}
+@media( min-width: 1040px ) {
+	.contact-section {
+/*		padding-top: var(--space-200);*/
+	}
+
+	.contact-section .title-col {
+		position: absolute;
+		width: auto;
+		top: calc(var(--space-100)*-0.5);
+		left: calc(var(--space-100)*-2.75);
+		text-align: right;
+		transform: rotate(-90deg) translate(-100%, 0);
+		transform-origin: top left;
+	}
+
+	.contact-section .title-col .title .h1 {
+		font-size: var(--h2);
+	}
+
+	.contact-section .title-col .title .label {
+		font-size: var(--h6);
+	}
+
+	.contact-section .form-col:before {
+		transform: translate(calc(var(--space-100)*-3), calc(var(--space-100)*-1.5));
+	}
+
+	.contact-section .form-col:after {
+		left: 0;
+		transform: translate(calc(var(--space-100)*12), calc(var(--space-100)*3));
+	}
+}
+@media( min-width: 1480px ) {
+	.contact-section .form-col:before {
+		transform: translate(calc(var(--space-100)*-3.5), calc(var(--space-100)*-1.5));
+	}
+
+	.contact-section .form-col:after {
+		transform: translate(calc(var(--space-100)*14), calc(var(--space-100)*3));
+	}
+}
+
+</style>
+
+
+<!-- Contact Section -->
+<section id="contact-section" class="contact-section space-200-top-bottom">
+	<!-- <div class="container fade-up-animation"> -->
+	<div class="container">
+		<div class="row">
+			<div class="title-col columns small-12 medium-10 medium-offset-1">
+				<div class="title space-25">
+					<div class="h1 text-uppercase line-height-one space-25-left-right space-25-bottom fill-light">Get in Touch</div>
+					<div class="label inline strong text-uppercase space-25-left-right space-min-bottom fill-light">Schedule a Consultation or Visit</div>
+				</div>
+			</div>
+			<div class="form-col columns small-12 medium-10 medium-offset-1 large-7 large-offset-2">
+				<div class="contact-form row space-75 fill-orange box-border-dark radius-25">
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Full Name</span>
+							<input type="text" class="input-field block">
+						</label>
+					</div>
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Email ID</span>
+							<input type="text" class="input-field block">
+						</label>
+					</div>
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Phone Number</span>
+							<input type="text" class="input-field block">
+						</label>
+					</div>
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Country</span>
+							<input type="text" class="input-field block">
+						</label>
+					</div>
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Wedding Date</span>
+							<input type="text" class="input-field block">
+						</label>
+					</div>
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Branch</span>
+							<input type="text" class="input-field block">
+						</label>
+					</div>
+					<div class="form-field columns small-12 space-25">
+						<label>
+							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Your Requirement</span>
+							<textarea name="" id="" class="input-field block" rows="4"></textarea>
+						</label>
+					</div>
+					<div class="form-field columns small-12 medium-6 space-25">
+						<label>
+							<span class="form-label invisible small strong text-uppercase inline space-min-bottom text-dark">Branch</span>
+							{% comment %}
+							<button type="submit" class="button fill-red text-white block text-left box-shadow-white-2" style="padding-left: var(--space-75);">Submit <span class="h5 line-height-one">&rarr;</span></button>
+							{% endcomment %}
+							<button type="submit" class="button fill-red text-white block text-left" style="padding-left: var(--space-75);">Submit <span class="h5 line-height-one">&rarr;</span></button>
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Contact Section -->
+
+
+
+<style>
+.insta-section {}
+.insta-section .handle {
+	transform: translateX(calc(var(--space-50)*-1)) scale(1.25);
+	transform-origin: bottom left;
+	filter: brightness(0.97);
+}
+
+@media( min-width: 1040px ) {
+	.insta-section .title { font-size: var(--h2); }
+	.insta-section .description { font-size: var(--h6); }
+	.insta-section .handle {
+		font-size: var(--h2);
+		transform: translateX(calc(var(--space-100)*-1)) scale(1.75);
+	}
+}	
+</style>
+<!-- Insta Section -->
+<!-- <section id="insta-section" class="insta-section space-100-top-bottom fade-up-animation"> -->
+<section id="insta-section" class="insta-section space-100-top-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="columns small-12 medium-10 medium-offset-1 large-6 space-50-bottom">
+				<div class="handle inline h1 strong em text-orange space-25-top-bottom line-height-one">@kavani_bridals</div>
+				<div class="title h1 text-uppercase line-height-one space-min-bottom">Follow the Gram</div>
+				<div class="description p text-uppercase strong">For more wedding vibes, stay in the loop</div>
+			</div>
+		</div>
+	</div>
+	<div class="space-100-left-right">
+		<div id="insta-feed"></div>
+	</div>
+</section>
+<!-- END: Insta Section -->
+
+
+
+<!-- Blog Section -->
+{% if blogs.diaries.articles.size > 0 %}
+<section id="blog-section" class="blog-section space-100-top no-overflow-clip">
+	<div class="blog-carousel">
+		<div class="row">
+			<div class="container">
+				<!-- <div class="columns small-12 text-center fade-in-animation slow"> -->
+				<div class="columns small-12 text-center">
+					<div class="h5 strong text-uppercase text-center space-50-bottom">Kavani Diaries</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Carousel -->
+		<!-- <div class="carousel fade fade-up-animation"> -->
+		<div class="carousel fade">
+			<div class="carousel-list box-shadow-red fill-white">
+				{% for article in blogs.diaries.articles limit: 10 %}
+				<div class="carousel-list-item">
+					{% comment %}
+					<div class="card article-card fill-white radius-25 box-shadow-red no-overflow">
+					{% endcomment %}
+					<!-- <div class="card article-card fill-white radius-25 no-overflow"> -->
+					<div class="card article-card fill-white no-overflow">
+						<a class="block" href="{{ article.url }}">									
+							{% if article.image %}
+							<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ article.image | img_url: 'medium' }}');"></div>
+							{% endif %}
+							<div class="space-75">
+								<div class="title p strong text-red text-uppercase space-min-bottom">{{ article.title }}</div>
+								<div class="date small text-neutral-3 space-min-bottom">{{ article.published_at | date: '%B %d, %Y' }}</div>
+								<div class="summary label strong text-neutral-6 space-25-bottom">
+									{% if article.excerpt != blank %}
+										{{ article.excerpt }}
+									{% else %}
+										{{ article.content | strip_html | truncatewords: 35 }} 
+									{% endif %}
+								</div>
+								<!-- <div class="cta label strong text-red text-uppercase">View Post <span class="h6 line-height-one">&rarr;</span></div> -->
+							</div>
+						</a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="carousel-controls row">
+				<div class="container">
+					<div class="columns small-12 text-center">
+						<div class="scroll-button scroll-left inline" data-dir="left" tabindex="-1"><i class='bx bx-left-arrow-alt text-red h3' ></i></div>
+						<div class="scroll-button scroll-right inline" data-dir="right" tabindex="-1"><i class='bx bx-right-arrow-alt text-red h3' ></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="container">
+				<div class="columns small-12 text-center">
+					{% comment %}
+					<a href="{{ blogs.diaries.url }}" class="button fill-dark box-shadow-red text-white inline text-left">Explore All Stories</a>
+					{% endcomment %}
+					<a href="{{ blogs.diaries.url }}" class="button fill-dark text-white inline text-left">Explore All Stories</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endif %}
+<!-- END: Blog Section -->

@@ -12,7 +12,7 @@
 	width: 100%;
 	height: auto;
 	background: rgba(var(---light), 0.7);
-/*	box-shadow: 0 0 3px 1px rgba(var(---orange), 0.25), 0 0 12px 4px rgba(var(---red), 0.25);*/
+	box-shadow: 0 0 3px 1px rgba(var(---orange), 0.25), 0 0 12px 4px rgba(var(---red), 0.25);
 	backdrop-filter: blur(7px);
 	-webkit-backdrop-filter: blur(7px);
 }
@@ -94,8 +94,7 @@
 
 @media( min-width: 1040px ) {
 	.header-section .header .logo {
-/*		padding-right: var(--space-150);*/
-		padding-right: var(--space-50);
+		padding-right: var(--space-150);
 	}
 
 	.header-section .header:after,
