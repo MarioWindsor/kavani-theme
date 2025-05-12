@@ -74,7 +74,7 @@
         "collection": "sale",
         "button_text": "Explore Collection",
         "background_type": "video",
-        "video_id": "eRQKZH-RYUA",
+        "video_id": "M9_qcfCqM9c",
         "is_intro": false
       }
     },
@@ -112,7 +112,8 @@
         "title_size": "h5",
         "collection": "sale",
         "button_text": "Explore Collection",
-        "background_type": "video",
+        "background_type": "image",
+        "background_image": "shopify://shop_images/IMG_2539.png",
         "video_id": "eRQKZH-RYUA",
         "is_intro": false
       }
