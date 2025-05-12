@@ -29,17 +29,91 @@
         "title_size": "p"
       }
     },
-    "collection_carousel": {
-      "type": "collection-carousel",
+    "collection_banner_K7JrAQ": {
+      "type": "collection-banner",
+      "name": "Collection Banner",
+      "settings": {
+        "title": "Wedding Sarees",
+        "title_size": "h5",
+        "collection": "sale",
+        "button_text": "Explore Collection",
+        "background_type": "video",
+        "video_id": "eRQKZH-RYUA",
+        "is_intro": false
+      }
+    },
+    "collection_banner_QaUEXr": {
+      "type": "collection-banner",
+      "name": "Collection Banner",
       "settings": {
         "title": "Collection Name",
         "title_size": "h5",
-        "collection": ""
+        "collection": "",
+        "button_text": "Explore Collection",
+        "background_type": "video",
+        "video_id": "eRQKZH-RYUA",
+        "is_intro": false
+      }
+    },
+    "collection_carousel": {
+      "type": "collection-carousel",
+      "settings": {
+        "title": "New Arrival",
+        "title_size": "h5",
+        "collection": "sale"
+      }
+    },
+    "collection_banner_cTQ4Uh": {
+      "type": "collection-banner",
+      "name": "Collection Banner",
+      "settings": {
+        "title": "Collection Name",
+        "title_size": "h5",
+        "collection": "",
+        "button_text": "Explore Collection",
+        "background_type": "video",
+        "video_id": "eRQKZH-RYUA",
+        "is_intro": false
+      }
+    },
+    "collection_banner_MC6pR8": {
+      "type": "collection-banner",
+      "name": "Collection Banner",
+      "settings": {
+        "title": "Collection Name",
+        "title_size": "h5",
+        "collection": "",
+        "button_text": "Explore Collection",
+        "background_type": "video",
+        "video_id": "eRQKZH-RYUA",
+        "is_intro": false
+      }
+    },
+    "collection_carousel_warJmk": {
+      "type": "collection-carousel",
+      "name": "Collection Carousel",
+      "settings": {
+        "title": "New Arrivals",
+        "title_size": "h5",
+        "collection": "wedding-sarees-summer-2025"
       }
     },
     "store_location": {
       "type": "store-location",
       "settings": {}
+    },
+    "collection_banner_rpmJiK": {
+      "type": "collection-banner",
+      "name": "Collection Banner",
+      "settings": {
+        "title": "Collection Name",
+        "title_size": "h5",
+        "collection": "",
+        "button_text": "Explore Collection",
+        "background_type": "video",
+        "video_id": "eRQKZH-RYUA",
+        "is_intro": false
+      }
     },
     "contact_form": {
       "type": "contact-form",
@@ -57,8 +131,14 @@
   "order": [
     "collection_banner",
     "quote_text",
+    "collection_banner_K7JrAQ",
+    "collection_banner_QaUEXr",
     "collection_carousel",
+    "collection_banner_cTQ4Uh",
+    "collection_banner_MC6pR8",
+    "collection_carousel_warJmk",
     "store_location",
+    "collection_banner_rpmJiK",
     "contact_form",
     "instagram_feed",
     "articles_carousel"
