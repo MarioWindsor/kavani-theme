@@ -1,0 +1,42 @@
+<section class="row">
+	<div class="container">
+		<div class="columns small-10 small-offset-1 heading {{ section.settings.title_size }} strong text-center space-250-top space-100-left-right">{{ section.settings.title }}</div>
+	</div>
+</section>
+
+
+
+
+{% schema %}
+{
+	"name": "Quote Text",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Quote Text",
+			"default": "Pioneers in Christian Wedding Dresses &amp; Sarees"
+		},
+		{
+			"type": "select",
+			"id": "title_size",
+			"label": "Text Size",
+			"options": [
+				{ "value": "label", "label": "xxSmall" },
+				{ "value": "p", "label": "xSmall" },
+				{ "value": "h6", "label": "Small" },
+				{ "value": "h5", "label": "Medium" },
+				{ "value": "h4", "label": "Large" },
+				{ "value": "h3", "label": "xLarge" },
+				{ "value": "h2", "label": "xxLarge" }
+			],
+			"default": "p"
+		},
+	],
+	"presets": [
+		{
+			"name": "Quote Text"
+		}
+	]
+}
+{% endschema %}

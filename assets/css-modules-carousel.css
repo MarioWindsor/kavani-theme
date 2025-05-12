@@ -34,7 +34,9 @@
 	overflow-y: hidden;
 	font-size: 0;
 	-webkit-overflow-scrolling: touch;
-	padding: var(--space-50) calc((100vw - var(--container-width))/2 );
+/*	padding: var(--space-50) calc((100vw - var(--container-width))/2 );*/
+	padding: 0 calc((100vw - var(--container-width))/2 );
+	margin: var(--space-50) 0;
 	scroll-snap-type: x mandatory;
 	scrollbar-width: none;
     -ms-overflow-style: none;

@@ -1,0 +1,94 @@
+<style>
+
+.product-card { position: relative; }
+
+.product-card .thumbnail {
+	position: relative;
+	padding-top: 125%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.product-card .thumbnail .second-image {
+	position: absolute;
+	padding-top: 125%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	transition: .3s ease-out;
+}
+
+.product-card:hover .thumbnail .second-image,
+.product-card:focus-within .thumbnail .second-image {
+	opacity: 1;
+}
+
+.product-card .wishlist {
+	position: absolute;
+	top: var(--space-50);
+	right: var(--space-50);
+}
+.product-card .wishlist .icon-button {
+	position: relative;
+	width: var(--space-175);
+	height: var(--space-175);
+	border-radius: 100%;
+	background-color: rgba(var(---white), 0.666);
+	font-size: 0;
+}
+
+.product-card .wishlist .icon-button * { pointer-events: none; }
+
+.product-card .wishlist .icon-button i {
+	font-size: var(--h3);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -46%);
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {
+	.product-card .wishlist .icon-button {
+		width: var(--space-125);
+		height: var(--space-125);
+	}
+	.product-card .wishlist .icon-button i {
+		font-size: var(--h5);
+	}
+}
+@media( min-width: 1480px ) {}
+</style>
+
+<div class="card product-card fill-white no-overflow">
+	<a class="block" href="{{ product.url }}">
+		{% if product.featured_image %}
+		<div class="thumbnail block no-whitespace" style="background-image: url('{{ product.featured_image | img_url: 'large' }}');">
+			{% assign second_image = product.images[1] %}
+			{% if second_image != blank %}
+			<div class="second-image block no-whitespace" style="background-image: url('{{ second_image | img_url: 'large' }}');"></div>
+			{% endif %}
+		</div>
+		{% endif %}
+		<div class="text-center space-75">
+			<div class="title label text-uppercase space-min-bottom no-overflow-text">{{ product.title }}</div>
+			<div class="price small text-red strong">{{ product.price | money }}/-</div>
+		</div>
+	</a>
+	<div class="wishlist">
+		{% if customer %}
+			<a class="icon-button" href="/pages/wishlist"><i class='bx bx-heart text-red' ></i><span class="visuallyhidden">Wishlist</span></a>
+		{% else %}
+			<a class="icon-button" href="{{ routes.account_login_url }}"><i class='bx bx-heart text-red' ></i><span class="visuallyhidden">Wishlist</span></a>
+			{% comment %}
+			<!-- Remove if Already in Wishlist  -->
+			<a class="icon-button" href="{{ routes.account_login_url }}"><i class='bx bxs-heart text-red' ></i><span class="visuallyhidden">Wishlist</span></a>
+			{% endcomment %}
+		{% endif %}
+	</div>
+</div>

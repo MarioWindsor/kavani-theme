@@ -1,0 +1,99 @@
+<section class="collection-banner-section {% if section.settings.is_intro == false %}space-250-top{% endif %}">
+	{% if section.settings.background_type == 'image' %}
+		<div class="banner-image">
+			<div class="bg-image" style="background-image: url('{{ section.settings.background_image | img_url: 'master' }}');"></div>
+		</div>
+	{% elsif section.settings.background_type == 'video' %}
+		<div class="banner-video">
+			<div class="bg-video-embed">
+				<iframe class="" src="https://www.youtube-nocookie.com/embed/{{ section.settings.video_id }}?playlist={{ section.settings.video_id }}&html5=1&color=white&disablekb=0&fs=0&autoplay=1&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			</div>
+		</div>
+	{% endif %}
+	<div class="banner-content">
+		<div class="container text-center">
+			<div class="row">
+				<div class="columns small-11 medium-8 large-6 xlarge-5">
+					<div class="heading {{ section.settings.title_size }} strong text-uppercase text-white space-50">{{ section.settings.title }}</div>
+					{% if section.settings.collection != blank %}
+						<a href="{{ section.settings.collection.url }}" class="button text-white box-border-white">Explore Collection</a>
+					{% endif %}
+					{% if section.settings.is_intro %}
+						<i class='bx bx-chevrons-down bx-fade-down h2 text-red'></i>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "Collection Banner",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Heading Title",
+			"default": "Collection Name"
+		},
+		{
+			"type": "select",
+			"id": "title_size",
+			"label": "Heading Size",
+			"options": [
+				{ "value": "h6", "label": "Small" },
+				{ "value": "h5", "label": "Medium" },
+				{ "value": "h4", "label": "Large" },
+				{ "value": "h3", "label": "xLarge" }
+			],
+			"default": "h5"
+		},
+		{
+			"type": "collection",
+			"id": "collection",
+			"label": "Collection to Link",
+		},
+		{
+			"type": "text",
+			"id": "button_text",
+			"label": "Button Text",
+			"default": "Explore Collection"
+		},
+		{
+			"type": "select",
+			"id": "background_type",
+			"label": "Background Type",
+			"options": [
+				{ "value": "image", "label": "Image" },
+				{ "value": "video", "label": "Video" }
+			],
+			"default": "video"
+		},
+		{
+			"type": "image_picker",
+			"id": "background_image",
+			"label": "Background Image",
+			"info": "Displayed if 'Image' is selected as background type"
+		},
+		{
+			"type": "text",
+			"id": "video_id",
+			"label": "Background Video",
+			"info": "Upload video to 'YouTube' and paste the corresponding YouTube Video ID",
+			"default": "eRQKZH-RYUA"
+		},
+		{
+			"type": "checkbox",
+			"id": "is_intro",
+			"label": "Set as Intro Section?",
+			"default": false
+		},
+	],
+	"presets": [
+		{
+			"name": "Collection Banner"
+		}
+	]
+}
+{% endschema %}
