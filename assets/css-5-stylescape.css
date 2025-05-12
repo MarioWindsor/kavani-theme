@@ -812,6 +812,10 @@ select {
 	box-shadow: 0 0 3px 1px rgba(var(---red), 0.125),  0 0 12px 4px rgba(var(---red), 0.2);
 }
 
+.box-shadow-red-light {
+	box-shadow: 0 0 3px 1px rgba(var(---red), 0.075),  0 0 12px 4px rgba(var(---red), 0.075);
+}
+
 .box-shadow-white {
 	box-shadow: 0 0 3px 1px rgba(var(---white), 0.125),  0 0 12px 4px rgba(var(---white), 0.2);
 }

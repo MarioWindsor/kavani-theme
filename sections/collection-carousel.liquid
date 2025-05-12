@@ -2,7 +2,7 @@
 	<div class="product-carousel">
 		<div class="heading {{ section.settings.title_size }} strong text-uppercase text-center space-50-bottom slow">{{ section.settings.title }}</div>
 		<div class="carousel fade">
-			<div class="carousel-list fill-white">
+			<div class="carousel-list fill-white box-shadow-red-light">
 			{% if section.settings.collection != blank %}
 				{% assign collection = collections[section.settings.collection] %}
 				{% if collection.products.size > 0 %}
