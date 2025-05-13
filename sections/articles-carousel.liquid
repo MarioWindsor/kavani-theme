@@ -21,7 +21,7 @@
 					<div class="card article-card fill-white no-overflow">
 						<a class="block" href="{{ article.url }}">									
 							{% if article.image %}
-							<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ article.image | img_url: 'medium' }}');"></div>
+							<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ article.image | img_url: 'large' }}');"></div>
 							{% endif %}
 							<div class="space-75">
 								<div class="title p strong text-red text-uppercase space-min-bottom">{{ article.title }}</div>
