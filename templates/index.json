@@ -74,7 +74,7 @@
         "collection": "sale",
         "button_text": "Explore Collection",
         "background_type": "video",
-        "video_id": "",
+        "video_id": "a",
         "is_intro": false
       }
     },
