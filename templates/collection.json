@@ -9,12 +9,12 @@
  */
 {
   "sections": {
-    "articles_carousel": {
-      "type": "articles-carousel",
+    "product_grid": {
+      "type": "product-grid",
       "settings": {}
     }
   },
   "order": [
-    "articles_carousel"
+    "product_grid"
   ]
 }
