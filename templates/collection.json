@@ -9,12 +9,12 @@
  */
 {
   "sections": {
-    "collection_lookbook": {
-      "type": "collection-lookbook",
+    "collection": {
+      "type": "collection",
       "settings": {}
     }
   },
   "order": [
-    "collection_lookbook"
+    "collection"
   ]
 }

@@ -1,5 +1,4 @@
 {% assign lookbook = collection.metafields.custom.lookbook.value %}
-{% assign lookbook_first = lookbook | first %}
 
 
 
@@ -10,8 +9,8 @@
 	{% if paginate.current_page == 1 %}
 	<!-- Lookbook -->
 	<div class="lookbook">
-		{% if lookbook_first %}
-			<div class="lookbook-first block img-cover" style="background-image: url('{{ lookbook_first | image_url }}');">
+		{% if collection.featured_image %}
+			<div class="collection-featured-image block img-cover" style="background-image: url('{{ collection.featured_image | image_url }}');">
 				<div class="collection-title container">
 					<div class="small-12 medium-10 medium-offset-1 large-8 large-offset-2 text-center">
 						<h1 class="block h5 strong text-white text-uppercase space-50">{{ collection.title }}</h1>
@@ -33,7 +32,7 @@
 		</div>
 		{% endif %}
 		
-		{% for image in lookbook offset: 1 %}
+		{% for image in lookbook %}
 			<div class="lookbook-image block img-cover" style="background-image: url('{{ image | image_url }}');"></div>
 		{% endfor %}
 	</div>
