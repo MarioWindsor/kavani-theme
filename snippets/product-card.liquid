@@ -1,3 +1,6 @@
+{% assign wishlist_list = customer.metafields.custom.wishlist.value %}
+
+
 <style>
 
 .product-card { position: relative; }
@@ -34,12 +37,14 @@
 	right: var(--space-50);
 }
 .product-card .wishlist .icon-button {
+	cursor: pointer;
 	position: relative;
 	width: var(--space-175);
 	height: var(--space-175);
 	border-radius: 100%;
 	background-color: rgba(var(---white), 0.666);
 	font-size: 0;
+	padding: 0;
 }
 
 .product-card .wishlist .icon-button * { pointer-events: none; }
@@ -82,13 +87,22 @@
 	</a>
 	<div class="wishlist">
 		{% if customer %}
-			<a class="icon-button" href="/pages/wishlist"><i class='bx bx-heart text-red' ></i><span class="visuallyhidden">Wishlist</span></a>
+			{% for element in wishlist_list %}
+				{% if element.handle == product.handle %}
+					{% assign fav = true %}
+					{% break %}
+				{% else %}
+					{% assign fav = false %}
+				{% endif %}
+			{% endfor %}
+
+			{% if fav == true %}
+				<button class="wishlist-button icon-button" tabindex="0" data-product-id="{{ product.id }}" data-action="remove"><i class='bx bxs-heart text-red' ></i><span class="visuallyhidden">Remove from Wishlist</span></button>
+			{% else %}
+				<button class="wishlist-button icon-button" tabindex="0" data-product-id="{{ product.id }}" data-action="add"><i class='bx bx-heart text-red' ></i><span class="visuallyhidden">Add to Wishlist</span></button>
+			{% endif %}
 		{% else %}
 			<a class="icon-button" href="{{ routes.account_login_url }}"><i class='bx bx-heart text-red' ></i><span class="visuallyhidden">Wishlist</span></a>
-			{% comment %}
-			<!-- Remove if Already in Wishlist  -->
-			<a class="icon-button" href="{{ routes.account_login_url }}"><i class='bx bxs-heart text-red' ></i><span class="visuallyhidden">Wishlist</span></a>
-			{% endcomment %}
 		{% endif %}
 	</div>
 </div>

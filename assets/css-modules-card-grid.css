@@ -102,3 +102,7 @@
 	padding: 0 var(--space-25);
 	min-width: var(--space-100);
 }
+
+.page-action .button {
+	font-weight: 500;
+}

@@ -1,4 +1,3 @@
-{% assign wishlist_list = customer.metafields.custom.wishlist.value %}
 {% assign lookbook = collection.metafields.custom.lookbook.value %}
 {% assign lookbook_first = lookbook | first %}
 
@@ -6,7 +5,10 @@
 
 
 <!-- Collection Section -->
+{% paginate collection.products by 12 %}
 <section id="collection-section" class="collection-section">
+	{% if paginate.current_page == 1 %}
+	<!-- Lookbook -->
 	<div class="lookbook">
 		{% if lookbook_first %}
 			<div class="lookbook-first block img-cover" style="background-image: url('{{ lookbook_first | image_url }}');">
@@ -35,43 +37,48 @@
 			<div class="lookbook-image block img-cover" style="background-image: url('{{ image | image_url }}');"></div>
 		{% endfor %}
 	</div>
-	<div class="row product-grid">
-		{% if collection.products.size > 0 %}
-			{% paginate collection.products by 12 %}
-				<!-- Card Grid -->
-				<div class="card-grid space-200-top-bottom">
-				{% for product in collection.products %}
-					<div class="card-grid-item">
-						{% render 'product-card', product: product %}
-					</div>
-				{% endfor %}
-				</div>
-				<!-- END: Card Grid -->
-			{% endpaginate %}
-		{% else %}
-			<p class="p block text-center">No products found in this collection.</p>
-		{% endif %}
-	</div>
+	<!-- END: Lookbook -->
+	{% else %}
+	<h1 class="collection-title block h5 strong text-uppercase text-center space-200-top">{{ collection.title }}</h1>
+	{% endif %}
+
+	{% render 'product-grid', product: product, paginate: paginate %}
+
 	<div class="row">
 		<div class="container">
 			<div class="columns small-12">
 				<!-- Pagination -->
-				{% paginate collection.products by 12 %}
-					{% if paginate.pages > 1 %}
-						<div class="pagination">
-							{% for part in paginate.parts %}
-								{% if part.is_link %}
-									<a class="button fill-white box-border-dark" href="{{ part.url }}">{{ part.title }}</a>
-								{% else %}
-									<span class="button text-dark no-pointer">{{ part.title }}</span>
-								{% endif %}
-							{% endfor %}
+				{% if paginate.pages > 1 %}
+					<div class="page-action row text-center">
+						{% if paginate.previous %}
+						<div class="columns small-6 large-4 space-50-left-right space-100-bottom">
+							<a class="button block fill-white box-border-dark pagination-prev" href="{{ paginate.previous.url }}">
+								Previous Page
+							</a>
 						</div>
-					{% endif %}
-				{% endpaginate %}
+						{% endif %}
+						{% if paginate.next %}
+						<div class="columns small-6 large-4 space-50-left-right space-100-bottom">
+							<a class="button block fill-white box-border-dark pagination-next" href="{{ paginate.next.url }}">
+								Next Page
+							</a>
+						</div>
+						{% endif %}
+					</div>
+					<div class="pagination">
+						{% for part in paginate.parts %}
+							{% if part.is_link %}
+								<a class="button fill-white box-border-dark" href="{{ part.url }}">{{ part.title }}</a>
+							{% else %}
+								<span class="button text-dark no-pointer">{{ part.title }}</span>
+							{% endif %}
+						{% endfor %}
+					</div>
+				{% endif %}
 				<!-- END: Pagination -->
 			</div>
 		</div>
 	</div>
 </section>
+{% endpaginate %}
 <!-- END: Collection Section -->
