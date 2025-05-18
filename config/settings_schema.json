@@ -27,5 +27,20 @@
         "default": "9606035963"
       }
     ]
+  },
+  {
+    "name": "Pop-up Offer Image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "popupimage",
+        "label": "Add an 'Offer Discount Code' Image (Size: 1000x1000px | Format: JPG or PNG)"
+      },
+      {
+        "type": "text",
+        "id": "popupcode",
+        "label": "Enter Active Offer Discount Code"
+      }
+    ]
   }
 ]

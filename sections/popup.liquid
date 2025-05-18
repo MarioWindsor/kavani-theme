@@ -1,0 +1,76 @@
+<!-- Pop-up Modal -->
+<style>
+#popup-modal {
+	padding: var(--space-25);
+	border-color: var(--red);
+}
+#popup-modal::backdrop {
+	background-color: rgba(var(---light), 0.75);
+}
+
+#popup-modal .popup {
+	display: block;
+	position: relative;
+	z-index: 1;
+	width: 75vw;
+	font-size: 0;
+}
+
+#popup-modal .popup-close {
+	position: absolute;
+	z-index: 2;
+	top: var(--space-50);
+	right: var(--space-50);
+	padding: 0;
+	width: var(--space-175);
+	height: var(--space-175);
+	border-radius: 100%;
+}
+
+#popup-modal .popup-close i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#popup-modal .popup-close * {
+	pointer-events: none;
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {
+	#popup-modal .popup {
+		width: 75vh;
+	}
+
+	#popup-modal .popup-close {
+		width: var(--space-100);
+		height: var(--space-100);
+	}
+
+	#popup-modal .popup-close i {
+		font-size: var(--h4);
+	}
+}
+@media( min-width: 1480px ) {}
+
+</style>
+
+
+<dialog id="popup-modal">
+	<a href="{{ settings.popupcode }}" class="popup img-cover fill-white" style="padding-top: 100%; background-image: url('{{ settings.popupimage }};');"></a>
+	<button class="popup-close space-25 icon-button fill-white box-shadow-red-light"><i class='bx bx-x h2 text-red' ></i><span class="visuallyhidden">Close Popup</span></button>
+</dialog>
+<!-- END: Pop-up Modal -->
+
+
+<script>
+	const popupModal = document.querySelector("#popup-modal");
+	const closeModal = document.querySelector(".popup-close");
+
+	popupModal.showModal();
+
+	closeModal.addEventListener('click', () => {
+		popupModal.close();
+	});
+</script>
