@@ -42,10 +42,10 @@
 {% endif %}
 
 {% if product.collections.size > 0 %}
-<div class="product-collections space-50-bottom">
+<div class="product-collections">
 	<div class="small text-neutral-4 space-min-bottom text-uppercase">Shop More</div>
 	{% for collection in product.collections %}
-		<a class="label space-25-top-bottom space-50-left-right text-uppercase fill-dark radius-min" href="{{ collection.url }}" style="margin-right: var(--space-min);">{{ collection.title }}</a>
+		<a class="label space-25-top-bottom space-50-left-right space-50-bottom text-uppercase fill-dark radius-min" href="{{ collection.url }}" style="margin-right: var(--space-min);">{{ collection.title }}</a>
 	{% endfor %}
 </div>
 {% endif %}
