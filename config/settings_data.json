@@ -10,6 +10,7 @@
 {
   "current": {
     "logo": "shopify://shop_images/logo-combination-legacy-brown-black.png",
+    "popupimage": "shopify://shop_images/lace.jpg",
     "sections": {
       "header": {
         "type": "header",
@@ -23,6 +24,14 @@
           "quick-links": "footer",
           "policy-menu": "policies"
         }
+      },
+      "whatsapp": {
+        "type": "whatsapp",
+        "settings": {}
+      },
+      "popup": {
+        "type": "popup",
+        "settings": {}
       }
     },
     "content_for_index": [],
