@@ -1,0 +1,46 @@
+<!-- Collection Section -->
+{% paginate collections by 12 %}
+<section id="collection-section" class="collection-section">
+	<h1 class="collection-title block h5 strong text-uppercase text-center space-200-top">Collections</h1>
+
+	{% render 'collection-grid', collections: collections, paginate: paginate %}
+
+	<div class="row">
+		<div class="container">
+			<div class="columns small-12">
+				<!-- Pagination -->
+				{% if paginate.pages > 1 %}
+					<div class="page-action row text-center">
+						{% if paginate.previous %}
+						<div class="columns small-6 large-4 space-50-left-right space-100-bottom">
+							<a class="button block fill-white box-border-dark pagination-prev" href="{{ paginate.previous.url }}">
+								Previous Page
+							</a>
+						</div>
+						{% endif %}
+						{% if paginate.next %}
+						<div class="columns small-6 large-4 space-50-left-right space-100-bottom">
+							<a class="button block fill-white box-border-dark pagination-next" href="{{ paginate.next.url }}">
+								Next Page
+							</a>
+						</div>
+						{% endif %}
+					</div>
+					<div class="pagination">
+						{% for part in paginate.parts %}
+							{% if part.is_link %}
+								<a class="button fill-white box-border-dark" href="{{ part.url }}">{{ part.title }}</a>
+							{% else %}
+								<span class="button text-dark no-pointer">{{ part.title }}</span>
+							{% endif %}
+						{% endfor %}
+					</div>
+				{% endif %}
+				<!-- END: Pagination -->
+			</div>
+		</div>
+	</div>
+</section>
+{% endpaginate %}
+<!-- END: Collection Section -->
+

@@ -1,45 +1,3 @@
-<style>
-
-.note-scroll {
-	position: absolute;
-	top: 0;
-	left: var(--container-margin);
-	letter-spacing: calc(var(--space-100) * 0.2);
-	text-shadow: 0 0 12px rgba(var(---black), 0.75);
-	transform: translateY(calc( ( var(--space-100) * 2 ) * -1 ) );
-}
-.note-scroll:after {
-	content: '';
-	display: block;
-	width: calc(var(--space-100) * 2);
-	height: calc(var(--space-min)/2);
-	background-color: var(--white);
-	position: absolute;
-	top: 50%;
-	right: 0;
-	transform: translateX(112.5%);
-	box-shadow: 0 0 12px 0 rgba(var(---black), 0.75)
-}
-
-@media( min-width: 640px )  {
-	.note-scroll {
-		transform: translateY(0);
-		top: auto;
-		left: auto;
-		right: calc( 100% + var(--space-100) );
-		transform: rotate(-90deg);
-		transform-origin: right bottom;
-	}
-	.note-scroll:after {
-		right: auto;
-		left: 0;
-		transform: translateX(-125%);
-	}
-}
-@media( min-width: 1040px ) {}
-@media( min-width: 1480px ) {}
-</style>
-
 {% if product.images.size > 1 %}
 <div class="note-scroll label strong text-uppercase text-white">Scroll</div>
 {% endif %}
@@ -83,10 +41,6 @@
 	<p class="out-of-stock">Out of Stock</p>
 {% endif %}
 
-<!-- <div class="inline h3 w-800 text-orange line-height-one space-50-bottom">
-	<a class="inline" href="#">Next Steps <i class='inline-middle bx bxs-right-arrow-circle h1 text-orange' ></i></a>
-</div> -->
-
 {% if product.collections.size > 0 %}
 <div class="product-collections space-50-bottom">
 	<div class="small text-neutral-4 space-min-bottom text-uppercase">Shop More</div>
@@ -95,15 +49,6 @@
 	{% endfor %}
 </div>
 {% endif %}
-
-{% comment %}
-<div class="space-50-bottom hide-small">
-	<a class="inline row" href="{{ product.url }}#more">
-		<span class="inline-middle p strong text-red text-uppercase line-height-one">More Detail</span>
-		<i class='inline-middle bx bx-right-arrow-alt h4 text-red' ></i></a>
-</div>
-{% endcomment %}
-
 
 <div class="space-50-bottom hide-small">
 	<a class="inline-middle row" href="{{ product.url }}#more">
@@ -125,60 +70,3 @@
 		<span class="inline-middle label strong text-red text-uppercase space-25-left">Shipping &amp; Returns</span>
 	</a>
 </div>
-
-
-
-{% schema %}
-{
-	"name": "Product Details",
-	"settings": []
-}
-{% endschema %}
-
-{% comment %}
-<div class="breadcrumb hidden">
-	{% if product.category %}
-		<a class="p" href="{{ product.category.url }}">{{ product.category }}</a>
-	{% endif %}
-	{% for collection in product.collections %}
-		<a class="p" href="{{ collection.url }}">{{ collection.title }}</a>
-	{% endfor %}
-</div>
-<div class="product-info">
-	<h1 class="h1 product-title">{{ product.title }}</h1>
-	<div class="product-price">{{ product.price | money }} {% if product.compare_at_price_max > product.price %} <span class="compare-at-price">{{ product.compare_at_price | money }}</span>{% endif %}</div>
-	<div class="product-description">{{ product.description }}</div>
-
-	{% if product.variants.size > 1 %}
-		<div class="product-variants">
-			<label for="variant-select">Select Option:</label>
-			<select id="variant-select" name="id">
-				{% for variant in product.variants %}
-					<option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }} {% if variant.available == false %} (Out of Stock){% endif %}</option>
-				{% endfor %}
-			</select>
-		</div>
-	{% else %}
-		<input type="hidden" name="id" value="{{ product.variants.first.id }}">
-	{% endif %}
-
-	{% if product.available %}
-		<form action="/cart/add" method="post" enctype="multipart/form-data">
-			<div class="product-quantity">
-				<label for="quantity">Quantity:</label>
-				<input type="number" id="quantity" name="quantity" value="1" min="1">
-			</div>
-			<button type="submit" class="btn">Add to Cart</button>
-		</form>
-	{% else %}
-		<p class="out-of-stock">Out of Stock</p>
-	{% endif %}
-</div>
-
-{% schema %}
-{
-	"name": "Product Details",
-	"settings": []
-}
-{% endschema %}
-{% endcomment %}

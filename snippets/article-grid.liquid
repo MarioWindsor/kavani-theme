@@ -1,0 +1,17 @@
+<!-- Product Grid -->
+<div class="row product-grid">
+	{% if blogs.diaries.articles.size > 0 %}
+		<!-- Card Grid -->
+		<div class="card-grid space-200-top-bottom">
+		{% for article in blogs.diaries.articles %}
+			<div class="card-grid-item fill-white">
+				{% render 'article-card', article: article %}
+			</div>
+		{% endfor %}
+		</div>
+	<!-- END: Card Grid -->
+	{% else %}
+		<p class="p block text-center text-red space-200-top-bottom">No blog posts found.</p>
+	{% endif %}
+</div>
+<!-- END: Product Grid -->

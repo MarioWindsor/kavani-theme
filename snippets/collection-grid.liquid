@@ -1,0 +1,17 @@
+<!-- Product Grid -->
+<div class="row product-grid">
+	{% if collections.size > 0 %}
+		<!-- Card Grid -->
+		<div class="card-grid space-200-top-bottom">
+		{% for collection in collections %}
+			<div class="card-grid-item">
+				{% render 'collection-card', collection: collection %}
+			</div>
+		{% endfor %}
+		</div>
+	<!-- END: Card Grid -->
+	{% else %}
+		<p class="p block text-center text-red space-200-top-bottom">No collections found.</p>
+	{% endif %}
+</div>
+<!-- END: Product Grid -->

@@ -1,0 +1,66 @@
+
+
+<!-- Product Fold -->
+<div class="product-fold row space-150-bottom">
+	<div class="product-gallery columns small-12 medium-6 large-8">
+		{% if product.images %}
+			{% for image in product.images %}
+				<div class="product-image space-25-right space-25-bottom">
+					<img class="block" src="{{ image | img_url: 'original' }}" alt="{{ image.alt }}">
+				</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+	<div class="product-info columns small-12 medium-6 large-4">
+		{% render 'product-info', product: product %}
+	</div>
+</div>
+<!-- END: Product Fold -->
+<!-- Product More -->
+<div id="more" class="product-more row">
+	<div class="row fill-white space-200-top-bottom">
+		<div class="container">
+			<div class="more-sidebar columns small-12 large-4 clearfix">
+				<div class="sidebar-icon">
+					<img class="block" src="https://placehold.co/400x150" alt="">
+				</div>
+				<div class="sidebar-icon">
+					<img class="block" src="https://placehold.co/400x150" alt="">
+				</div>
+				<div class="sidebar-icon">
+					<img class="block" src="https://placehold.co/400x150" alt="">
+				</div>
+				<div class="sidebar-icon">
+					<img class="block" src="https://placehold.co/400x150" alt="">
+				</div>
+			</div>
+			<div class="more-main columns small-12 large-8">
+				{% if product.description %}
+				<div class="product-description space-100-bottom">
+					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Material & Description</div>
+					<div class="label">{{ product.description }}</div>
+				</div>
+				{% endif %}
+				<div class="product-description space-100-bottom">
+					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Measurements & Customisation</div>
+					<div class="video">
+						<img class="block" src="https://placehold.co/1920x1080" alt="">
+					</div>
+				</div>
+				<div class="product-description space-100-bottom">
+					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Shipping & Returns</div>
+					<div class="label">
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis natus esse suscipit non quidem excepturi rem magni dolores aspernatur recusandae doloribus consequuntur quod, omnis doloremque repellendus iusto ab a reprehenderit.
+					</div>
+				</div>
+				<div class="product-description space-100-bottom">
+					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Frequently Asked Questions</div>
+					<div class="label">
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis natus esse suscipit non quidem excepturi rem magni dolores aspernatur recusandae doloribus consequuntur quod, omnis doloremque repellendus iusto ab a reprehenderit.
+					</div>
+				</div>
+			</div> 
+		</div>
+	</div>
+</div>
+<!-- END: Product More -->

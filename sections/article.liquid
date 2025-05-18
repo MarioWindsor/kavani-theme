@@ -1,0 +1,75 @@
+<style>
+.article-content h1 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h1); 
+}
+.article-content h2 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h2); 
+}
+.article-content h3 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h3); 
+}
+.article-content h4 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h4); 
+}
+.article-content h5 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h5); 
+}
+.article-content h6 { 
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--h6); 
+}
+.article-content p {
+	display: block;
+	margin-bottom: var(--p);
+	font-size: var(--p);
+}
+.article-content label { 
+	display: inline-block;
+	font-size: var(--label);
+}
+.article-content small { 
+	display: inline-block;
+	font-size: var(--small);
+}
+
+.article-content img {
+	border-radius: var(--space-25);
+	box-shadow: 0 0 3px 1px rgba(var(---red), 0.075),  0 0 12px 4px rgba(var(---red), 0.075);
+}
+</style>
+
+<!-- Article Section -->
+<section id="article-section" class="article-section">
+	<div class="row">
+		<div class="container">
+			<div class="article-info columns small-12 medium-10 medium-offset-1 large-8 large-offset-2">
+				<div class="title block h3 text-center space-200-top">{{ article.title }}</div>
+				<div class="article-meta small text-neutral-3 text-center space-min-top">Published on {{ article.published_at | date: '%B %d, %Y' }}</div>
+			</div>
+		</div>
+	</div>
+	{% if article.image %}
+	<div class="featured-image row space-200-top">
+		{{ article.image | img_url: '1024x1024' | img_tag: article.title, 'block box-shadow-red-light' }}
+	</div>
+	{% endif %}
+	<div class="row">
+		<div class="container">
+			<div class="article-content columns small-12 medium-10 medium-offset-1 large-8 large-offset-2 space-200-top">
+				{{ article.content }}
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END: Article Section -->

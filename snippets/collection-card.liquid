@@ -1,0 +1,30 @@
+
+<style>
+
+.collection-card { position: relative; }
+
+.collection-card .thumbnail {
+	position: relative;
+	padding-top: 125%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}
+</style>
+
+<div class="card collection-card fill-white no-overflow">
+	<a class="block" href="{{ collection.url }}">
+		{% if collection.featured_image %}
+		<div class="thumbnail block no-whitespace" style="background-image: url('{{ collection.featured_image | img_url: 'large' }}');"></div>
+		{% endif %}
+		<div class="text-center space-75">
+			<div class="title label text-uppercase space-min-bottom no-overflow-text">{{ collection.title }}</div>
+			<div class="price small text-red strong">{{ collection.products_count }} {{ collection.products_count | pluralize: 'product', 'products' }}</div>
+		</div>
+	</a>
+</div>
+

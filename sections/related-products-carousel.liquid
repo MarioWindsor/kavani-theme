@@ -1,0 +1,30 @@
+<!-- Related Products -->
+{% if product.collections.size > 0 %}
+{% assign first_collection = product.collections.first %}
+<div class="related-product row space-200-top">
+	<div class="product-carousel">
+		<div class="h5 strong text-uppercase text-center space-50-bottom">Related Products</div>
+		<!-- Carousel -->
+		<div class="carousel fade">
+			<div class="carousel-list fill-white">
+				{% for related_product in first_collection.products limit: 10 %}
+					{% unless related_product.handle == product.handle %}
+					<div class="carousel-list-item">
+						{% render 'product-card', product: related_product %}
+					</div>
+					{% endunless %}
+				{% endfor %}
+			</div>
+			<div class="carousel-controls row">
+				<div class="container">
+					<div class="columns small-12 text-center">
+						<div class="scroll-button scroll-left inline" data-dir="left" tabindex="-1"><i class='bx bx-left-arrow-alt text-red h3' ></i></div>
+						<div class="scroll-button scroll-right inline" data-dir="right" tabindex="-1"><i class='bx bx-right-arrow-alt text-red h3' ></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}
+

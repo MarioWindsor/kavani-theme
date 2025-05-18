@@ -1,0 +1,37 @@
+
+<style>
+
+.article-card { position: relative; }
+
+.article-card .thumbnail {
+	position: relative;
+	padding-top: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+@media( min-width: 640px )  {}
+@media( min-width: 1040px ) {}
+@media( min-width: 1480px ) {}
+</style>
+
+<div class="card article-card fill-white no-overflow">
+	<a class="block" href="{{ article.url }}">									
+		{% if article.image %}
+		<div class="thumbnail block no-whitespace" style="background-image: url('{{ article.image | img_url: 'large' }}');"></div>
+		{% endif %}
+		<div class="space-75 text-center">
+			<div class="title label text-red text-uppercase space-min-bottom">{{ article.title }}</div>
+			<div class="date small text-neutral-3 space-min-bottom">{{ article.published_at | date: '%B %d, %Y' }}</div>
+			<div class="summary small text-neutral-6">
+				{% if article.excerpt != blank %}
+					{{ article.excerpt }}
+				{% else %}
+					{{ article.content | strip_html | truncatewords: 35 }} 
+				{% endif %}
+			</div>
+		</div>
+	</a>
+</div>
+
