@@ -58,19 +58,87 @@
 
 
 <dialog id="popup-modal">
-	<a href="{{ settings.popupcode }}" class="popup img-cover fill-white" style="padding-top: 100%; background-image: url('{{ settings.popupimage }};');"></a>
+	<a href="/cart?discount={{ settings.popupcode }}" class="popup img-cover fill-white" style="padding-top: 100%; background-image: url('{{ settings.popupimage | image_url}};');"></a>
 	<button class="popup-close space-25 icon-button fill-white box-shadow-red-light"><i class='bx bx-x h2 text-red' ></i><span class="visuallyhidden">Close Popup</span></button>
 </dialog>
 <!-- END: Pop-up Modal -->
 
 
 <script>
-	const popupModal = document.querySelector("#popup-modal");
-	const closeModal = document.querySelector(".popup-close");
+	document.addEventListener('DOMContentLoaded', function() {
+		const popupModal = document.querySelector("#popup-modal");
+		const closeModal = document.querySelector(".popup-close");
+		const modalShownSessionKey = 'popupModalShown';
 
-	popupModal.showModal();
+		if (sessionStorage.getItem(modalShownSessionKey)) {
+			return; // Don't show again in this session
+		}
 
-	closeModal.addEventListener('click', () => {
-		popupModal.close();
+		let timeSpent = 0;
+		let scrolled = false;
+		let mouseOut = false;
+		let timerInterval;
+		let lastScrollY = 0;
+
+		function showTheModal() {
+			if (popupModal) {
+				popupModal.showModal();
+				sessionStorage.setItem(modalShownSessionKey, 'true');
+				clearInterval(timerInterval);
+				document.removeEventListener('scroll', handleScroll);
+				document.removeEventListener('mouseout', handleMouseOut);
+			}
+		}
+
+		function handleScroll() {
+			scrolled = true;
+		}
+
+		function handleMouseOut(event) {
+			// Check if the mouse left the viewport (excluding scrollbars)
+			if (!event.relatedTarget && event.clientY < 0) {
+				mouseOut = true;
+			}
+		}
+
+		if (window.innerWidth < 640) {
+			// Mobile devices: 2 minutes and scroll
+			timerInterval = setInterval(() => {
+				timeSpent++;
+				if (timeSpent >= 30 && scrolled) {
+					showTheModal();
+				}
+			}, 1000);
+
+			document.addEventListener('scroll', () => {
+				const scrollY = window.scrollY;
+				const pageHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+				const scrolledPercentage = (scrollY / pageHeight) * 100;
+
+				if (scrolledPercentage > 25) {
+					if (scrolledPercentage < lastScrollY ) {
+						handleScroll();
+					}
+					lastScrollY = scrolledPercentage;
+				}
+			});
+		} else {
+			// Larger devices: 15 seconds, scroll, and mouse out
+			timerInterval = setInterval(() => {
+				timeSpent++;
+				if (timeSpent >= 15 && scrolled && mouseOut) {
+					showTheModal();
+				}
+			}, 1000);
+
+			document.addEventListener('scroll', handleScroll);
+			document.addEventListener('mouseout', handleMouseOut);
+		}
+
+		if (closeModal && popupModal) {
+			closeModal.addEventListener('click', () => {
+				popupModal.close();
+			});
+		}
 	});
 </script>
