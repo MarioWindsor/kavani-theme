@@ -16,6 +16,16 @@
         "label": "Logo Image"
       }
     ]
+  },
+  {
+    "name": "WhatsApp Badge",
+    "settings": [
+      {
+        "type": "text",
+        "id": "whatsapp",
+        "label": "10 Digit WhatsApp Mobile Number",
+        "default": "9606035963"
+      }
+    ]
   }
-  
 ]

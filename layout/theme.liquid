@@ -126,6 +126,38 @@
 	<!-- END: Page Content -->
 
 
+	<style>
+	.whatsapp-badge-section {
+		position: fixed;
+		bottom: var(--space-100);
+		right: var(--space-100);
+		z-index: 95;
+	}
+	.whatsapp-badge {
+		position: relative;
+		cursor: pointer;
+		background-color: var(--white);
+		border-radius: 100%;
+	}
+	.whatsapp-badge * {
+		pointer-events: none;
+	}
+
+	@media( max-width: 1039px )  {
+		.whatsapp-badge {
+			transform: scale(1.5);
+			transform-origin: bottom right;
+		}
+	}
+	</style>
+
+	<!-- Sample Section -->
+	<div id="whatsapp-badge-section row" class="whatsapp-badge-section">
+		<a class="whatsapp-badge space-25 box-shadow-red-light" tabindex="1" href="https://wa.me/91{{ whatsapp }}" target="_blank"><span class="visuallyhidden">WhatsApp</span><i class='bx bxl-whatsapp h3 text-red inline-middle' style="color: #25D366;"></i></a>
+	</div>
+	<!-- END: Sample Section -->
+
+
 	<!-- Footer -->
 	<footer class="footer-section space-100-top-bottom fill-white" style="margin-top: var(--space-100);">
 		<div class="container">

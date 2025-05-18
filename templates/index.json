@@ -129,10 +129,6 @@
     "articles_carousel": {
       "type": "articles-carousel",
       "settings": {}
-    },
-    "whatsapp_badge": {
-      "type": "whatsapp-badge",
-      "settings": {}
     }
   },
   "order": [
@@ -148,7 +144,6 @@
     "store_location",
     "contact_form",
     "instagram_feed",
-    "articles_carousel",
-    "whatsapp_badge"
+    "articles_carousel"
   ]
 }
