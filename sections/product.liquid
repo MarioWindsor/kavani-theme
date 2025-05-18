@@ -43,8 +43,8 @@
 				{% endif %}
 				<div class="product-description space-100-bottom">
 					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Measurements & Customisation</div>
-					<div class="video">
-						<img class="block" src="https://placehold.co/1920x1080" alt="">
+					<div class="process-video video-embed radius-25 box-shadow-red-light">
+						<iframe class="" src="https://www.youtube-nocookie.com/embed/{{ section.settings.process_video_id }}?playlist={{ section.settings.process_video_id }}&html5=1&color=white&disablekb=0&fs=1&autoplay=0&loop=0&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=0&controls=1" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 					</div>
 				</div>
 				<div class="product-description space-100-bottom">
@@ -64,3 +64,25 @@
 	</div>
 </div>
 <!-- END: Product More -->
+
+
+
+{% schema %}
+{
+	"name": "Product Page",
+	"settings": [
+		{
+			"type": "text",
+			"id": "process_video_id",
+			"label": "Measurements & Customisation Process Video",
+			"info": "Upload video to 'YouTube' and paste the corresponding YouTube Video ID",
+			"default": "eRQKZH-RYUA"
+		},
+	],
+	"presets": [
+		{
+			"name": "Product Page"
+		}
+	]
+}
+{% endschema %}
