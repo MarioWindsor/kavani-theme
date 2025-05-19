@@ -9,11 +9,13 @@
 <div class="product-price label strong text-red space-25-bottom">{{ product.price | money }} {% if product.compare_at_price_max > product.price %} <span class="compare-at-price">{{ product.compare_at_price | money }}</span>{% endif %}</div>
 <div class="shipping-policy-link label text-neutral-4 space-50-bottom"><a class="inline text-underline text-black" href="{{ shop.shipping_policy.url }}" target="_blank">Shipping</a> calculated at checkout.</div>
 
+<form id="add-to-cart-form" action="/cart/add" method="post" enctype="multipart/form-data">
+<input type="hidden" name="id" id="variant-id" value="{{ product.variants.first.id }}">
 {% if product.variants.size > 1 %}
 	{% for option in product.options %}
 	<div class="product-variants form-field space-50-bottom">
-		<label class="form-label small strong text-uppercase inline space-min-bottom" for="variant-select">{{ option }}</label><br>
-		<select class="block fill-white" id="variant-select" name="id">
+		<label class="form-label small strong text-uppercase inline space-min-bottom" for="variant-select-{{ option | handle }}">{{ option }}</label><br>
+		<select class="block fill-white" id="variant-select-{{ option | handle }}" name="variant-select-{{ option | handle }}" data-option="{{ option | handle }}">
 			{% for variant in product.variants %}
 				<option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }} {% if variant.available == false %} (Out of Stock){% endif %}</option>
 			{% endfor %}
@@ -25,21 +27,19 @@
 {% endif %}
 
 {% if product.available %}
-	<form action="/cart/add" method="post" enctype="multipart/form-data">
 		<div class="product-quantity form-field space-50-bottom">
 			<label class="form-label small strong text-uppercase inline space-min-bottom" for="quantity">Quantity</label><br>
 			<input class="block text-center fill-white" type="text" id="quantity" name="quantity" value="1" min="1">
 		</div>
-		<div class="space-25-bottom">
-			<a class="button fill-dark block" href="">Add to Wishlist</a>
-		</div>
 		<div class="space-50-bottom">
 			<button type="submit" class="button fill-red block">Add to Cart</button>
 		</div>
-	</form>
 {% else %}
-	<p class="out-of-stock">Out of Stock</p>
+	<div class="space-50-bottom">
+		<button disabled class="button fill-neutral-3 block">Out of Stock</button>
+	</div>
 {% endif %}
+</form>
 
 {% if product.collections.size > 0 %}
 <div class="product-collections space-50-bottom">
