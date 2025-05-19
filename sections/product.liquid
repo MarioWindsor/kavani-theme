@@ -21,42 +21,260 @@
 	<div class="row fill-white space-200-top-bottom">
 		<div class="container">
 			<div class="more-sidebar columns small-12 large-4 clearfix">
-				<div class="sidebar-icon">
-					<img class="block" src="https://placehold.co/400x150" alt="">
-				</div>
-				<div class="sidebar-icon">
-					<img class="block" src="https://placehold.co/400x150" alt="">
-				</div>
-				<div class="sidebar-icon">
-					<img class="block" src="https://placehold.co/400x150" alt="">
-				</div>
-				<div class="sidebar-icon">
-					<img class="block" src="https://placehold.co/400x150" alt="">
-				</div>
-			</div>
-			<div class="more-main columns small-12 large-8">
 				{% if product.description %}
-				<div class="product-description space-100-bottom">
+				<div class="product-description space-150-bottom">
 					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Material & Description</div>
 					<div class="label">{{ product.description }}</div>
 				</div>
 				{% endif %}
-				<div class="product-description space-100-bottom">
+				<div class="sidebar-icon">
+					<img class="block" src="{{ 'product-icon-3.png' | asset_url }}" alt="We Ship Worldwide">
+				</div>
+				<div class="sidebar-icon">
+					<img class="block" src="{{ 'product-icon-2.png' | asset_url }}" alt="No Returns or Exchanges">
+				</div>
+				<div class="sidebar-icon">
+					<img class="block" src="{{ 'product-icon-1.png' | asset_url }}" alt="Dispatched in 4 to 8 weeks">
+				</div>
+				<div class="sidebar-icon">
+					<img class="block" src="{{ 'product-icon-4.png' | asset_url }}" alt="Expert Video Guidance">
+				</div>
+			</div>
+			<div class="more-main columns small-12 large-8">
+				<div class="product-description space-150-bottom">
 					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Measurements & Customisation</div>
 					<div class="process-video video-embed radius-25 box-shadow-red-light">
 						<iframe class="" src="https://www.youtube-nocookie.com/embed/{{ section.settings.process_video_id }}?playlist={{ section.settings.process_video_id }}&html5=1&color=white&disablekb=0&fs=1&autoplay=0&loop=0&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=0&controls=1" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 					</div>
 				</div>
-				<div class="product-description space-100-bottom">
-					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Shipping & Returns</div>
-					<div class="label">
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis natus esse suscipit non quidem excepturi rem magni dolores aspernatur recusandae doloribus consequuntur quod, omnis doloremque repellendus iusto ab a reprehenderit.
-					</div>
-				</div>
-				<div class="product-description space-100-bottom">
+				<div class="product-description">
 					<div class="small strong text-uppercase text-neutral-4 space-25-bottom">Frequently Asked Questions</div>
-					<div class="label">
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis natus esse suscipit non quidem excepturi rem magni dolores aspernatur recusandae doloribus consequuntur quod, omnis doloremque repellendus iusto ab a reprehenderit.
+					<div class="faqs label">
+						<div class="faq">
+							<input id="faq-1" type="radio" name="faq" class="visuallyhidden" checked>
+							<label for="faq-1" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">What services do you offer? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">We specialize in custom bridal outfits, including lehengas, sarees, gowns, and engagement or pre-wedding wear. We accept both online and offline orders, and also take repeat orders for our previously designed pieces.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-2" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-2" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">Can I place an order online? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">Yes! You can place your order online through our website or by contacting us via WhatsApp/Instagram. We offer virtual consultations, fabric previews, and video call fittings for remote clients.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-3" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-3" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">What is the process for customising an outfit? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">
+									Our customisation process involves:<br>
+									&bull; Understanding your vision (theme, color, style)<br>
+									&bull; Selecting fabrics and embroidery work<br>
+									&bull; Approving sketches and reference designs<br>
+									&bull; Measurements (in person or via size guide)<br>
+									&bull; Final confirmation before production begins<br>
+								</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-4" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-4" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">How long does it take to complete a custom order? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">Typically, 4–8 weeks, depending on the complexity of the design and work. For urgent requests, we offer limited express options (additional charges may apply).</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-5" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-5" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">Can I re-order a design you’ve made before? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">Absolutely. If you’ve seen a design we’ve done before (on our Instagram, website, or previous client), we can remake it for you—either as-is or with minor customizations.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-6" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-6" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">What if the final outfit doesn’t match my expectations? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">We make every effort to communicate clearly and share approvals at each stage of production. However, please understand that custom outfits involve creative interpretation, and slight variations in fit, color tone, or embroidery may occur. We do not offer refunds for dissatisfaction based on subjective expectations if the outfit matches the approved design and specifications.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-7" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-7" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">Do you accept returns or exchanges? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">Due to the bespoke nature of our work, returns or exchanges are not accepted once the outfit is delivered and approved. However, if there’s a genuine defect or error on our part, we will address it immediately.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-8" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-8" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">Do you ship internationally? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">Yes, we ship worldwide. Shipping charges and timelines will be discussed at the time of order confirmation.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-9" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-9" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">What payment methods do you accept? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">
+									We accept payments via:<br>
+									&bull; Bank transfer (NEFT/IMPS)<br>
+									&bull; UPI (Google Pay, PhonePe)<br>
+									&bull; International clients: PayPal or wire transfer<br>
+									<br>
+									A 50% advance is required to start the order, and the remaining balance is due at delivery.
+								</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-10" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-10" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">How should I care for my outfit after delivery? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">We recommend dry cleaning only, and storing your outfit in a muslin cloth or garment bag, away from direct sunlight and moisture.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-11" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-11" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">What fabrics do you use for bridal designer gowns in white? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">We carefully select fabrics that offer the right fall, structure, and elegance for each gown design. Depending on the style, we may use satin, organza, georgette, net, or silk blends to achieve the desired silhouette and movement.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-12" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-12" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">Can I choose the fabric for my white bridal gown? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">Yes, we’ll walk you through fabric options during your consultation. However, based on the design you choose, we may recommend fabrics that best complement the cut and drape of the gown to ensure the final look is graceful and well-structured.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-13" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-13" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">Why does the gown look slightly blue in daylight or photos? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">White gowns, especially in natural or skylight settings, can reflect ambient light—which often has a bluish tone. This is common in photography and not a flaw in the fabric or color. We use high-quality whites, but appearance can vary slightly under different lighting conditions.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-14" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-14" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">Will the gown look exactly like the reference photo? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">We do our best to match the reference look. However, slight variations may occur due to changes in fabric, lighting, body type, or custom modifications. Each gown is made to order and tailored uniquely to your measurements and preferences.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-15" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-15" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">Can the outfits  be reused or altered for future occasions? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">Yes! Many of our outfits are designed with modularity or elegance in mind, allowing for restyling or sleeve addition based on the fabric used. We’re happy to offer guidance post-wedding.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-16" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-16" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">What if the final outfit has small variations from what I imagined? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">Customised outfits involve both your vision and our design expertise. Some minor variations in pattern, placement, or finishing may occur during the process to ensure proper drape, support, or visual balance. These are intentional, professional decisions to maintain the integrity and beauty of the outfit.</div>
+							</div>
+						</div>
+						<div class="faq">
+							<input id="faq-17" type="radio" name="faq" class="visuallyhidden">
+							<label for="faq-17" class="question block row space-25-top-bottom">
+								<div class="title columns small-11 space-25">
+									<div class="label strong text-red">How are alterations handled for online orders? &nbsp;</div>
+								</div>
+								<div class="toggle columns small-1"><div class="arrow"><span class="a1"></span><span class="a2"></span></div></div>
+							</label>
+							<div class="answer fill-red radius-25">
+								<div class="label space-50">
+									For clients who receive their outfits via online delivery, we recommend getting basic alterations like length or minor fit adjustments done locally with the help of a trusted tailor. However, we are always happy to:<br>
+									&bull; Guide you on the necessary alterations over video/phone call.<br>
+									&bull; Offer support by reviewing fit issues remotely.<br>
+									&bull; If you’re able to visit, we’re happy to offer in-house alteration services at our studio.<br>
+									<br>
+									 Major alterations are rare, as we work with detailed measurements and multiple checkpoints. However, if adjustments are needed and you’re unable to visit us, we can assist with step-by-step guidance for your local tailor, or help rework the outfit if it’s brought to our studio.
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div> 

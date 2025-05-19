@@ -146,6 +146,9 @@
 .more-sidebar .sidebar-icon:nth-child(2n+2) {
 	padding-left: var(--space-25);
 }
+.more-sidebar .sidebar-icon img {
+	width: 75%;
+}
 
 @media( min-width: 640px )  {}
 @media( min-width: 1040px ) {

@@ -642,7 +642,7 @@ select {
 
 /* -- FAQs -- */
 .faqs .faq {
-	border-bottom: solid 1px var(--blue-light-light);
+	border-bottom: solid 1px var(--red);
 	overflow: hidden;
 }
 .faqs .faq:last-child {
@@ -670,8 +670,8 @@ select {
 	display: block;
 	width: 100%;
 	height: calc(var(--space-25)/4);
-	background-color: var(--blue);
-	box-shadow: 0 0 0 1px var(--blue);
+	background-color: var(--red);
+	box-shadow: 0 0 0 1px var(--red);
 	top: 50%;
 	transition: .3s ease-out;
 }
