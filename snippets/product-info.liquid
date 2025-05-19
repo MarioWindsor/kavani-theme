@@ -6,7 +6,7 @@
 	<div class="product-category small strong text-uppercase text-neutral-4 space-25-bottom"><small>{{ product.category }}</small></div>
 {% endif %}
 <div class="product-title h6 text-uppercase space-50-bottom"><h1>{{ product.title }}</h1></div>
-<div class="product-price label strong text-red space-25-bottom">{{ product.price | money }} {% if product.compare_at_price_max > product.price %} <span class="compare-at-price">{{ product.compare_at_price | money }}</span>{% endif %}</div>
+<div id="product-price" class="product-price label strong text-red space-25-bottom">{{ product.price | money }} {% if product.compare_at_price_max > product.price %} <span class="small compare-at-price text-neutral-3 space-min" style="text-decoration: line-through;">{{ product.compare_at_price | money }}</span>{% endif %}</div>
 <div class="shipping-policy-link label text-neutral-4 space-50-bottom"><a class="inline text-underline text-black" href="{{ shop.shipping_policy.url }}" target="_blank">Shipping</a> calculated at checkout.</div>
 
 <form id="add-to-cart-form" action="/cart/add" method="post" enctype="multipart/form-data">
@@ -15,7 +15,7 @@
 	{% for option in product.options %}
 	<div class="product-variants form-field space-50-bottom">
 		<label class="form-label small strong text-uppercase inline space-min-bottom" for="variant-select-{{ option | handle }}">{{ option }}</label><br>
-		<select class="block fill-white" id="variant-select-{{ option | handle }}" name="variant-select-{{ option | handle }}" data-option="{{ option | handle }}">
+		<select class="variant-select block fill-white" id="variant-select-{{ option | handle }}" name="variant-select-{{ option | handle }}" data-option="{{ option | handle }}" data-value="">
 			{% for variant in product.variants %}
 				<option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }} {% if variant.available == false %} (Out of Stock){% endif %}</option>
 			{% endfor %}
@@ -77,3 +77,40 @@
 		<span class="inline-middle label strong text-red text-uppercase space-25-left">Frequently Asked Questions</span>
 	</a>
 </div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		let priceString = '{{ product.price | money }}';
+		let currency = '';
+		const match = priceString.match(/^([^0-9]*)\s?\d/);
+		if (match && match[1]) {
+		    currency = match[1].trim();
+		    // console.log(curre y)
+		}
+
+		const product = {{ product | json }}
+		// console.log(product);
+		const variantSelects = document.querySelectorAll('.variant-select');
+		const price = document.getElementById("product-price");
+
+		console.log(price.innerHTML);
+
+		let newPrice = '';
+
+		variantSelects.forEach(select => {
+			select.addEventListener('change', function() {
+				const selectedVariantID = this.value;
+
+				for (var i = product.variants.length - 1; i >= 0; i--) {
+					if (product.variants[i].id == selectedVariantID){
+						newPrice = product.variants[i].price/100;
+						newPrice = newPrice.toFixed(2);
+						newPrice = currency +" "+ newPrice;
+						// console.log(newPrice);
+						price.innerHTML = newPrice;
+					}
+				}
+			});
+		});
+	});
+</script>
