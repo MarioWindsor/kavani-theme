@@ -11,14 +11,16 @@
   "sections": {
     "product": {
       "type": "product",
-      "settings": {}
+      "settings": {
+        "process_video_id": "eRQKZH-RYUA"
+      }
     },
     "collection_carousel": {
       "type": "collection-carousel",
       "settings": {
         "title": "Style With",
         "title_size": "h5",
-        "collection": "sale"
+        "collection": "veil"
       }
     },
     "related_products_carousel": {
