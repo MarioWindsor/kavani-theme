@@ -9,9 +9,19 @@
 		<div class="locations">
 			{% for block in section.blocks %}
 			<div class="location radius-25 no-overflow no-whitespace">
-				<div class="bg-video-embed">
-					<iframe class="" src="https://www.youtube-nocookie.com/embed/dDlTUTgOYOw?playlist=dDlTUTgOYOw&html5=1&color=white&disablekb=0&fs=0&autoplay=1&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-				</div>
+
+				{% if section.settings.background_type == 'image' %}
+					<div class="banner-image">
+						<div class="bg-image" style="background-image: url('{{ section.settings.background_image | img_url: 'master' }}');"></div>
+					</div>
+				{% elsif section.settings.background_type == 'video' %}
+					<div class="banner-video">
+						<div class="bg-video-embed">
+							<iframe class="" src="https://www.youtube-nocookie.com/embed/{{ section.settings.video_id }}?playlist={{ section.settings.video_id }}&html5=1&color=white&disablekb=0&fs=0&autoplay=1&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+						</div>
+					</div>
+				{% endif %}
+
 				<div class="location-actions space-25">
 					<div class="title h5 strong line-height-small text-white text-uppercase text-center">{{ block.settings.city }}</div>
 					<div class="description small strong text-white text-uppercase text-center ">{{ block.settings.state }}</div>
@@ -62,6 +72,29 @@
 					"id": "page_url",
 					"label": "Learn More Page URL",
 					"info": "Link to a page about this specific location (e.g., a Contact Us page or custom page)."
+				},
+				{
+					"type": "select",
+					"id": "background_type",
+					"label": "Background Type",
+					"options": [
+						{ "value": "image", "label": "Image" },
+						{ "value": "video", "label": "Video" }
+					],
+					"default": "video"
+				},
+				{
+					"type": "image_picker",
+					"id": "background_image",
+					"label": "Background Image",
+					"info": "Displayed if 'Image' is selected as background type"
+				},
+				{
+					"type": "text",
+					"id": "video_id",
+					"label": "Background Video",
+					"info": "Upload video to 'YouTube' and paste the corresponding YouTube Video ID",
+					"default": "eRQKZH-RYUA"
 				}
 			]
 		}

@@ -20,7 +20,7 @@ Page/Module Testing :
 - [ ] Wishlist
 - [ ] Blogs + Single
 - [ ] Contact
-- [ ] Location
+- [x] Location Section
 - [ ] About
 
 
@@ -29,11 +29,14 @@ Shopify Configuration :
 - [x] Replace Logo
 - [x] Add Collections
 - [ ] Configure Home Page Sections
+- [x] Location Section
+- [ ] Location Pages
 - [ ] Add Menus
 
 
 Theme Development :
 ------------------------
 - [x] Update New Favicons
+- [x] Location Blocks
 - [ ] Location Video/Image Fallback
 - [ ] Social Media Links
