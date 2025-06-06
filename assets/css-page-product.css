@@ -25,6 +25,19 @@
 	padding-top: var(--space-100);
 }
 
+.product-info .product-quantity label {
+	position: relative;
+}
+
+.product-info .product-quantity label .quantity-toggle {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: auto;
+	display: flex;
+}
+
 @media( min-width: 640px )  {
 	.product-gallery {
 		white-space: normal;
