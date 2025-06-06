@@ -38,5 +38,7 @@ Theme Development :
 ------------------------
 - [x] Update New Favicons
 - [x] Location Blocks
-- [ ] Location Video/Image Fallback
-- [ ] Social Media Links
+- [x] Location Video/Image Fallback
+- [x] Social Media Links
+- [x] W&S Signature
+
