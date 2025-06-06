@@ -6,10 +6,11 @@ Tracking issues and progress to project completion.
 
 Page/Module Testing :
 ------------------------
-- [ ] Home
+- [x] Home
+- [x] Collection List
+- [x] Collection [Listing, Lookbook]
 - [ ] Product
-- [ ] Collection [Listing, Lookbook, Filtration ]
-- [ ] Collection List
+- [ ] Collection - Filtration
 - [ ] Search
 - [ ] Cart
 - [ ] Login / Register / Password
@@ -20,22 +21,28 @@ Page/Module Testing :
 - [ ] Wishlist
 - [ ] Blogs + Single
 - [ ] Contact
-- [x] Location Section
+- [ ] Header
 - [ ] About
+- [x] Location Section
+- [x] Footer
 
 
 Shopify Configuration :
 ------------------------
+- [ ] Collections Lookbook Images & Content
+- [ ] Location Pages
+- [ ] Nested Menu
+- [x] Collections Lookbook Metafields
 - [x] Replace Logo
 - [x] Add Collections
-- [ ] Configure Home Page Sections
+- [x] Configure Home Page Sections
 - [x] Location Section
-- [ ] Location Pages
-- [ ] Add Menus
+- [x] Add Menus
 
 
 Theme Development :
 ------------------------
+- [ ] Nested Menu
 - [x] Update New Favicons
 - [x] Location Blocks
 - [x] Location Video/Image Fallback

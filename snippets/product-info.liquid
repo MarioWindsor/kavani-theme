@@ -27,13 +27,24 @@
 {% endif %}
 
 {% if product.available %}
-		<div class="product-quantity form-field space-50-bottom">
-			<label class="form-label small strong text-uppercase inline space-min-bottom" for="quantity">Quantity</label><br>
-			<input class="block text-center fill-white" type="text" id="quantity" name="quantity" value="1" min="1">
+	<div class="row space-50-bottom">
+		<div class="columns small-6">
+			<div class="product-quantity form-field">
+				<label class="form-label small strong text-uppercase inline space-min-bottom">
+					Quantity<br>
+					<input class="block text-center fill-white" type="text" id="quantity" name="quantity" value="1" min="1">
+				</label>
+			</div>
 		</div>
-		<div class="space-50-bottom">
-			<button type="submit" class="button fill-red block">Add to Cart</button>
+		<div class="columns small-6">
+			<div class="add-to-cart-button form-field">
+				<label class="form-label small strong text-uppercase inline space-min-bottom invisible">
+					Submit<br>
+					<button type="submit" class="button fill-red block">Add to Cart</button>
+				</label>
+			</div>
 		</div>
+	</div>
 {% else %}
 	<div class="space-50-bottom">
 		<button disabled class="button fill-neutral-3 block">Out of Stock</button>
