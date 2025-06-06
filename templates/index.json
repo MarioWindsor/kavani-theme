@@ -113,6 +113,24 @@
         "is_intro": false
       }
     },
+    "collection_carousel_QzFHwn": {
+      "type": "collection-carousel",
+      "name": "Collection Carousel",
+      "settings": {
+        "title": "Signature Bridal Sarees 2025",
+        "title_size": "h5",
+        "collection": "bridal-sarees-2025"
+      }
+    },
+    "collection_carousel_Qk88kd": {
+      "type": "collection-carousel",
+      "name": "Collection Carousel",
+      "settings": {
+        "title": "Signature Bridal Gowns 2025",
+        "title_size": "h5",
+        "collection": "bridal-gowns-2025"
+      }
+    },
     "store_location": {
       "type": "store-location",
       "settings": {}
@@ -140,6 +158,8 @@
     "collection_banner_MC6pR8",
     "collection_carousel_warJmk",
     "collection_banner_rpmJiK",
+    "collection_carousel_QzFHwn",
+    "collection_carousel_Qk88kd",
     "store_location",
     "contact_form",
     "instagram_feed",
