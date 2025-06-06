@@ -17,10 +17,10 @@
 					<div class="description small strong text-white text-uppercase text-center ">{{ block.settings.state }}</div>
 					<div class="row space-25-top">
 						<div class="columns small-6 space-25">
-							<div class="maps button block text-white box-border-white">Google Maps</div>
+							<a href="{{ block.settings.maps_url }}" class="maps button block text-white box-border-white">Google Maps</a>
 						</div>
 						<div class="columns small-6 space-25">							
-							<div class="page button block text-white box-border-white">Learn More</div>
+							<a href="{{ block.settings.page_url }}" class="page button block text-white box-border-white">Learn More</a>
 						</div>
 					</div>
 				</div>
@@ -37,7 +37,7 @@
 	"blocks": [
 		{
 			"type": "location",
-			"name": "Location Item",
+			"name": "Location",
 			"settings": [
 				{
 					"type": "text",
@@ -50,6 +50,18 @@
 					"id": "state",
 					"label": "Location Description",
 					"default": "Karnataka, India"
+				},
+				{
+					"type": "url",
+					"id": "maps_url",
+					"label": "Google Maps URL",
+					"info": "Link to your Google Maps location."
+				},
+				{
+					"type": "url",
+					"id": "page_url",
+					"label": "Learn More Page URL",
+					"info": "Link to a page about this specific location (e.g., a Contact Us page or custom page)."
 				}
 			]
 		}
