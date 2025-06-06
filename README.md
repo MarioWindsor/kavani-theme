@@ -11,9 +11,11 @@ Page/Module Testing :
 - [x] Collection [Listing, Lookbook]
 - [x] Product
 - [x] Header
-- [ ] Collection - Filtration
-- [ ] Search
+- [x] Location Section
+- [x] Footer
 - [ ] Cart
+- [ ] Search
+- [ ] Collection - Filtration
 - [ ] Login / Register / Password
 - [ ] Account
 - [ ] Orders + Single Order Details
@@ -23,8 +25,6 @@ Page/Module Testing :
 - [ ] Blogs + Single
 - [ ] Contact
 - [ ] About
-- [x] Location Section
-- [x] Footer
 
 
 Shopify Configuration :
