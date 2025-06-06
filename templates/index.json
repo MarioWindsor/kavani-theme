@@ -34,7 +34,7 @@
       "settings": {
         "title": "Wedding Sarees",
         "title_size": "h5",
-        "collection": "wedding-sarees-summer-2025",
+        "collection": "wedding-sarees",
         "button_text": "Explore Collection",
         "background_type": "image",
         "video_id": "eRQKZH-RYUA",
@@ -47,7 +47,7 @@
       "settings": {
         "title": "Wedding Gown",
         "title_size": "h5",
-        "collection": "sale",
+        "collection": "wedding-gowns",
         "button_text": "Explore Collection",
         "background_type": "image",
         "video_id": "eRQKZH-RYUA",
@@ -59,7 +59,7 @@
       "settings": {
         "title": "New Arrival",
         "title_size": "h5",
-        "collection": "sale"
+        "collection": "new-arrivals"
       }
     },
     "collection_banner_cTQ4Uh": {
@@ -68,7 +68,7 @@
       "settings": {
         "title": "Luminara Sarees 2025",
         "title_size": "h5",
-        "collection": "sale",
+        "collection": "luminara-sarees-2025",
         "button_text": "Explore Collection",
         "background_type": "video",
         "video_id": "M9_qcfCqM9c",
@@ -81,7 +81,7 @@
       "settings": {
         "title": "Celestial Gowns 2025",
         "title_size": "h5",
-        "collection": "sale",
+        "collection": "celestial-gowns-2025",
         "button_text": "Explore Collection",
         "background_type": "video",
         "video_id": "u-tdD3avaMw",
@@ -92,9 +92,9 @@
       "type": "collection-carousel",
       "name": "Collection Carousel",
       "settings": {
-        "title": "New Arrivals",
+        "title": "On Sale",
         "title_size": "h5",
-        "collection": "wedding-sarees-summer-2025"
+        "collection": "banarasi-sarees"
       }
     },
     "collection_banner_rpmJiK": {
@@ -103,7 +103,7 @@
       "settings": {
         "title": "Cosmic Bloom 2025",
         "title_size": "h5",
-        "collection": "sale",
+        "collection": "cosmic-bloom-2025",
         "button_text": "Explore Collection",
         "background_type": "image",
         "video_id": "eRQKZH-RYUA",
