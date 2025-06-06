@@ -37,6 +37,7 @@
         "collection": "wedding-sarees",
         "button_text": "Explore Collection",
         "background_type": "image",
+        "background_image": "shopify://shop_images/IMG_2544.png",
         "video_id": "eRQKZH-RYUA",
         "is_intro": false
       }
@@ -50,6 +51,7 @@
         "collection": "wedding-gowns",
         "button_text": "Explore Collection",
         "background_type": "image",
+        "background_image": "shopify://shop_images/IMG_2538.png",
         "video_id": "eRQKZH-RYUA",
         "is_intro": false
       }
@@ -106,6 +108,7 @@
         "collection": "cosmic-bloom-2025",
         "button_text": "Explore Collection",
         "background_type": "image",
+        "background_image": "shopify://shop_images/IMG_2539.png",
         "video_id": "eRQKZH-RYUA",
         "is_intro": false
       }
