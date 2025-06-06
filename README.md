@@ -9,7 +9,8 @@ Page/Module Testing :
 - [x] Home
 - [x] Collection List
 - [x] Collection [Listing, Lookbook]
-- [ ] Product
+- [x] Product
+- [x] Header
 - [ ] Collection - Filtration
 - [ ] Search
 - [ ] Cart
@@ -21,7 +22,6 @@ Page/Module Testing :
 - [ ] Wishlist
 - [ ] Blogs + Single
 - [ ] Contact
-- [ ] Header
 - [ ] About
 - [x] Location Section
 - [x] Footer
@@ -42,7 +42,10 @@ Shopify Configuration :
 
 Theme Development :
 ------------------------
-- [ ] Nested Menu
+- [ ] Nested Menu : Header
+- [ ] JS Quantity Toggle : Product + Cart Page
+- [ ] JS Add to Cart Preview : Product Page
+- [ ] JS Search Preview : Header
 - [x] Update New Favicons
 - [x] Location Blocks
 - [x] Location Video/Image Fallback
