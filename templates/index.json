@@ -138,14 +138,18 @@
           "type": "location",
           "settings": {
             "city": "Bangalore",
-            "state": "Karnataka, India"
+            "state": "Karnataka, India",
+            "maps_url": "https://www.google.com/maps?ll=12.981919,77.601203&z=16&t=m&hl=en&gl=IN&mapclient=embed&cid=4538833430686276921",
+            "page_url": "shopify://pages/locations"
           }
         },
         "location_AVWnaT": {
           "type": "location",
           "settings": {
             "city": "Kottayam",
-            "state": "Kerala, India"
+            "state": "Kerala, India",
+            "maps_url": "https://www.google.com/maps?ll=9.587216,76.539209&z=16&t=m&hl=en&gl=IN&mapclient=embed&cid=5918541066698894661",
+            "page_url": "shopify://pages/locations"
           }
         }
       },
