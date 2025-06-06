@@ -99,66 +99,70 @@
 	.header-section .menu-checkbox:checked ~ .header .main-menu ul a {
 		opacity: 1;
 		transform: scale(1), translateY(0);
-		transition: .3s ease-out;
+		transition-behavior: normal;
+		transition-duration: 0.3s;
+		transition-timing-function: ease-out;
+		transition-delay: 0s;
+		transition-property: all;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(1) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(1) a {
 		transition-delay: .1s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(2) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(2) a {
 		transition-delay: .2s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(3) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(3) a {
 		transition-delay: .3s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(4) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(4) a {
 		transition-delay: .4s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(5) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(5) a {
 		transition-delay: .5s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(6) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(6) a {
 		transition-delay: .6s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(7) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(7) a {
 		transition-delay: .7s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(8) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(8) a {
 		transition-delay: .8s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(9) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(9) a {
 		transition-delay: .9s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(10) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(10) a {
 		transition-delay: 1.0s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(11) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(11) a {
 		transition-delay: 1.1s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(12) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(12) a {
 		transition-delay: 1.2s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(13) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(13) a {
 		transition-delay: 1.3s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(14) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(14) a {
 		transition-delay: 1.4s;
 	}
 
-	.header-section .menu-checkbox:checked ~ .header .main-menu ul a:nth-child(15) {
+	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(15) a {
 		transition-delay: 1.5s;
 	}
 }
