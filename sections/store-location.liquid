@@ -7,13 +7,14 @@
 			</div>
 		</div>
 		<div class="locations">
+			{% for block in section.blocks %}
 			<div class="location radius-25 no-overflow no-whitespace">
 				<div class="bg-video-embed">
 					<iframe class="" src="https://www.youtube-nocookie.com/embed/dDlTUTgOYOw?playlist=dDlTUTgOYOw&html5=1&color=white&disablekb=0&fs=0&autoplay=1&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				</div>
 				<div class="location-actions space-25">
-					<div class="title h5 strong line-height-small text-white text-uppercase text-center">Bangalore</div>
-					<div class="description small strong text-white text-uppercase text-center ">Karnataka, India</div>
+					<div class="title h5 strong line-height-small text-white text-uppercase text-center">{{ block.settings.city }}</div>
+					<div class="description small strong text-white text-uppercase text-center ">{{ block.settings.state }}</div>
 					<div class="row space-25-top">
 						<div class="columns small-6 space-25">
 							<div class="maps button block text-white box-border-white">Google Maps</div>
@@ -24,24 +25,47 @@
 					</div>
 				</div>
 			</div>
-			<div class="location radius-25 no-overflow no-whitespace">
-				<div class="bg-video-embed">
-					<iframe class="" src="https://www.youtube-nocookie.com/embed/dDlTUTgOYOw?playlist=dDlTUTgOYOw&html5=1&color=white&disablekb=0&fs=0&autoplay=1&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-				</div>
-				<div class="location-actions space-25">
-					<div class="title h5 strong line-height-small text-white text-uppercase text-center">Kottayam</div>
-					<div class="description small strong text-white text-uppercase text-center">Kerala, India</div>
-					<div class="row space-25-top">
-						<div class="columns small-6 space-25">
-							<div class="maps button block text-white box-border-white">Google Maps</div>
-						</div>
-						<div class="columns small-6 space-25">							
-							<div class="page button block text-white box-border-white">Learn More</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 </section>
 <!-- END: Location Section -->
+
+{% schema %}
+{
+	"name": "Store Locations",
+	"blocks": [
+		{
+			"type": "location",
+			"name": "Location Item",
+			"settings": [
+				{
+					"type": "text",
+					"id": "city",
+					"label": "Location Title",
+					"default": "Bangalore"
+				},
+				{
+					"type": "text",
+					"id": "state",
+					"label": "Location Description",
+					"default": "Karnataka, India"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Store Locations",
+			"blocks": [
+				{
+					"type": "location"
+				},
+				{
+					"type": "location"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

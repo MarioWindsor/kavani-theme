@@ -1,0 +1,39 @@
+Kavani Theme - Task List
+========================
+
+Tracking issues and progress to project completion.
+
+
+Page/Module Testing :
+------------------------
+- [ ] Home
+- [ ] Product
+- [ ] Collection [Listing, Lookbook, Filtration ]
+- [ ] Collection List
+- [ ] Search
+- [ ] Cart
+- [ ] Login / Register / Password
+- [ ] Account
+- [ ] Orders + Single Order Details
+- [ ] Address + Edit
+- [ ] Pop-up
+- [ ] Wishlist
+- [ ] Blogs + Single
+- [ ] Contact
+- [ ] Location
+- [ ] About
+
+
+Shopify Configuration :
+------------------------
+- [x] Replace Logo
+- [x] Add Collections
+- [ ] Configure Home Page Sections
+- [ ] Add Menus
+
+
+Theme Development :
+------------------------
+- [x] Update New Favicons
+- [ ] Location Video/Image Fallback
+- [ ] Social Media Links
