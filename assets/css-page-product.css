@@ -29,7 +29,6 @@
 .product-quantity label {
 	position: relative;
 }
-
 .product-quantity label .quantity-toggle {
 	position: absolute;
 	left: 0;
@@ -40,18 +39,25 @@
 	justify-content: space-between;
 	align-items: center;
 }
-
-
 .product-quantity label .quantity-toggle .icon-button {
 	background-color: transparent;
-	box-shadow: 0;
+	box-shadow: none;
 	outline: 0;
 	border: 0;
 	width: var(--space-200);
 	height: var(--space-200);
 	line-height: var(--space-200);
+	padding: none;
 }
-
+.product-quantity label .quantity-toggle .icon-button * {
+	pointer-events: none;
+}
+.product-quantity label .quantity-toggle .icon-button i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 
 @media( min-width: 640px )  {
 	.product-gallery {
