@@ -133,6 +133,26 @@
     },
     "store_location": {
       "type": "store-location",
+      "blocks": {
+        "location_AVWnaT": {
+          "type": "location",
+          "settings": {
+            "city": "Kottayam",
+            "state": "Kerala, India"
+          }
+        },
+        "location_U3y6nH": {
+          "type": "location",
+          "settings": {
+            "city": "Bangalore",
+            "state": "Karnataka, India"
+          }
+        }
+      },
+      "block_order": [
+        "location_AVWnaT",
+        "location_U3y6nH"
+      ],
       "settings": {}
     },
     "contact_form": {
