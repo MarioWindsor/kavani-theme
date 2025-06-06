@@ -18,7 +18,51 @@
     ]
   },
   {
-    "name": "WhatsApp Badge",
+    "name": "Social: Instagram",
+    "settings": [
+      {
+        "type": "text",
+        "id": "instagram",
+        "label": "Link to Instagram Page",
+        "default": "https://www.instagram.com/kavani_bridals/"
+      }
+    ]
+  },
+  {
+    "name": "Social: Facebook",
+    "settings": [
+      {
+        "type": "text",
+        "id": "facebook",
+        "label": "Link to Facebook Page",
+        "default": "https://www.facebook.com/kavani.studio"
+      }
+    ]
+  },
+  {
+    "name": "Social: YouTube",
+    "settings": [
+      {
+        "type": "text",
+        "id": "youtube",
+        "label": "Link to YouTube Page",
+        "default": "https://www.youtube.com/@KavaniBridals"
+      }
+    ]
+  },
+  {
+    "name": "Social: Pinterest",
+    "settings": [
+      {
+        "type": "text",
+        "id": "pinterest",
+        "label": "Link to Pinterest Page",
+        "default": "https://in.pinterest.com/tankuruvilla/"
+      }
+    ]
+  },
+  {
+    "name": "Social: WhatsApp",
     "settings": [
       {
         "type": "text",
