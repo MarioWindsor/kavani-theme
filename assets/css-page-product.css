@@ -81,17 +81,17 @@
 	.product-info {
 		top: calc(var(--space-100) * 2.666);
 	}
+	.product-quantity label .quantity-toggle .icon-button {
+		width: var(--space-150);
+		height: var(--space-150);
+		line-height: var(--space-150);
+	}
+
 }
 @media( min-width: 1480px ) {
 	.product-info {
 		top: calc(var(--space-100) * 2.25);
 		padding-left: var(--space-75);
-	}
-
-	.product-quantity label .quantity-toggle .icon-button {
-		width: var(--space-150);
-		height: var(--space-150);
-		line-height: var(--space-150);
 	}
 
 }
