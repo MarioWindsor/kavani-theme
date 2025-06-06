@@ -97,8 +97,8 @@
 	}
 
 	.header-section .menu-checkbox:checked ~ .header .main-menu ul a {
-		opacity: 0;
-		transform: scale(0.5);
+		opacity: 1;
+		transform: scale(1);
 		transition: .3s ease-out;
 	}
 }
