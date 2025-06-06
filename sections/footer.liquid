@@ -58,11 +58,11 @@
 					<div class="columns small-12 large-5 large-offset-1 space-100-bottom">
 						<div class="p strong text-netural-3 text-uppercase space-25">Connect With Us</div>
 						<div class="socials space-25">
-							<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="" style="margin-right: var(--space-min);"><i class='bx bxl-instagram h3 text-neutral-7 inline-middle' ></i></a>
-							<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="" style="margin-right: var(--space-min);"><i class='bx bxl-facebook h3 text-neutral-7 inline-middle' ></i></a>
-							<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="" style="margin-right: var(--space-min);"><i class='bx bxl-youtube h3 text-neutral-7 inline-middle' ></i></a>
-							<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="" style="margin-right: var(--space-min);"><i class='bx bxl-pinterest-alt h3 text-neutral-7 inline-middle' ></i></a>
-							<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="" style="margin-right: var(--space-min);"><i class='bx bxl-whatsapp h3 text-neutral-7 inline-middle' ></i></a>
+							{% if settings.instagram %}<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="{{ settings.instagram }}" style="margin-right: var(--space-min);"><i class='bx bxl-instagram h3 text-neutral-7 inline-middle' ></i></a>{% endif %}
+							{% if settings.facebook %}<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="{{ settings.facebook }}" style="margin-right: var(--space-min);"><i class='bx bxl-facebook h3 text-neutral-7 inline-middle' ></i></a>{% endif %}
+							{% if settings.youtube %}<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="{{ settings.youtube }}" style="margin-right: var(--space-min);"><i class='bx bxl-youtube h3 text-neutral-7 inline-middle' ></i></a>{% endif %}
+							{% if settings.pinterest %}<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="{{ settings.pinterest }}" style="margin-right: var(--space-min);"><i class='bx bxl-pinterest-alt h3 text-neutral-7 inline-middle' ></i></a>{% endif %}
+							{% if settings.whatsapp %}<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="{{ settings.whatsapp }}" style="margin-right: var(--space-min);"><i class='bx bxl-whatsapp h3 text-neutral-7 inline-middle' ></i></a>{% endif %}
 						</div>
 					</div>
 				</div>
