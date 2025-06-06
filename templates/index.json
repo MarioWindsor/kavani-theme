@@ -12,12 +12,11 @@
     "collection_banner": {
       "type": "collection-banner",
       "settings": {
-        "title": "My Wedding My Way",
+        "title": "Celebrating 13 Years of Making Bridal Dreams Come True",
         "title_size": "h3",
         "collection": "",
         "button_text": "Explore Collection",
         "background_type": "video",
-        "background_image": "shopify://shop_images/IMG_2540.png",
         "video_id": "2bQqby6vS-o",
         "is_intro": true
       }
@@ -38,7 +37,6 @@
         "collection": "wedding-sarees-summer-2025",
         "button_text": "Explore Collection",
         "background_type": "image",
-        "background_image": "shopify://shop_images/IMG_2545.png",
         "video_id": "eRQKZH-RYUA",
         "is_intro": false
       }
@@ -52,7 +50,6 @@
         "collection": "sale",
         "button_text": "Explore Collection",
         "background_type": "image",
-        "background_image": "shopify://shop_images/IMG_2538.png",
         "video_id": "eRQKZH-RYUA",
         "is_intro": false
       }
@@ -109,7 +106,6 @@
         "collection": "sale",
         "button_text": "Explore Collection",
         "background_type": "image",
-        "background_image": "shopify://shop_images/IMG_2539.png",
         "video_id": "eRQKZH-RYUA",
         "is_intro": false
       }
