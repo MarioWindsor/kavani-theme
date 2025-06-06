@@ -10,14 +10,14 @@
 			{% for block in section.blocks %}
 			<div class="location radius-25 no-overflow no-whitespace">
 
-				{% if section.settings.background_type == 'image' %}
+				{% if block.settings.background_type == 'image' %}
 					<div class="banner-image">
-						<div class="bg-image" style="background-image: url('{{ section.settings.background_image | img_url: 'master' }}');"></div>
+						<div class="bg-image" style="background-image: url('{{ block.settings.background_image | img_url: 'master' }}');"></div>
 					</div>
-				{% elsif section.settings.background_type == 'video' %}
+				{% elsif block.settings.background_type == 'video' %}
 					<div class="banner-video">
 						<div class="bg-video-embed">
-							<iframe class="" src="https://www.youtube-nocookie.com/embed/{{ section.settings.video_id }}?playlist={{ section.settings.video_id }}&html5=1&color=white&disablekb=0&fs=0&autoplay=1&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+							<iframe class="" src="https://www.youtube-nocookie.com/embed/{{ block.settings.video_id }}?playlist={{ block.settings.video_id }}&html5=1&color=white&disablekb=0&fs=0&autoplay=1&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=1&enablejsapi=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 						</div>
 					</div>
 				{% endif %}
