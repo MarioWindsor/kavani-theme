@@ -77,11 +77,11 @@
 			<div class="h2 strong font-h text-red space-100-bottom line-height-one">{{ settings.popuptext }}</div>
 			<span class="block label strong text-neutral-5 text-uppercase space-50-bottom">apply offer code:</span>
 			<div class="block row copy-code line-height-one space-50 no-wrap fill-red text-white radius-min">
-				<span class="h4 inline-middle space-min-left-right">{{ settings.popupcode }}</span>
-				<a class="space-min inline-middle" href="" style="margin-right: var(--space-min);">
+				<span id="popup-copy-code" class="h4 inline-middle space-min-left-right">{{ settings.popupcode }}</span>
+				<button id="popup-copy-button" class="space-min inline-middle" tabindex="0" href="" style="margin-right: var(--space-min);">
 					<i class='bx bx-clipboard h6 inline-middle opacity-50' ></i>
-				</a>
-				<small class="small block text-uppercase space-25-top opacity-50">copy to clipboard</small>
+				</button>
+				<small id="popup-copy-label" class=" small block text-uppercase space-25-top opacity-50">copy to clipboard</small>
 			</div>
 			<span class="block label strong text-red text-uppercase space-50-top">at checkout</span>
 		</div>
@@ -91,6 +91,8 @@
 <!-- END: Pop-up Modal -->
 
 
+
+<!-- Toggle Pop-up Dialogue -->
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		const popupModal = document.querySelector("#popup-modal");
@@ -168,4 +170,42 @@
 			});
 		}
 	});
+</script>
+
+
+
+<!-- Copy to Clipboard -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const copyCodeElement = document.getElementById('popup-copy-code');
+    const copyButton = document.getElementById('popup-copy-button');
+    const copyLabel = document.getElementById('popup-copy-label');
+
+    if (copyButton && copyCodeElement && copyLabel) {
+        copyButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Good practice even for buttons inside forms
+
+            const textToCopy = copyCodeElement.textContent.trim(); // Get the text and trim whitespace
+
+            // Use the modern Clipboard API (requires HTTPS)
+            navigator.clipboard.writeText(textToCopy)
+                .then(() => {
+                    console.log('Text copied to clipboard:', textToCopy);
+                    updateCopyLabel('copied');
+                    setTimeout(() => {
+                        updateCopyLabel('copy to clipboard');
+                    }, 10000); // Revert after 10 seconds
+                })
+                .catch(err => {
+                    console.error('Failed to copy text (Clipboard API error): ', err);
+                    updateCopyLabel('Failed to copy'); // Provide feedback to the user
+                    // Optionally, you might log more details or suggest manual copy
+                });
+        });
+    }
+
+    function updateCopyLabel(text) {
+        copyLabel.textContent = text;
+    }
+});
 </script>
