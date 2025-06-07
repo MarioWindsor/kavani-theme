@@ -23,6 +23,13 @@
 	transform: translate(-50%, -50%);
 	display: inline-block;
 }
+#popup-modal .popup .popup-code button {
+	padding: var(--space-min);
+	line-height: 1;
+	height: auto;
+	background: transparent;
+	color: var(--white);
+}
 
 #popup-modal .popup .popup-code .small,
 #popup-modal .popup .popup-code .label {
@@ -78,7 +85,7 @@
 			<span class="block label strong text-neutral-5 text-uppercase space-50-bottom">apply offer code:</span>
 			<div class="block row copy-code line-height-one space-50 no-wrap fill-red text-white radius-min">
 				<span id="popup-copy-code" class="h4 inline-middle space-min-left-right">{{ settings.popupcode }}</span>
-				<button id="popup-copy-button" class="space-min inline-middle" tabindex="0" href="" style="margin-right: var(--space-min);">
+				<button id="popup-copy-button" class="inline-middle">
 					<i class='bx bx-clipboard h6 inline-middle opacity-50' ></i>
 				</button>
 				<small id="popup-copy-label" class=" small block text-uppercase space-25-top opacity-50">copy to clipboard</small>
