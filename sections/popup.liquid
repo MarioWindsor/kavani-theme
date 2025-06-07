@@ -68,10 +68,11 @@
 <dialog id="popup-modal" open>
 	<div class="popup img-cover fill-white" style="padding-top: 100%; background-image: url('{{ settings.popupimage | image_url}};');">
 		<div class="popup-code fill-white space-25">
+			<div class="h4">{{ settings.popuptext }}</div>
 			<span class="block label">apply code:</span>
-			<div class="block h4 copy-code">
-				{{ settings.popupcode }} 
-				<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="" style="margin-right: var(--space-min);"><i class='bx bx-copy-alt h3 text-neutral-7 inline-middle' ></i><small class="small block text-uppercase">copy</small></a>
+			<div class="block h5 copy-code">
+				{{ settings.popupcode }}
+				<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="" style="margin-right: var(--space-min);"><i class='bx bx-copy-alt h4 text-neutral-7 inline-middle' ></i><small class="small block text-uppercase">copy</small></a>
 			</div>
 			<span class="block label">at checkout</span>
 		</div>

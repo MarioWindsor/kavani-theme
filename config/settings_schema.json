@@ -76,14 +76,19 @@
     "name": "Pop-up Offer Image",
     "settings": [
       {
-        "type": "image_picker",
-        "id": "popupimage",
-        "label": "Add an 'Offer Discount Code' Image (Size: 1000x1000px | Format: JPG or PNG)"
+        "type": "text",
+        "id": "popuptext",
+        "label": "Offer Code Message (eg: Get 15% Discount)"
       },
       {
         "type": "text",
         "id": "popupcode",
-        "label": "Enter Active Offer Discount Code"
+        "label": "Enter Active Offer Code (eg: BRIDE15)"
+      },
+      {
+        "type": "image_picker",
+        "id": "popupimage",
+        "label": "Add an 'Offer Code' Image (Size: 1000x1000px | Format: JPG or PNG)"
       }
     ]
   }
