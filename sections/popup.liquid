@@ -57,8 +57,14 @@
 </style>
 
 
-<dialog id="popup-modal">
-	<a href="/cart?discount={{ settings.popupcode }}" class="popup img-cover fill-white" style="padding-top: 100%; background-image: url('{{ settings.popupimage | image_url}};');"></a>
+<dialog id="popup-modal" open>
+	<div class="popup img-cover fill-white" style="padding-top: 100%; background-image: url('{{ settings.popupimage | image_url}};');">
+		<div class="popup-code p fill-white space-25">
+			apply code:
+			{{ settings.popupcode }}
+			at checkout
+		</div>
+	</div>
 	<button class="popup-close space-25 icon-button fill-white box-shadow-red-light"><i class='bx bx-x h2 text-red' ></i><span class="visuallyhidden">Close Popup</span></button>
 </dialog>
 <!-- END: Pop-up Modal -->

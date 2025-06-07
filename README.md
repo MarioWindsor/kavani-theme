@@ -13,16 +13,16 @@ Page/Module Testing :
 - [x] Header
 - [x] Location Section
 - [x] Footer
+- [x] Login / Register / Password
+- [x] Account
+- [x] Orders + Single Order Details
+- [x] Address + Edit
+- [x] Blogs + Single
+- [ ] Pop-up Offer
 - [ ] Cart
 - [ ] Search
 - [ ] Collection - Filtration
-- [ ] Login / Register / Password
-- [ ] Account
-- [ ] Orders + Single Order Details
-- [ ] Address + Edit
-- [ ] Pop-up
 - [ ] Wishlist
-- [ ] Blogs + Single
 - [ ] Contact
 - [ ] About
 
