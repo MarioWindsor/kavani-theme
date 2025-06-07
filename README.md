@@ -18,7 +18,7 @@ Page/Module Testing :
 - [x] Orders + Single Order Details
 - [x] Address + Edit
 - [x] Blogs + Single
-- [ ] Pop-up Offer
+- [x] Pop-up Offer
 - [ ] Cart
 - [ ] Search
 - [ ] Collection - Filtration
