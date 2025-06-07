@@ -42,13 +42,13 @@
 	top: 100%;
 	right: 0;
 	text-align: center;
-	/*transform: translate(-120%, 0);*/
+	transform: translate(-120%, 0);
 	/*transition: none;*/
 	padding-top: var(--space-100);
 }
 
 .header-section .menu-checkbox:checked ~ .header .main-menu {
-	/*transform: translate(0, 0);*/
+	transform: translate(0, 0);
 	/*transition: .5s ease-out;*/
 }
 
