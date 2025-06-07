@@ -24,6 +24,11 @@
 	display: inline-block;
 }
 
+#popup-modal .popup .popup-code .small {
+	text-box-trim: trim-both;
+	text-box-edge: cap alphabetic;
+}
+
 #popup-modal .popup-close {
 	position: absolute;
 	z-index: 2;
@@ -67,14 +72,17 @@
 
 <dialog id="popup-modal" open>
 	<div class="popup img-cover fill-white" style="padding-top: 100%; background-image: url('{{ settings.popupimage | image_url}};');">
-		<div class="popup-code fill-white space-25">
-			<div class="h4">{{ settings.popuptext }}</div>
-			<span class="block label">apply code:</span>
-			<div class="block h5 copy-code">
+		<div class="popup-code fill-white space-100 text-center radius-25 box-shadow-red">
+			<div class="h3 strong font-h text-red space-50-bottom">{{ settings.popuptext }}</div>
+			<span class="block small strong text-neutral-5 text-uppercase space-min-bottom">apply offer code:</span>
+			<div class="block h3 copy-code line-height-one space-25 space-50-left-right no-wrap fill-red text-white radius-min">
 				{{ settings.popupcode }}
-				<a class="space-min inline-middle fill-white radius-min box-shadow-orange opacity-75" href="" style="margin-right: var(--space-min);"><i class='bx bx-copy-alt h4 text-neutral-7 inline-middle' ></i><small class="small block text-uppercase">copy</small></a>
+				<a class="space-min inline-middle" href="" style="margin-right: var(--space-min);">
+					<i class='bx bx-copy-alt h5 inline-middle' ></i>
+					<small class="small block text-uppercase">copy</small>
+				</a>
 			</div>
-			<span class="block label">at checkout</span>
+			<span class="block small strong text-red text-uppercase text-underline space-min-top">at checkout</span>
 		</div>
 	</div>
 	<button class="popup-close space-25 icon-button fill-white box-shadow-red-light"><i class='bx bx-x h2 text-red' ></i><span class="visuallyhidden">Close Popup</span></button>
