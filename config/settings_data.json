@@ -10,8 +10,9 @@
 {
   "current": {
     "logo": "shopify://shop_images/logo-combination-legacy-brown-black.png",
-    "popupimage": "shopify://shop_images/lace.jpg",
+    "popuptext": "Get 15% Discount",
     "popupcode": "BRIDE15",
+    "popupimage": "shopify://shop_images/lace.jpg",
     "sections": {
       "header": {
         "type": "header",
