@@ -87,7 +87,6 @@
 .header-section .header .main-menu .menu .menu-link .toggle-sub-menu {
 	cursor: pointer;
 	position: absolute;
-	/*top: 0;*/
 	top: var(--space-50);
 	right: 0;
 	z-index: 3;
@@ -265,7 +264,19 @@
 		box-shadow: 0 0 3px 1px rgba(var(---red), 0.15), 0 0 12px 4px rgba(var(---dark), 0.15);
 		backdrop-filter: blur(7px);
 		-webkit-backdrop-filter: blur(7px);
-		border-bottom: 0;
+		border-bottom: 0 !important;
+	}
+
+	.header-section .header .main-menu .menu .menu-link .toggle-sub-menu {
+		position: relative;
+		top: auto;
+		right: auto;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	
+	.header-section .header .main-menu .menu .menu-link .toggle-sub-menu i {
+		font-size: var(--p);
 	}
 
 }
