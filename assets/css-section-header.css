@@ -85,11 +85,7 @@
 
 
 .header-section .header .main-menu .menu .menu-link .toggle-sub-menu {
-	position: absolute;
-	top: var(--space-50);
-	right: 0;
 	cursor: pointer;
-	z-index: 3;
 }
 
 .header-section .header .main-menu .menu .menu-link .toggle-sub-menu * { pointer-events: none; }
@@ -197,6 +193,13 @@
 
 	.header-section .header .main-menu .menu .menu-link .dropdown-child a  {
 		font-size: var(--label);
+	}
+
+	.header-section .header .main-menu .menu .menu-link .dropdown-child .toggle-sub-menu {
+		position: absolute;
+		top: var(--space-50);
+		right: 0;
+		z-index: 3;
 	}
 
 	.header-section .header .main-menu .menu .menu-link input:checked + .toggle-sub-menu + .dropdown-child {
