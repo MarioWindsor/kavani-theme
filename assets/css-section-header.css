@@ -115,11 +115,11 @@
 	transform: rotate(180deg);
 }
 
-.header-section .header .main-menu .menu .menu-link:hover .dropdown-child,
+/*.header-section .header .main-menu .menu .menu-link:hover .dropdown-child,
 .header-section .header .main-menu .menu .menu-link input:checked ~ .dropdown-child {
 	display: block;
 	border-bottom: dashed 1px rgba(var(---red), 0.35);
-}
+}*/
 
 
 @media( max-width: 1039px )  {
