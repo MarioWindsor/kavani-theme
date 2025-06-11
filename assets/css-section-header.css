@@ -250,6 +250,23 @@
 		font-size: var(--h5);
 	}
 
+
+	.header-section .header .main-menu .menu .menu-link .toggle-sub-menu {
+		position: relative;
+		padding-left: 0;
+		padding-right: 0;
+
+	}
+	.header-section .header .main-menu .menu .menu-link .toggle-sub-menu i {
+		font-size: p;
+		transform: scale(1.5);
+		transform-origin: right;
+	}
+
+	.header-section .header .main-menu .menu .menu-link:hover + .toggle-sub-menu + .dropdown-child,
+	.header-section .header .main-menu .menu .menu-link input:checked + .toggle-sub-menu + .dropdown-child {
+		display: block;
+	}
 }
 @media( min-width: 1480px ) {
 	.header-section .header .logo {
