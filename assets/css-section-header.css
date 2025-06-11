@@ -196,7 +196,7 @@
 	
 
 
-	.header-section .header .main-menu .menu .menu-link .toggle-sub-menu input:checked .dropdown-child {
+	.header-section .header .main-menu .menu .menu-link .toggle-sub-menu + input:checked + .dropdown-child {
 		display: block;
 		border-bottom: dashed 1px rgba(var(---red), 0.35);
 	}
