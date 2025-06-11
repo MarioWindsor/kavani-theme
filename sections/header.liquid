@@ -23,7 +23,10 @@
 						<label for="toggle-sub-{{ link.handle }}" class="toggle-sub-menu space-50" tabindex="0">
 							<i class='bx bx-chevron-down h3 text-neutral-6'></i>
 						</label>
-						<ul class="menu dropdown-child" style="display: none;">
+						<style>
+							.dropdown-child { display: none; }
+						</style>
+						<ul class="menu dropdown-child">
 							{% for child_link in link.links %}
 								<li class="menu-link">
 									<a class="h4 text-uppercase text-neutral-7" href="{{ child_link.url }}">{{ child_link.title }}</a>
