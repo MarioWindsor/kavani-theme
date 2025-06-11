@@ -19,10 +19,10 @@
 					<a class="h4 text-uppercase text-neutral-7" href="{{ link.url }}">{{ link.title }}</a>
 
 					{% if link.links.size > 0 %}
-						<label class="toggle-sub-menu space-50" tabindex="0">
-							<input type="checkbox" class="visuallyhidden">
+						<label for="{{ link.id }}" class="toggle-sub-menu space-50" tabindex="0">
 							<i class='bx bx-chevron-down h3 text-dark'></i>
 						</label>
+						<input type="checkbox" id="{{ link.id }}" class="visuallyhidden">
 						<ul class="menu dropdown-child">
 							{% for child_link in link.links %}
 								<li class="menu-link">
