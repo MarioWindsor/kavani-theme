@@ -277,7 +277,9 @@
 	}
 
 	.header-section .header .main-menu .menu .menu-link .toggle-sub-menu i {
-		font-size: var(--h6);
+		font-size: var(--small);
+		transform: scale(2);
+		transform-origin: right;
 	}
 
 }
