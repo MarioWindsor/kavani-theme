@@ -26,7 +26,7 @@
 			<div class="date small text-neutral-3 space-min-bottom">{{ article.published_at | date: '%B %d, %Y' }}</div>
 			<div class="summary small text-neutral-6">
 				{% if article.excerpt != blank %}
-					{{ article.excerpt }}
+					{{ article.excerpt | strip_html | truncatewords: 35 }}
 				{% else %}
 					{{ article.content | strip_html | truncatewords: 35 }} 
 				{% endif %}
