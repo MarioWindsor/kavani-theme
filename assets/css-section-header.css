@@ -84,12 +84,12 @@
 .header-section .menu-checkbox:checked ~ .header .menu-toggle .open { display: none; }
 
 
-/*.header-section .header .main-menu .menu .menu-link .toggle-sub-menu input:checked {*/
 .header-section .header .main-menu .menu .menu-link .toggle-sub-menu {
 	position: absolute;
 	top: 50%;
 	right: 0;
-	transform: translate(-50%, -50%);
+	transform: translateY(-50%);
+	cursor: pointer;
 }
 
 .header-section .header .main-menu .menu .menu-link .toggle-sub-menu * { pointer-events: none; }
@@ -192,6 +192,13 @@
 
 	.header-section .menu-checkbox:checked ~ .header .main-menu ul li:nth-child(15) a {
 		transition-delay: 1.5s;
+	}
+	
+
+
+	.header-section .header .main-menu .menu .menu-link .toggle-sub-menu input:checked .dropdown-child {
+		display: block;
+		border-bottom: dashed 1px rgba(var(---red), 0.35);
 	}
 }
 @media( min-width: 640px )  {
