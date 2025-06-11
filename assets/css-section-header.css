@@ -84,6 +84,11 @@
 .header-section .menu-checkbox:checked ~ .header .menu-toggle .open { display: none; }
 
 
+/*.header-section .header .main-menu .menu .menu-link .toggle-sub-menu input:checked {*/
+.header-section .header .main-menu .menu .menu-link .toggle-sub-menu {
+	
+}
+
 .header-section .header .main-menu .menu .menu-link {
 	position: relative;
 }

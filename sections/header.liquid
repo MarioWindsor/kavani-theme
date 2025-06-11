@@ -19,9 +19,10 @@
 					<a class="h4 text-uppercase text-neutral-7" href="{{ link.url }}">{{ link.title }}</a>
 
 					{% if link.links.size > 0 %}
-						<!-- <label class="toggle-nested-menu">
+						<label class="toggle-sub-menu">
 							<input type="checkbox">
-						</label> -->
+							<i class='bx bx-chevron-down'></i>
+						</label>
 						<ul class="menu dropdown-child">
 							{% for child_link in link.links %}
 								<li class="menu-link">
