@@ -256,6 +256,17 @@
 		font-size: var(--h5);
 	}
 
+	.header-section .header .main-menu .menu .menu-link .dropdown-child {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 2;
+		background: rgba(var(---light), 0.85);
+		box-shadow: 0 0 3px 1px rgba(var(---red), 0.15), 0 0 12px 4px rgba(var(---dark), 0.15);
+		backdrop-filter: blur(7px);
+		-webkit-backdrop-filter: blur(7px);
+		border-bottom: 0;
+	}
 
 }
 @media( min-width: 1480px ) {
