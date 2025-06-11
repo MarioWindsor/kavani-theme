@@ -196,7 +196,7 @@
 
 
 	.header-section .header .main-menu .menu .menu-link .dropdown-child a  {
-		font-size: var(--h6);
+		font-size: var(--label);
 	}
 
 	.header-section .header .main-menu .menu .menu-link input:checked + .toggle-sub-menu + .dropdown-child {
