@@ -19,19 +19,23 @@ Page/Module Testing :
 - [x] Address + Edit
 - [x] Blogs + Single
 - [x] Pop-up Offer
+- [x] About
 - [ ] Cart
+- [ ] FORMS
 - [ ] Search
 - [ ] Collection - Filtration
 - [ ] Wishlist
 - [ ] Contact
-- [ ] About
+
 
 
 Shopify Configuration :
 ------------------------
-- [ ] Collections Lookbook Images & Content
-- [ ] Location Pages
-- [ ] Nested Menu
+- [ ] Home Page Form
+- [ ] Contact Page Form
+- [x] Collections Lookbook Images & Content
+- [x] Location Pages
+- [x] Nested Menu
 - [x] Collections Lookbook Metafields
 - [x] Replace Logo
 - [x] Add Collections
@@ -42,11 +46,12 @@ Shopify Configuration :
 
 Theme Development :
 ------------------------
-- [ ] Nested Menu : Header
-- [ ] Blog/Page Content Typography CSS
+- [ ] Form Functinoality 
 - [ ] JS Quantity Toggle : Product + Cart Page
 - [ ] JS Add to Cart Preview : Product Page
 - [ ] JS Search Preview : Header
+- [x] Nested Menu : Header
+- [x] Blog/Page Content Typography CSS
 - [x] Update New Favicons
 - [x] Location Blocks
 - [x] Location Video/Image Fallback
