@@ -110,11 +110,12 @@
 }
 
 
-.header-section .header .main-menu .menu .menu-link:hover input:checked + .toggle-sub-menu,
+.header-section .header .main-menu .menu .menu-link:hover .toggle-sub-menu,
 .header-section .header .main-menu .menu .menu-link input:checked + .toggle-sub-menu {
 	transform: rotate(180deg);
 }
 
+.header-section .header .main-menu .menu .menu-link:hover .dropdown-child {
 .header-section .header .main-menu .menu .menu-link input:checked ~ .dropdown-child {
 	display: block;
 	border-bottom: dashed 1px rgba(var(---red), 0.35);
