@@ -269,14 +269,15 @@
 
 	.header-section .header .main-menu .menu .menu-link .toggle-sub-menu {
 		position: relative;
+		display: inline-block;
 		top: auto;
 		right: auto;
 		padding-left: 0;
 		padding-right: 0;
 	}
-	
+
 	.header-section .header .main-menu .menu .menu-link .toggle-sub-menu i {
-		font-size: var(--p);
+		font-size: var(--h6);
 	}
 
 }
