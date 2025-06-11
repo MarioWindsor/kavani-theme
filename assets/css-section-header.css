@@ -84,6 +84,15 @@
 .header-section .menu-checkbox:checked ~ .header .menu-toggle .open { display: none; }
 
 
+.header-section .header .main-menu .menu .menu-link .dropdown-child {
+	display: none;
+}
+
+.header-section .header .main-menu .menu .menu-link:hover .dropdown-child {
+	display: block;
+}
+
+
 @media( max-width: 1039px )  {
 	.header-section .header .main-menu ul a {
 		display: block;

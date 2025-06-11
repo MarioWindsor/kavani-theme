@@ -43,6 +43,7 @@ Shopify Configuration :
 Theme Development :
 ------------------------
 - [ ] Nested Menu : Header
+- [ ] Blog/Page Content Typography CSS
 - [ ] JS Quantity Toggle : Product + Cart Page
 - [ ] JS Add to Cart Preview : Product Page
 - [ ] JS Search Preview : Header
