@@ -263,9 +263,10 @@
 		transform-origin: right;
 	}
 
-	.header-section .header .main-menu .menu .menu-link:hover .toggle-sub-menu,
-	/*.header-section .header .main-menu .menu .menu-link input:checked + .toggle-sub-menu */ {
-		transform: rotate(180deg);
+	.header-section .header .main-menu .menu .menu-link:hover .toggle-sub-menu i,
+	.header-section .header .main-menu .menu .menu-link input:checked + .toggle-sub-menu i {
+		transform: scale(1.75), rotate(180deg);
+		transform-origin: right;
 	}
 
 	.header-section .header .main-menu .menu .menu-link .dropdown-child {
