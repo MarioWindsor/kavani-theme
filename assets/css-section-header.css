@@ -195,6 +195,10 @@
 	
 
 
+	.header-section .header .main-menu .menu .menu-link .dropdown-child a  {
+		font-size: var(--h6);
+	}
+
 	.header-section .header .main-menu .menu .menu-link input:checked + .toggle-sub-menu + .dropdown-child {
 		display: block;
 		border-bottom: dashed 1px rgba(var(---red), 0.35);
@@ -258,15 +262,7 @@
 
 	}
 	.header-section .header .main-menu .menu .menu-link .toggle-sub-menu i {
-		font-size: var(--small);
-		transform: scale(1.75);
-		transform-origin: right;
-	}
-
-	.header-section .header .main-menu .menu .menu-link:hover .toggle-sub-menu i,
-	.header-section .header .main-menu .menu .menu-link input:checked + .toggle-sub-menu i {
-		transform: scale(1.75), rotate(180deg);
-		transform-origin: right;
+		font-size: var(--p);
 	}
 
 	.header-section .header .main-menu .menu .menu-link .dropdown-child {
