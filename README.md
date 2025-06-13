@@ -20,19 +20,21 @@ Page/Module Testing :
 - [x] Blogs + Single
 - [x] Pop-up Offer
 - [x] About
-- [ ] FORMS
-- [ ] Cart
-- [ ] Search
-- [ ] Collection - Filtration
+- [x] FORMS
+- [x] Cart
+- [x] Search
 - [ ] Wishlist
 - [ ] Contact
+- [ ] Collection - Filtration
 
 
 
 Shopify Configuration :
 ------------------------
-- [ ] Home Page Form
+- [ ] Update POP-UP Offer Info
+- [ ] Edit FAQs
 - [ ] Contact Page Form
+- [x] Home Page Form
 - [x] Collections Lookbook Images & Content
 - [x] Location Pages
 - [x] Nested Menu
@@ -46,10 +48,11 @@ Shopify Configuration :
 
 Theme Development :
 ------------------------
-- [ ] Form Functinoality 
+- [ ] Modal Wishlist
 - [ ] JS Quantity Toggle : Product + Cart Page
 - [ ] JS Add to Cart Preview : Product Page
 - [ ] JS Search Preview : Header
+- [x] Form Functinoality 
 - [x] Nested Menu : Header
 - [x] Blog/Page Content Typography CSS
 - [x] Update New Favicons
