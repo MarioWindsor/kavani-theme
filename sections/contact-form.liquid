@@ -167,10 +167,13 @@
 					</div>
 					<div class="form-field columns small-12 medium-6 space-25">
 						{% if form.errors %}
-						<div class="fill-yellow text-red p space-25 text-center radius-min"></div>
-							<li>This is a Test</li>
+						<div class="fill-yellow text-red p space-25 text-center radius-min">
 							{{ form.errors | default_errors }}
+						</div>
 						{% endif %}
+						<div class="fill-yellow text-red p space-25 text-center radius-min">
+							<li>This is a Test</li>
+						</div>
 					</div>
 				{% endform %}
 				</div>
