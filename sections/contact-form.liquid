@@ -165,6 +165,7 @@
 							<button type="submit" value="Create" class="button fill-red text-white block text-left" style="padding-left: var(--space-75);">Submit <span class="h5 line-height-one">&rarr;</span></button>
 						</label>
 					</div>
+					{% if form.errors %}
 					<div class="form-field columns small-12 medium-6 space-25">
 						<style>
 							.form-error li {
@@ -173,15 +174,12 @@
 							}
 						</style>
 						<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Error</span>
-						{% if form.errors %}
 						<div class="form-error fill-yellow text-red p space-25 text-center radius-min">
 							{{ form.errors | default_errors }}
 						</div>
-						{% endif %}
-						<div class="form-error fill-yellow text-red label strong space-25 text-center radius-min">
-							<li>This is a Test</li>
-						</div>
 					</div>
+					{% endif %}
+					
 				{% endform %}
 				</div>
 			</div>
