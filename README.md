@@ -20,8 +20,8 @@ Page/Module Testing :
 - [x] Blogs + Single
 - [x] Pop-up Offer
 - [x] About
-- [ ] Cart
 - [ ] FORMS
+- [ ] Cart
 - [ ] Search
 - [ ] Collection - Filtration
 - [ ] Wishlist
