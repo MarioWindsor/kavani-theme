@@ -113,54 +113,60 @@
 			</div>
 			<div class="form-col columns small-12 medium-10 medium-offset-1 large-7 large-offset-2">
 				<div class="contact-form row space-75 fill-orange box-border-dark radius-25">
+				{% form 'contact' %}
 					<div class="form-field columns small-12 medium-6 space-25">
 						<label>
 							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Full Name</span>
-							<input type="text" class="input-field block">
+							<input type="text" name="contact[name]" class="input-field block">
 						</label>
 					</div>
 					<div class="form-field columns small-12 medium-6 space-25">
 						<label>
 							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Email ID</span>
-							<input type="text" class="input-field block">
+							<input type="email" name="contact[email]" class="input-field block">
 						</label>
 					</div>
 					<div class="form-field columns small-12 medium-6 space-25">
 						<label>
 							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Phone Number</span>
-							<input type="text" class="input-field block">
+							<input type="tel" name="contact[phone]" class="input-field block">
 						</label>
 					</div>
 					<div class="form-field columns small-12 medium-6 space-25">
 						<label>
 							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Country</span>
-							<input type="text" class="input-field block">
+							<input type="text" name="contact[phone]" class="input-field block">
 						</label>
 					</div>
 					<div class="form-field columns small-12 medium-6 space-25">
 						<label>
 							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Wedding Date</span>
-							<input type="text" class="input-field block">
+							<input type="text" name="contact[wedding]" class="input-field block">
 						</label>
 					</div>
 					<div class="form-field columns small-12 medium-6 space-25">
 						<label>
 							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Branch</span>
-							<input type="text" class="input-field block">
+							<select name="contact[branch]" class="input-field block">
+								<option value="bangalore">Bangalore</option>
+								<option value="kottayam">Kottayam</option>
+							</select>
 						</label>
 					</div>
 					<div class="form-field columns small-12 space-25">
 						<label>
 							<span class="form-label small strong text-uppercase inline space-min-bottom text-dark">Your Requirement</span>
-							<textarea name="" id="" class="input-field block" rows="4"></textarea>
+							<textarea name="contact[body]" id="message" class="input-field block" rows="4"></textarea>
 						</label>
 					</div>
 					<div class="form-field columns small-12 medium-6 space-25">
 						<label>
+							{{ form.errors | default_errors }}
 							<span class="form-label invisible small strong text-uppercase inline space-min-bottom text-dark">Branch</span>
-							<button type="submit" class="button fill-red text-white block text-left" style="padding-left: var(--space-75);">Submit <span class="h5 line-height-one">&rarr;</span></button>
+							<button type="submit" value="Create" class="button fill-red text-white block text-left" style="padding-left: var(--space-75);">Submit <span class="h5 line-height-one">&rarr;</span></button>
 						</label>
 					</div>
+				{% endform %}
 				</div>
 			</div>
 		</div>
@@ -169,41 +175,3 @@
 <!-- END: Contact Section -->
 
 
-
-{% form 'contact' %}
-	{{ form.errors | default_errors }}
-
-	<div class="first-name">
-		<label for="first-name">First name</label>
-		<input type="text" name="contact[first_name]" id="first-name" />
-	</div>
-
-	<div class="last-name">
-		<label for="last-name">Last name</label>
-		<input type="text" name="contact[last_name]" id="last-name" />
-	</div>
-
-	<div class="phone">
-		<label for="phone">Phone</label>
-		<input type="tel" name="contact[phone]" id="phone" />
-	</div>
-
-	<div class="email">
-		<label for="email">Email</label>
-		<input type="email" name="contact[email]" id="email" />
-	</div>
-
-	<div class="order-number">
-		<label for="order-number">Order number</label>
-		<input type="text" name="contact[order_number]" id="order-number" />
-	</div>
-
-	<div class="message">
-		<label for="message">Message</label>
-		<textarea name="contact[body]" id="message"></textarea>
-	</div>
-
-	<div class="submit">
-		<input type="submit" value="Create" />
-	</div>
-{% endform %}
