@@ -65,18 +65,18 @@
 		<!-- User -->
 		<div class="user">
 			{% if customer %}
-				<a class="space-25 icon-button" href="{{ routes.account_url }}"><i class='bx bx-user-circle h3 text-dark' ></i><span class="visuallyhidden">Account</span></a>			
+				<a class="space-25 icon-button" href="{{ routes.account_url }}"><i class='bx bx-user-circle h3 text-dark' ></i><span class="visuallyhidden">Account</span></a>
 			{% else %}
-				<a class="space-25 icon-button" href="{{ routes.account_login_url }}"><i class='bx bx-user-circle h3 text-dark' ></i><span class="visuallyhidden">Login</span></a>			
+				<a class="space-25 icon-button" href="{{ routes.account_login_url }}"><i class='bx bx-user-circle h3 text-dark' ></i><span class="visuallyhidden">Login</span></a>
 			{% endif %}
 		</div>
 		<!-- END: User -->
 		<!-- User -->
 		<div class="wishlist">
 			{% if customer %}
-				<a class="space-25 icon-button" href="/pages/wishlist"><i class='bx bx-heart h3 text-dark' ></i><span class="visuallyhidden">Account</span></a>			
+				<label class="space-25 icon-button" for="wishlistViewToggle"><i class='bx bx-heart h3 text-dark' ></i><span class="visuallyhidden">Account</span></label>
 			{% else %}
-				<a class="space-25 icon-button" href="{{ routes.account_login_url }}"><i class='bx bx-heart h3 text-dark' ></i><span class="visuallyhidden">Login</span></a>			
+				<a class="space-25 icon-button" href="{{ routes.account_login_url }}"><i class='bx bx-heart h3 text-dark' ></i><span class="visuallyhidden">Login</span></a>
 			{% endif %}
 		</div>
 		<!-- END: User -->
@@ -95,6 +95,10 @@
 		<!-- END: Menu Toggle -->
 	</div>
 	<!-- END: Header Actions -->
+	<input type="checkbox" id="wishlistViewToggle" class="visuallyhidden">
+	<div class="wishlistView space-100 fill-white">
+		<div class="p">Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus sed expedita, deleniti, ab sit nobis quia amet reprehenderit impedit, corrupti soluta officiis, vitae laborum eveniet veniam! Nobis quas itaque laboriosam!</div>
+	</div>
 </div>
 
 {% schema %}
