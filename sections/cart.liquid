@@ -46,22 +46,30 @@
 															<div class="block label strong space-50-bottom no-wrap">{{ item.price | money }}</div>
 														</div>
 														<div class="columns small-12 medium-9 large-4">
-															<label class="quantity form-field block space-50-bottom">
-																<span class="form-label block small text-uppercase space-min-bottom">Quantity</span>
-																<div class="quantity-buttons" style="display: flex; gap: var(--space-25);">
-																	<button type="button" class="button inline-bottom fill-white text-dark box-border-dark" aria-label="Decrease quantity" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
-																		<i class='bx bx-minus h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
-																	</button>
-																	<input class="input-field inline-bottom text-center" type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" aria-label="Quantity for {{ item.title | escape }}" style="width: var(--space-250); flex-grow: 2; flex-shrink: 2;">
-																	<button type="button" class="button inline-bottom fill-white text-dark box-border-dark" aria-label="Increase quantity" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
-																		<i class='bx bx-plus h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
-																	</button>
-																	<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="button inline-bottom icon-button fill-white text-dark box-border-dark" aria-label="Remove {{ item.title | escape }}" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
-																		<span class="visuallyhidden">Remove</span>
-																		<i class='bx bx-trash h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
-																	</a>
-																</div>
-															</label>
+														    <label class="quantity form-field block space-50-bottom">
+														        <span class="form-label block small text-uppercase space-min-bottom">Quantity</span>
+														        <div class="quantity-buttons" style="display: flex; gap: var(--space-25);">
+														            <button type="button" class="button inline-bottom fill-white text-dark box-border-dark quantity-less" aria-label="Decrease quantity" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
+														                <i class='bx bx-minus h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+														            </button>
+														            <input class="input-field inline-bottom text-center cart-item-quantity"
+														                   type="number"
+														                   name="updates[]"
+														                   id="updates_{{ item.key }}"
+														                   value="{{ item.quantity }}"
+														                   min="0"
+														                   data-key="{{ item.key }}"
+														                   aria-label="Quantity for {{ item.title | escape }}"
+														                   style="width: var(--space-250); flex-grow: 2; flex-shrink: 2;">
+														            <button type="button" class="button inline-bottom fill-white text-dark box-border-dark quantity-more" aria-label="Increase quantity" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
+														                <i class='bx bx-plus h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+														            </button>
+														            <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="button inline-bottom icon-button fill-white text-dark box-border-dark" aria-label="Remove {{ item.title | escape }}" style="position: relative; padding: 0 var(--space-25); width: var(--space-150); flex-grow: 0; flex-shrink: 0;">
+														                <span class="visuallyhidden">Remove</span>
+														                <i class='bx bx-trash h6' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+														            </a>
+														        </div>
+														    </label>
 														</div>
 													</div>
 												</div>
@@ -106,70 +114,82 @@
 
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Select all quantity inputs and their associated buttons
-    const quantityInputs = document.querySelectorAll('.cart-item-quantity');
+	document.addEventListener('DOMContentLoaded', () => {
+	    // Select all quantity inputs using the class we added
+	    const quantityInputs = document.querySelectorAll('.cart-item-quantity');
 
-    quantityInputs.forEach(input => {
-        const productQuantityContainer = input.closest('.product-quantity');
-        if (!productQuantityContainer) return; // Skip if container not found
+	    quantityInputs.forEach(input => {
+	        // Find the closest parent div containing the buttons relative to the input
+	        const quantityButtonsContainer = input.closest('.quantity-buttons');
+	        if (!quantityButtonsContainer) return; // Skip if container not found
 
-        const lessButton = productQuantityContainer.querySelector('.quantity-less');
-        const moreButton = productQuantityContainer.querySelector('.quantity-more');
+	        // Select the less and more buttons using their new classes within that container
+	        const lessButton = quantityButtonsContainer.querySelector('.quantity-less');
+	        const moreButton = quantityButtonsContainer.querySelector('.quantity-more');
 
-        if (!lessButton || !moreButton) {
-            console.warn('Quantity toggle buttons not found for a cart item.');
-            return;
-        }
+	        if (!lessButton || !moreButton) {
+	            console.warn('Quantity toggle buttons not found for a cart item.');
+	            return;
+	        }
 
-        // Function to update cart via Shopify's AJAX API
-        const updateCart = () => {
-            // Get the cart form, which contains all the 'updates[]' inputs
-            const cartForm = input.closest('form');
-            if (cartForm) {
-                // Submit the form using Fetch API to avoid full page reload if possible
-                // Shopify's cart/update.js endpoint often triggers a full refresh itself
-                // if the cart changes significantly (e.g., item removal)
-                fetch(cartForm.action, {
-                    method: cartForm.method,
-                    body: new FormData(cartForm) // Sends all form data, including updated quantities
-                })
-                .then(response => response.json()) // Expect JSON response from Shopify
-                .then(cart => {
-                    // Shopify's cart/update.js endpoint usually redirects or reloads the page
-                    // on successful update of quantities, especially for removals.
-                    // A simple reload is the most reliable "simple" way to reflect all changes
-                    // (totals, item removal, price updates) without complex client-side rendering.
-                    window.location.reload();
-                })
-                .catch(error => {
-                    console.error('Error updating cart:', error);
-                    // Optionally, revert the quantity input here or show an error
-                });
-            }
-        };
+	        // Function to update cart via Shopify's AJAX API
+	        const updateCart = () => {
+	            // Get the cart form
+	            const cartForm = input.closest('form');
+	            if (cartForm) {
+	                // Send the form data to Shopify's cart update endpoint
+	                fetch(cartForm.action, {
+	                    method: cartForm.method,
+	                    body: new FormData(cartForm) // Sends all form data
+	                })
+	                .then(response => response.json()) // Expect JSON from Shopify
+	                .then(cart => {
+	                    // This will cause a full page reload, simplest way to reflect all cart changes
+	                    window.location.reload();
+	                })
+	                .catch(error => {
+	                    console.error('Error updating cart:', error);
+	                    // Handle error (e.g., show a message, revert input value)
+	                });
+	            }
+	        };
 
-        // Event listener for "less" button
-        lessButton.addEventListener('click', () => {
-            let currentValue = parseInt(input.value);
-            const minValue = parseInt(input.min);
+	        // Event listener for "less" button
+	        lessButton.addEventListener('click', () => {
+	            let currentValue = parseInt(input.value);
+	            const minValue = parseInt(input.min); // Will now be 0
 
-            if (currentValue > minValue) {
-                input.value = currentValue - 1;
-                updateCart(); // Trigger the cart update
-            } else if (currentValue === minValue) {
-                // If it's at min (1), clicking less means remove (set to 0)
-                input.value = 0;
-                updateCart(); // Trigger the cart update
-            }
-        });
+	            if (currentValue > minValue) {
+	                input.value = currentValue - 1;
+	            } else if (currentValue === minValue) {
+	                // If current quantity is 0 (or less than min), set to 0 to remove on update
+	                // This handles cases where min is 0 and user tries to decrement from 0
+	                input.value = 0;
+	            }
+	            updateCart(); // Trigger the cart update after local quantity change
+	        });
 
-        // Event listener for "more" button
-        moreButton.addEventListener('click', () => {
-            let currentValue = parseInt(input.value);
-            input.value = currentValue + 1;
-            updateCart(); // Trigger the cart update
-        });
-    });
-});
+	        // Event listener for "more" button
+	        moreButton.addEventListener('click', () => {
+	            let currentValue = parseInt(input.value);
+	            input.value = currentValue + 1;
+	            updateCart(); // Trigger the cart update after local quantity change
+	        });
+
+	        // Optional but recommended for direct input changes on cart page
+	        input.addEventListener('change', () => {
+	            let currentValue = parseInt(input.value);
+	            const minValue = parseInt(input.min);
+
+	            // Sanitize input: ensure it's a number and not negative
+	            if (isNaN(currentValue) || currentValue < 0) {
+	                input.value = minValue; // Reset to min (0) if invalid or negative
+	            } else {
+	                input.value = currentValue; // Ensure input displays the sanitized value
+	            }
+
+	            updateCart(); // Trigger update for manual input changes
+	        });
+	    });
+	});
 </script>
