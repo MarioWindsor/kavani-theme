@@ -49,9 +49,9 @@ Shopify Configuration :
 Theme Development :
 ------------------------
 - [ ] Modal Wishlist
-- [ ] JS Quantity Toggle : Product + Cart Page
 - [ ] JS Add to Cart Preview : Product Page
 - [ ] JS Search Preview : Header
+- [x] JS Quantity Toggle : Product + Cart Page
 - [x] Form Functinoality 
 - [x] Nested Menu : Header
 - [x] Blog/Page Content Typography CSS
