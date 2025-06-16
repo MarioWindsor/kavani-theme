@@ -4,12 +4,12 @@
 	<div class="row">
 		<div class="container">
 			<div class="columns small-12">
-				<h1 class="search-title block h5 strong text-uppercase text-center">Search</h1>
+				<h1 class="search-title block h5 strong text-uppercase text-center">SearchPPP</h1>
 				<form class="block row" action="/search" method="get" style="display: flex;">
 					<div class="search-bar columns small-12 large-8 large-offset-2 space-100-top" style="display: flex; gap: var(--space-50);">
 						<input class="input-field block" type="text" name="q" value="{{search.terms  | escape}}" id="result-q" />
 						<button type="submit" class="button inline-bottom icon-button fill-white text-dark box-border-dark" style="position: relative; padding: 0 var(--space-25); width: var(--space-200); flex-grow: 0; flex-shrink: 0;">
-							<span class="visuallyhidden">SearchPPP</span>
+							<span class="visuallyhidden">Search</span>
 							<i class='bx bx-search h3 hide-large hide-xlarge' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
 							<i class='bx bx-search h4 hide-small hide-medium' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
 						</button>
@@ -67,9 +67,9 @@
 				{% for item in search.results %}
 					<div class="card-grid-item">
 						{% if item.object_type == 'product' %}
-							{% render 'product-card', product: product %}
+							{% render 'product-card', product: item %}
 						{% else %}
-							{% render 'article-card', article: article %}
+							{% render 'article-card', article: item %}
 						{% endif %}
 					</div>
 				{% endfor %}
