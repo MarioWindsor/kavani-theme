@@ -1,0 +1,176 @@
+<style>
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+	  -webkit-appearance: none; 
+	  margin: 0; 
+	  opacity: 1;
+	}
+</style>
+<!-- Cart Section -->
+<section id="cart-section" class="cart-section space-100-top">
+	<div class="row">
+		<div class="container">
+			<div class="columns small-12 space-100-bottom">
+				<h1 class="collection-title block h5 strong text-uppercase text-center">Cart</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="container">
+			{% if cart.item_count > 0 %}
+			<div class="columns small-12">
+				<form action="{{ routes.cart_url }}" method="post" novalidate class="">
+					<div class="cart fill-orange text-dark space-100 radius-25 box-border-dark">
+						<!-- Cart Item -->
+						{% for item in cart.items %}
+							<div class="cart-item row space">
+								<div class="columns small-12">
+									<div class="row">
+										<div class="columns small-4 large-2">
+											{% if item.image %}
+												<a class="block" href="{{ item.url }}">
+													<img class="block radius-25 box-shadow-red" src="{{ item.image | img_url: 'medium' }}" alt="{{ item.image.alt | escape }}">
+												</a>
+											{% endif %}
+										</div>
+										<div class="columns small-7 small-offset-1 large-9">
+											<div class="row">
+												<div class="columns small-12 large-8">
+													<div class="row">
+														<div class="columns small-12">
+															<div class="small space-min-bottom text-uppercase">{{ item.product.category | escape }}</div>
+															<a class="block p text-red text-uppercase strong space-25-bottom" href="{{ item.url }}">{{ item.product.title | escape }}</a>
+															{% if item.variant.title != 'Default Title' %}
+																<div class="block label strong text-uppercase space-min-bottom">{{ item.variant.title | escape }}</div>
+															{% endif %}
+															<div class="block label strong space-50-bottom no-wrap">{{ item.price | money }}</div>
+														</div>
+														<div class="columns small-12 medium-9 large-4">
+															<div class="product-quantity form-field space-50-bottom">
+																<label class="block">
+																	<span class="form-label small strong text-uppercase inline space-min-bottom">Quantity</span><br>
+																	<input class="block text-center fill-white cart-item-quantity"
+																		type="number"
+																		name="updates[]"
+																		value="{{ item.quantity }}"
+																		min="1"
+																		data-line="{{ forloop.index }}"
+																		data-key="{{ item.key }}"
+																	>
+																	<div class="quantity-toggle">
+																		<a class="space-25 icon-button quantity-less" tabindex="0"><i class='bx bx-minus h6 text-dark' style="line-height: 1;"></i></a>
+																		<a class="space-25 icon-button quantity-more" tabindex="0"><i class='bx bx-plus h6 text-dark' style="line-height: 1;"></i></a>
+																	</div>
+																</label>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="columns small-12 large-3 large-offset-1">
+													<label class="block">
+														<span class="small text-uppercase space-min-bottom">Total</span>
+														<div class="p strong no-wrap cart-item-line-price">{{ item.final_line_price | money }}</div>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<hr style="margin: var(--space-100) 0;">
+						{% endfor %}
+						<!-- END: Cart Item -->
+						<div class="row">
+							<div class="columns small-6 medium-8 large-9">
+								<div class="car-subtotal">
+									<div class="label strong text-uppercase">Subtotal:</div>
+									<span class="h5 strong cart-subtotal-amount">{{ cart.total_price | money }}</span>
+								</div>		
+							</div>
+							<div class="columns small-6 medium-4 large-3">
+								<button type="submit" name="checkout" class="block button fill-red box-shadow-white-2">Check Out</button>		
+							</div>
+						</div>						
+					</div>
+				</form>
+			</div>
+			{% else %}
+			<div class="text-center columns small-12">
+				<div class="p strong space-100-bottom">Your cart is currently empty.</div>
+				<a class="button inline fill-dark box-shadow-white-2" href="{{ routes.all_products_collection_url }}">Continue shopping</a>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</section>
+<!-- END: Cart Section -->
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all quantity inputs and their associated buttons
+    const quantityInputs = document.querySelectorAll('.cart-item-quantity');
+
+    quantityInputs.forEach(input => {
+        const productQuantityContainer = input.closest('.product-quantity');
+        if (!productQuantityContainer) return; // Skip if container not found
+
+        const lessButton = productQuantityContainer.querySelector('.quantity-less');
+        const moreButton = productQuantityContainer.querySelector('.quantity-more');
+
+        if (!lessButton || !moreButton) {
+            console.warn('Quantity toggle buttons not found for a cart item.');
+            return;
+        }
+
+        // Function to update cart via Shopify's AJAX API
+        const updateCart = () => {
+            // Get the cart form, which contains all the 'updates[]' inputs
+            const cartForm = input.closest('form');
+            if (cartForm) {
+                // Submit the form using Fetch API to avoid full page reload if possible
+                // Shopify's cart/update.js endpoint often triggers a full refresh itself
+                // if the cart changes significantly (e.g., item removal)
+                fetch(cartForm.action, {
+                    method: cartForm.method,
+                    body: new FormData(cartForm) // Sends all form data, including updated quantities
+                })
+                .then(response => response.json()) // Expect JSON response from Shopify
+                .then(cart => {
+                    // Shopify's cart/update.js endpoint usually redirects or reloads the page
+                    // on successful update of quantities, especially for removals.
+                    // A simple reload is the most reliable "simple" way to reflect all changes
+                    // (totals, item removal, price updates) without complex client-side rendering.
+                    window.location.reload();
+                })
+                .catch(error => {
+                    console.error('Error updating cart:', error);
+                    // Optionally, revert the quantity input here or show an error
+                });
+            }
+        };
+
+        // Event listener for "less" button
+        lessButton.addEventListener('click', () => {
+            let currentValue = parseInt(input.value);
+            const minValue = parseInt(input.min);
+
+            if (currentValue > minValue) {
+                input.value = currentValue - 1;
+                updateCart(); // Trigger the cart update
+            } else if (currentValue === minValue) {
+                // If it's at min (1), clicking less means remove (set to 0)
+                input.value = 0;
+                updateCart(); // Trigger the cart update
+            }
+        });
+
+        // Event listener for "more" button
+        moreButton.addEventListener('click', () => {
+            let currentValue = parseInt(input.value);
+            input.value = currentValue + 1;
+            updateCart(); // Trigger the cart update
+        });
+    });
+});
+</script>
