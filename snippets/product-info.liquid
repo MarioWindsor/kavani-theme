@@ -30,12 +30,12 @@
 	<div class="row space-50-bottom">
 		<div class="columns small-4 medium-5 space-50-right">
 			<div class="product-quantity form-field">
-				<label class="block">
+				<label class="block" for="quantity">
 					<span class="form-label small strong text-uppercase inline space-min-bottom">Quantity</span><br>
 					<input class="block text-center fill-white" type="text" id="quantity" name="quantity" value="1" min="1">
 					<div class="quantity-toggle">
-						<a class="space-25 icon-button" tabindex="0"><i class='bx bx-minus h6 text-dark' style="line-height: 1;"></i></a>
-						<a class="space-25 icon-button" tabindex="0"><i class='bx bx-plus h6 text-dark' style="line-height: 1;"></i></a>
+						<a class="space-25 icon-button quantity-less" tabindex="0"><i class='bx bx-minus h6 text-dark' style="line-height: 1;"></i></a>
+						<a class="space-25 icon-button quantity-more" tabindex="0"><i class='bx bx-plus h6 text-dark' style="line-height: 1;"></i></a>
 					</div>
 				</label>
 			</div>
@@ -128,4 +128,28 @@
 			});
 		});
 	});
+
+	document.addEventListener('DOMContentLoaded', () => {
+    const quantityInput = document.getElementById('quantity');
+    const lessButton = document.querySelector('.quantity-less');
+    const moreButton = document.querySelector('.quantity-more');
+
+    // Only proceed if all essential elements are found
+    if (quantityInput && lessButton && moreButton) {
+        lessButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            const minValue = parseInt(quantityInput.min);
+
+            if (currentValue > minValue) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        moreButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            // Increment without a max check for simplicity
+            quantityInput.value = currentValue + 1;
+        });
+    }
+});
 </script>
