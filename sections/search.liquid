@@ -63,9 +63,9 @@
 		{% if search.results != empty %}
 			{% paginate search.results by 12 %}
 				<!-- Card Grid -->
-				<div class="card-grid space-100">
+				<div class="card-grid">
 				{% for item in search.results %}
-					<div class="card-grid-item">
+					<div class="card-grid-item fill-white">
 						{% if item.object_type == 'product' %}
 							{% render 'product-card', product: item %}
 						{% else %}
