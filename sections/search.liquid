@@ -1,0 +1,102 @@
+
+<!-- Search Section -->
+<section id="search-section" class="search-section space-100-top">
+	<div class="row">
+		<div class="container">
+			<div class="columns small-12">
+				<h1 class="search-title block h5 strong text-uppercase text-center">Search</h1>
+				<form class="block row" action="/search" method="get" style="display: flex;">
+					<div class="search-bar columns small-12 large-8 large-offset-2 space-100-top" style="display: flex; gap: var(--space-50);">
+						<input class="input-field block" type="text" name="q" value="{{search.terms  | escape}}" id="result-q" />
+						<button type="submit" class="button inline-bottom icon-button fill-white text-dark box-border-dark" style="position: relative; padding: 0 var(--space-25); width: var(--space-200); flex-grow: 0; flex-shrink: 0;">
+							<span class="visuallyhidden">SearchPPP</span>
+							<i class='bx bx-search h3 hide-large hide-xlarge' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+							<i class='bx bx-search h4 hide-small hide-medium' style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+						</button>
+					</div>
+				</form>
+				{% if search.terms != blank %}
+					{% if search.results == empty %}  
+						<div class="search-description block label text-center space-50-top">No Results for ... "{{ search.terms | escape }}"</div>
+					{% else %}
+						<div class="search-description block label text-center space-50-top">Results Matching ... "{{ search.terms | escape }}"</div>
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+		<div class="row hidden">
+			
+			<div id="searchresults" class="columns small-12">  
+				
+				{% #if search.performed %}
+					
+					{% paginate search.results by 10 %}  
+				
+					{% if search.results != empty %}  
+							<ol>
+							{% for item in search.results %}      
+							<li>
+								<h3>{{ item.title | link_to: item.url }}</h3>
+								{% if item.featured_image %}
+								<div class="result-image"><a href="{{item.url}}" title="">{{ item.featured_image | product_img_url: 'small' | img_tag }}</a></div>
+								{% endif %}
+								<span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>
+								<div style="clear:left"></div>          
+							</li>
+							{% endfor %}
+							</ol>      
+
+					{% endif %}
+										
+					{% endpaginate %}    
+					
+				{% #endif %}
+
+			</div>
+
+		</div>
+
+	{% if search.performed %}
+	<div class="row">
+		{% if search.results != empty %}
+			{% paginate search.results by 12 %}
+				<!-- Card Grid -->
+				<div class="card-grid space-100">
+				{% for item in search.results %}
+					<div class="card-grid-item">
+						{% if item.object_type == 'product' %}
+							{% render 'product-card', product: product %}
+						{% else %}
+							{% render 'article-card', article: article %}
+						{% endif %}
+					</div>
+				{% endfor %}
+				</div>
+				<!-- END: Card Grid -->
+				
+				<!-- Pagination -->
+				<div class="container">
+					<div class="columns small-12">
+					{% if paginate.pages > 1 %}
+						<div class="pagination">
+							{% for part in paginate.parts %}
+								{% if part.is_link %}
+									<a class="button fill-white box-border-dark" href="{{ part.url }}">{{ part.title }}</a>
+								{% else %}
+									<span class="button text-dark no-pointer">{{ part.title }}</span>
+								{% endif %}
+							{% endfor %}
+						</div>
+					{% endif %}
+					</div>
+				</div>
+				<!-- END: Pagination -->
+
+			{% endpaginate %}
+		{% endif %}
+	</div>
+	{% endif %}
+</section>
+<!-- END: Search Section -->

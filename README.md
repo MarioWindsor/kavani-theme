@@ -31,9 +31,9 @@ Page/Module Testing :
 
 Shopify Configuration :
 ------------------------
-- [ ] Update POP-UP Offer Info
 - [ ] Edit FAQs
 - [ ] Contact Page Form
+- [x] Update POP-UP Offer Info
 - [x] Home Page Form
 - [x] Collections Lookbook Images & Content
 - [x] Location Pages
