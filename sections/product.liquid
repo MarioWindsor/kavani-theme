@@ -15,7 +15,7 @@
 			{% if mediaFile.media_type == "video" %}
 				Media File: VIDEO<br>
 			{% else %}
-				Media File: IMAGE<br>
+				{{ image | img_url: 'original' }}<br>
 			{% endif %}
 		{% endfor %}
 	</div>
