@@ -13,7 +13,11 @@
 
 		<!-- MEDIA TEST -->
 		{% for item in product.media %}
-			{{ item.media_type }}<br>
+			{% if item.media_type == image %}
+				IMAGE <br>
+			{% elseif item.media_type == video %}
+				VIDEO <br>
+			{% endif %}
 		{% endfor %}
 	</div>
 	<div class="product-info columns small-12 medium-6 large-4">
