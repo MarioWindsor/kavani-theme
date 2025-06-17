@@ -10,8 +10,8 @@
 				</div>
 			{% endfor %}
 		{% endif %}
-		{% if product.media %}
-			MEDIASS
+		{% for mediaFile in product.media %}
+			Media File: {{ mediaFile.media_type }}<br>
 		{% endif %}
 	</div>
 	<div class="product-info columns small-12 medium-6 large-4">
