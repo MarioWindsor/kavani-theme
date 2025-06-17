@@ -10,11 +10,9 @@
 				</div>
 			{% endfor %}
 		{% endif %}
+		<!-- media array -->
+		{{ product.media }}
 
-		<!-- MEDIA TEST -->
-		{% for media in product.media %}
-			{{ media.media_type }} {{ media }}<br>
-		{% endfor %}
 	</div>
 	<div class="product-info columns small-12 medium-6 large-4">
 		{% render 'product-info', product: product %}
