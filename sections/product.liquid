@@ -9,7 +9,7 @@
 					{{ video }}
 				{% else %}		
 					<div class="product-image space-25-right space-25-bottom">
-						<img class="block" src="{{ image | img_url: 'original' }}" alt="{{ image.alt }}">
+						<img class="block" src="{{ media | img_url: 'original' }}" alt="{{ media.alt }}">
 					</div>
 				{% endif %}
 			{% endfor %}
