@@ -13,10 +13,10 @@
 
 		<!-- MEDIA TEST -->
 		{% for item in product.media %}
-			{% if item.media_type == image %}
-				IMAGE <br>
 			{% if item.media_type == video %}
 				VIDEO <br>
+			{% else %}
+				IMAGE <br>
 			{% endif %}
 		{% endfor %}
 
