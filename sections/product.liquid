@@ -3,19 +3,13 @@
 <!-- Product Fold -->
 <div class="product-fold row space-150-bottom">
 	<div class="product-gallery columns small-12 medium-6 large-8">
-		{% if product.images %}
-			{% for image in product.images %}
-				<div class="product-image space-25-right space-25-bottom">
-					<img class="block" src="{{ image | img_url: 'original' }}" alt="{{ image.alt }}">
-				</div>
-			{% endfor %}
-		{% endif %}
-
 		{% for mediaFile in product.media %}
 			{% if mediaFile.media_type == "video" %}
 				Media File: VIDEO<br>
 			{% else %}
-				{{ mediaFile | img_url: 'original' }}<br>
+				<div class="product-image space-25-right space-25-bottom">
+					<img class="block" src="{{ mediaFile | img_url: 'original' }}" alt="{{ image.alt }}">
+				</div>
 			{% endif %}
 		{% endfor %}
 	</div>
