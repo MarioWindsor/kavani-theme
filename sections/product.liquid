@@ -6,7 +6,7 @@
 		{% for mediaFile in product.media %}
 			{% if mediaFile.media_type == "video" %}
 				<div class="product-image space-25-right space-25-bottom">
-					{{ mediaFile }}
+					{{ mediaFile.url }}
 				</div>
 			{% else %}
 				<div class="product-image space-25-right space-25-bottom">
