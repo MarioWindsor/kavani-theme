@@ -1,4 +1,5 @@
 
+
 <!-- Product Fold -->
 <div class="product-fold row space-150-bottom">
 	<div class="product-gallery columns small-12 medium-6 large-8">
@@ -8,6 +9,9 @@
 					<img class="block" src="{{ image | img_url: 'original' }}" alt="{{ image.alt }}">
 				</div>
 			{% endfor %}
+		{% endif %}
+		{% if product.media %}
+			MEDIASS
 		{% endif %}
 	</div>
 	<div class="product-info columns small-12 medium-6 large-4">
