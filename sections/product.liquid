@@ -15,7 +15,7 @@
 		{% for item in product.media %}
 			{% if item.media_type == image %}
 				IMAGE <br>
-			{% elseif item.media_type == video %}
+			{% if item.media_type == video %}
 				VIDEO <br>
 			{% endif %}
 		{% endfor %}
