@@ -4,15 +4,22 @@
 <div class="product-fold row space-150-bottom">
 	<div class="product-gallery columns small-12 medium-6 large-8">
 		{% for mediaFile in product.media %}
-			{% if mediaFile.media_type == "video" %}
-				<div class="product-image space-25-right space-25-bottom">
-					{{ mediaFile.video_source }}5
-				</div>
-			{% else %}
-				<div class="product-image space-25-right space-25-bottom">
-					<img class="block" src="{{ mediaFile | img_url: 'original' }}" alt="{{ image.alt }}">
-				</div>
-			{% endif %}
+			<div class="product-media-item space-25-right space-25-bottom"> {# Changed class name for clarity if needed #}
+				{% case mediaFile.media_type %}
+					{% when 'image' %}
+						<img class="block" src="{{ mediaFile | img_url: 'original' }}" alt="{{ mediaFile.alt | escape }}">
+					{% when 'video' %}
+						{# Use the video_tag filter here #}
+						{{ mediaFile | video_tag: controls: true, loop: false, autoplay: false, muted: false, class: 'product-video' }}
+					{% when 'external_video' %}
+						{# For YouTube/Vimeo, use the media_preview_image or embed_url #}
+						{# The embed_url will give you the iframe for external videos #}
+						{{ mediaFile | external_video_tag: class: 'product-external-video', autoplay: false, loop: false, controls: true }}
+					{% when 'model' %}
+						{# For 3D models, you'd typically use model_viewer_tag #}
+						{{ mediaFile | model_viewer_tag: image_size: '1024x', reveal: 'interaction', class: 'product-model' }}
+				{% endcase %}
+			</div>
 		{% endfor %}
 	</div>
 	<div class="product-info columns small-12 medium-6 large-4">
