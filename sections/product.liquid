@@ -10,7 +10,7 @@
 						<img class="block" src="{{ mediaFile | img_url: 'original' }}" alt="{{ mediaFile.alt | escape }}">
 					{% when 'video' %}
 						{# Use the video_tag filter here #}
-						{{ mediaFile | video_tag: controls: true, loop: false, autoplay: false, muted: false, class: 'product-video' }}
+						{{ mediaFile | video_tag: controls: true, loop: false, autoplay: true, muted: true, class: 'product-video block' }}
 					{% when 'external_video' %}
 						{# For YouTube/Vimeo, use the media_preview_image or embed_url #}
 						{# The embed_url will give you the iframe for external videos #}
