@@ -5,7 +5,9 @@
 	<div class="product-gallery columns small-12 medium-6 large-8">
 		{% for mediaFile in product.media %}
 			{% if mediaFile.media_type == "video" %}
-				Media File: VIDEO<br>
+				<div class="product-image space-25-right space-25-bottom">
+					Media File: VIDEO<br>
+				</div>
 			{% else %}
 				<div class="product-image space-25-right space-25-bottom">
 					<img class="block" src="{{ mediaFile | img_url: 'original' }}" alt="{{ image.alt }}">
