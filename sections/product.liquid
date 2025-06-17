@@ -3,17 +3,18 @@
 <!-- Product Fold -->
 <div class="product-fold row space-150-bottom">
 	<div class="product-gallery columns small-12 medium-6 large-8">
-		{% if product.media %}
-			{% for media in product.media %}
-				{% if media.media_type == "video" %}
-					{{ video }}
-				{% else %}		
-					<div class="product-image space-25-right space-25-bottom">
-						<img class="block" src="{{ media | img_url: 'original' }}" alt="{{ media.alt }}">
-					</div>
-				{% endif %}
+		{% if product.images %}
+			{% for image in product.images %}
+				<div class="product-image space-25-right space-25-bottom">
+					<img class="block" src="{{ image | img_url: 'original' }}" alt="{{ image.alt }}">
+				</div>
 			{% endfor %}
 		{% endif %}
+
+		<!-- MEDIA TEST -->
+		{% for item in product.media %}
+			{{ item.media_type }}<br>
+		{% endfor %}
 	</div>
 	<div class="product-info columns small-12 medium-6 large-4">
 		{% render 'product-info', product: product %}
