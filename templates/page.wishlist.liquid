@@ -7,17 +7,18 @@
 			</div>
 		</div>
 	</div>
+	<!-- Product Grid -->
+	<div class="row product-grid">
+		<!-- Card Grid -->
+		<div id="wishlist-items-container" class="card-grid space-200-top-bottom">
+			<!-- Wishlist items will be rendered here by JavaScript -->
+		</div>
+	</div>
+	<!-- END: Card Grid -->
 	<div class="row">
-		<div class="container">
-			<div class="columns small-12">
-				<div id="wishlist-items-container" class="card-grid">
-					<!-- Wishlist items will be rendered here by JavaScript -->
-				</div>
-				<p class="empty-wishlist-message p block text-center space-100-top space-50-bottom" style="display: none;">Your wishlist is empty.</p>
-				<div class="wishlist-actions text-center space-50-top">
-					<a href="{{ routes.all_products_collection_url }}" class="button fill-dark box-shadow-white-2">Continue Shopping</a>
-				</div>
-			</div>
+		<p class="empty-wishlist-message p block text-center space-100-top space-50-bottom" style="display: none;">Your wishlist is empty.</p>
+		<div class="wishlist-actions text-center space-50-top">
+			<a href="{{ routes.all_products_collection_url }}" class="button fill-dark box-shadow-white-2">Continue Shopping</a>
 		</div>
 	</div>
 </section>
