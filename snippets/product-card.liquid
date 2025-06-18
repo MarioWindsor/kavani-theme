@@ -1,6 +1,3 @@
-{% assign wishlist_list = customer.metafields.custom.wishlist.value %}
-
-
 <style>
 
 .product-card { position: relative; }
@@ -47,6 +44,19 @@
 	padding: 0;
 }
 
+
+/* New CSS for the wishlist button state */
+.product-card .wishlist-button.in-wishlist i.bx-heart {
+    display: none; /* Hide empty heart when in wishlist */
+}
+.product-card .wishlist-button.in-wishlist i.bxs-heart {
+    display: block; /* Show filled heart when in wishlist */
+}
+.product-card .wishlist-button i.bxs-heart {
+    display: none; /* Hide filled heart by default (only show if .in-wishlist) */
+}
+
+
 .product-card .wishlist .icon-button * { pointer-events: none; }
 
 .product-card .wishlist .icon-button i {
@@ -86,23 +96,21 @@
 		</div>
 	</a>
 	<div class="wishlist">
-		{% if customer %}
-			{% for element in wishlist_list %}
-				{% if element.handle == product.handle %}
-					{% assign fav = true %}
-					{% break %}
-				{% else %}
-					{% assign fav = false %}
-				{% endif %}
-			{% endfor %}
-
-			{% if fav == true %}
-				<button class="wishlist-button icon-button" tabindex="0" data-product-id="{{ product.id }}" data-action="remove"><i class='bx bxs-heart text-red' ></i><span class="visuallyhidden">Remove from Wishlist</span></button>
-			{% else %}
-				<button class="wishlist-button icon-button" tabindex="0" data-product-id="{{ product.id }}" data-action="add"><i class='bx bx-heart text-red' ></i><span class="visuallyhidden">Add to Wishlist</span></button>
-			{% endif %}
-		{% else %}
-			<a class="icon-button" href="{{ routes.account_login_url }}"><i class='bx bx-heart text-red' ></i><span class="visuallyhidden">Wishlist</span></a>
-		{% endif %}
+		<button
+			type="button"
+			class="wishlist-button icon-button"
+			tabindex="0"
+			data-product-id="{{ product.id }}"
+			data-product-handle="{{ product.handle }}"
+			data-product-title="{{ product.title | escape }}"
+			data-product-image="{{ product.featured_media | img_url: 'medium' }}"
+			data-product-price="{{ product.price }}"
+			data-product-url="{{ product.url }}"
+			aria-label="Add to wishlist"
+		>
+			<i class='bx bx-heart text-red'></i> {# Empty Heart #}
+			<i class='bx bxs-heart text-red'></i> {# Filled Heart #}
+			<span class="visuallyhidden">Toggle Wishlist</span>
+		</button>
 	</div>
 </div>

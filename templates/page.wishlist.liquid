@@ -1,108 +1,101 @@
+{# templates/page.wishlist.liquid #}
 
-{% if customer %}
+{% comment %}
+    The Liquid `{% if customer %}` block and `{% assign wishlist_list = ... %}`
+    are removed because the wishlist data is now handled entirely by JavaScript
+    from Local Storage.
 
-	{% assign wishlist_list = customer.metafields.custom.wishlist.value %}
+    The "Login to View Wishlist" block will no longer be necessary if
+    you allow guest wishlists via Local Storage.
+{% endcomment %}
 
-	<!-- Wishlist Section -->
-	<section id="wishlist-section" class="wishlist-section space-100-top">
-		<div class="row">
-			<div class="container">
-				<div class="columns small-12">
-					<h1 class="collection-title block h5 strong text-uppercase text-center">{{ page.title }}</h1>
-					<div class="collection-description block p text-center">{{ page.content }}</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			{% if wishlist_list.count > 0 %}
-				{% paginate wishlist_list by 12 %}
-					<!-- Card Grid -->
-					<div class="card-grid space-100">
-					{% #for product in collection.products %}
-					{% for thing in wishlist_list %}
-						<div class="card-grid-item">
-							<div class="card product-card fill-white radius-25 box-shadow-red no-overflow">
-								<a class="block" href="{{ thing.url }}">
-									{% if thing.featured_image %}
-									<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('{{ thing.featured_image | img_url: 'medium' }}');"></div>
-									{% endif %}
-									<div class="text-center space-75-top space-75-left-right">
-										<div class="title h6 text-uppercase no-overflow-text space-min-bottom">{{ thing.title }}</div>
-										<div class="price label text-red strong">{{ thing.price | money }}/-</div>
-									</div>
-								</a>
-								<div class="product-actions row space-25 no-whitespace">
-									<div class="wishlist columns small-6 space-25">
+<section id="wishlist-section" class="wishlist-section space-100-top">
+    <div class="row">
+        <div class="container">
+            <div class="columns small-12">
+                <h1 class="collection-title block h5 strong text-uppercase text-center">{{ page.title }}</h1>
+                <div class="collection-description block p text-center">{{ page.content }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="columns small-12">
+                <div id="wishlist-items-container" class="card-grid space-100">
+                    {# Wishlist items will be rendered here by JavaScript #}
+                    <p class="p block text-center empty-wishlist-message" style="display: none;">Your wishlist is empty.</p>
+                </div>
+                <div class="wishlist-actions text-center space-50-top">
+                    <a href="{{ routes.all_products_collection_url }}" class="button fill-dark box-shadow-white-2">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const wishlistContainer = document.getElementById('wishlist-items-container');
+        const emptyMessage = wishlistContainer.querySelector('.empty-wishlist-message');
 
-										{% if customer %}
-											<button class="button block fill-dark box-shadow-red" data-product-id="{{ thing.id }}">
-												Remove
-											</button>
-										{% else %}
-											{% comment %}
-											<a href="/account/login?checkout_url=/products/{{ product.handle }}" class="wishlist-button">
-											{% endcomment %}
-											<a class="button block fill-dark box-shadow-red" href="/account/" class="wishlist-button">
-												Wishlist
-											</a>
-										{% endif %}
-									</div>
-									<div class="cart columns small-6 space-25">
-										{% if thing.variants.size > 1 %}
-											<a class="button block fill-red text-white" href="{{ thing.url }}">Options</a>
-										{% elsif thing.available %}
-											<form action="/cart/add" method="post" enctype="multipart/form-data">
-												<input type="hidden" name="id" value="{{ thing.variants.first.id }}">
-												<button class="button block fill-red text-white box-shadow-black" type="submit">Add to Cart</button>
-											</form>
-										{% else %}
-											<a class="button block fill-red text-white box-shadow-black" href="{{ thing.url }}">Pre-order</a>
-										{% endif %}
-									</div>
-								</div>
-							</div>
-						</div>
-					{% endfor %}
-					</div>
-					<!-- END: Card Grid -->
-				{% endpaginate %}
-			{% else %}
-				<p class="p block text-center">No products found in this collection.</p>
-			{% endif %}
-		</div>
-		<div class="row">
-			<div class="container">
-				<div class="columns small-12">
-					<!-- Pagination -->
-					{% paginate wishlist_list by 12 %}
-						{% if paginate.pages > 1 %}
-							<div class="pagination">
-								{% for part in paginate.parts %}
-									{% if part.is_link %}
-										<a class="button fill-white box-border-dark" href="{{ part.url }}">{{ part.title }}</a>
-									{% else %}
-										<span class="button text-dark no-pointer">{{ part.title }}</span>
-									{% endif %}
-								{% endfor %}
-							</div>
-						{% endif %}
-					{% endpaginate %}
-					<!-- END: Pagination -->
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- END: Wishlist Section -->
+        // Ensure the global wishlist object is available
+        if (window.wishlistInstance) {
+            const items = window.wishlistInstance.getWishlistItems();
 
-{% else %}
+            if (items.length > 0) {
+                emptyMessage.style.display = 'none'; // Hide empty message
 
-	<!-- Wishlist Section -->
-	<section id="wishlist-section" class="wishlist-section space-250-top-bottom">
-		<div class="row">
-			<div class="container text-center">
-				<a class="button fill-dark" href="{{ routes.account_url }}">Login to View Wishlist</a>
-			</div>
-		</div>
-	</section>
-	<!-- END: Wishlist Section -->
-{% endif %}
+                items.forEach(item => {
+                    const productCardHtml = `
+                        <div class="card-grid-item">
+                            <div class="card product-card fill-white radius-25 box-shadow-red no-overflow">
+                                <a class="block" href="${item.url}">
+                                    ${item.image ? `
+                                    <div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('${item.image}');"></div>
+                                    ` : ''}
+                                    <div class="text-center space-75-top space-75-left-right">
+                                        <div class="title h6 text-uppercase no-overflow-text space-min-bottom">${item.title}</div>
+                                        <div class="price label text-red strong">${Shopify.formatMoney(item.price, window.Shopify.moneyFormat)}/-</div>
+                                    </div>
+                                </a>
+                                <div class="product-actions row space-25 no-whitespace">
+                                    <div class="wishlist columns small-6 space-25">
+                                        <button
+                                            type="button"
+                                            class="button block fill-red text-white wishlist-button in-wishlist" {# Force in-wishlist state for remove button #}
+                                            tabindex="0"
+                                            data-product-id="${item.id}"
+                                            data-product-handle="${item.handle}"
+                                            data-product-title="${item.title}"
+                                            data-product-image="${item.image}"
+                                            data-product-price="${item.price}"
+                                            data-product-url="${item.url}"
+                                            aria-label="Remove from wishlist"
+                                        >
+                                            <i class='bx bx-heart text-white' style="display: none;"></i> {# Empty heart (hidden) #}
+                                            <i class='bx bxs-heart text-white' style="display: block;"></i> {# Filled heart (visible) #}
+                                            <span class="visuallyhidden">Remove from Wishlist</span>
+                                        </button>
+                                    </div>
+                                    <div class="cart columns small-6 space-25">
+                                        <form action="/cart/add" method="post" enctype="multipart/form-data">
+                                            <input type="hidden" name="id" value="${item.id}"> {# Assuming product ID is also the default variant ID #}
+                                            <button class="button block fill-dark text-white box-shadow-black" type="submit">Add to Cart</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    wishlistContainer.insertAdjacentHTML('beforeend', productCardHtml);
+                });
+
+                // Re-initialize buttons on this page after dynamic content is added
+                window.wishlistInstance.initButtons();
+            } else {
+                emptyMessage.style.display = 'block'; // Show empty message
+            }
+        } else {
+            console.error('Wishlist object not initialized on wishlist page.');
+        }
+    });
+</script>

@@ -73,11 +73,10 @@
 		<!-- END: User -->
 		<!-- User -->
 		<div class="wishlist">
-			{% if customer %}
-				<a class="space-25 icon-button" href="/pages/wishlist"><i class='bx bx-heart h3 text-dark' ></i><span class="visuallyhidden">Account</span></a>
-			{% else %}
-				<a class="space-25 icon-button" href="{{ routes.account_login_url }}"><i class='bx bx-heart h3 text-dark' ></i><span class="visuallyhidden">Login</span></a>
-			{% endif %}
+			<a href="/pages/wishlist" class="header-wishlist-link" aria-label="View your wishlist">
+			    <i class='bx bx-heart text-red'></i> {# Or your preferred heart icon #}
+			    <span class="wishlist-count" data-wishlist-count="0">0</span> {# This span will be updated by JS #}
+			</a>
 		</div>
 		<!-- END: User -->
 		<!-- Cart -->
