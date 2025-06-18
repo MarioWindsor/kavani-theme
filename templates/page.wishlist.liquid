@@ -1,8 +1,8 @@
-<section id="wishlist-section" class="wishlist-section space-100-top">
+<section id="wishlist-section" class="wishlist-section">
 	<div class="row">
 		<div class="container">
 			<div class="columns small-12">
-				<h1 class="collection-title block h5 strong text-uppercase text-center">{{ page.title }}</h1>
+				<h1 class="collection-title block h5 strong text-uppercase text-center space-200-top">{{ page.title }}</h1>
 				<div class="collection-description block p text-center">{{ page.content }}</div>
 			</div>
 		</div>
@@ -10,14 +10,14 @@
 	<!-- Product Grid -->
 	<div class="row product-grid">
 		<!-- Card Grid -->
-		<div id="wishlist-items-container" class="card-grid space-200-top-bottom">
+		<div id="wishlist-items-container" class="card-grid space-200-top">
 			<!-- Wishlist items will be rendered here by JavaScript -->
 		</div>
 	</div>
 	<!-- END: Card Grid -->
 	<div class="row">
-		<p class="empty-wishlist-message p block text-center space-100-top space-50-bottom" style="display: none;">Your wishlist is empty.</p>
-		<div class="wishlist-actions text-center space-50-top">
+		<p class="empty-wishlist-message p block text-center" style="display: none;">Your wishlist is empty.</p>
+		<div class="wishlist-actions text-center space-200-top">
 			<a href="{{ routes.all_products_collection_url }}" class="button fill-dark box-shadow-white-2">Continue Shopping</a>
 		</div>
 	</div>
