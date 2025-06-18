@@ -72,11 +72,9 @@
 		</div>
 		<!-- END: User -->
 		<!-- User -->
-		<div class="wishlist">
-			<a href="/pages/wishlist" class="header-wishlist-link" aria-label="View your wishlist">
-			    <i class='bx bx-heart text-red'></i> {# Or your preferred heart icon #}
-			    <span class="wishlist-count" data-wishlist-count="0">0</span> {# This span will be updated by JS #}
-			</a>
+		<div class="wishlist position-relative">
+			<a class="space-25 icon-button" href="/pages/wishlist" aria-label="View your wishlist"><i class='bx bx-heart h3 text-dark' ></i><span class="visuallyhidden">Wishlist</span></a>
+			<div class="wishlist-count position-absolute space-min text-rp" data-wishlist-count="0" style="top: 0; right: 0;">0</div>
 		</div>
 		<!-- END: User -->
 		<!-- Cart -->
