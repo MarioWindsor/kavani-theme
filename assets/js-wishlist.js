@@ -229,15 +229,15 @@ class Wishlist {
 					</style>
 
 					<div class="card-grid-item">
-					
+
 						<div class="card product-card fill-white no-overflow">
 							<a class="block" href="${item.url}">
 								${item.image ? `
-								<div class="thumbnail block no-whitespace" style="background-image: url('{{ product.featured_image | img_url: 'large' }}');"></div>
+								<div class="thumbnail block no-whitespace" style="background-image: url('${item.image}');"></div>
 								` : ''}
 								<div class="text-center space-75">
 									<div class="title label text-uppercase space-min-bottom no-overflow-text">${item.title}</div>
-									<div class="price small text-red strong">${item.price}/-</div>
+									<div class="price small text-red strong">${this.formatMoney(item.price, window.Shopify.moneyFormat)}/-</div>
 								</div>
 							</a>
 							<div class="wishlist">
