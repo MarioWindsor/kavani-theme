@@ -23,7 +23,7 @@ Page/Module Testing :
 - [x] FORMS
 - [x] Cart
 - [x] Search
-- [ ] Wishlist
+- [x] Wishlist
 - [ ] Contact
 - [ ] Collection - Filtration
 
@@ -48,7 +48,6 @@ Shopify Configuration :
 
 Theme Development :
 ------------------------
-- [ ] Modal Wishlist
 - [ ] JS Add to Cart Preview : Product Page
 - [ ] JS Search Preview : Header
 - [x] JS Quantity Toggle : Product + Cart Page
