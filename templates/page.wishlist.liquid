@@ -1,14 +1,3 @@
-{# templates/page.wishlist.liquid #}
-
-{% comment %}
-    The Liquid `{% if customer %}` block and `{% assign wishlist_list = ... %}`
-    are removed because the wishlist data is now handled entirely by JavaScript
-    from Local Storage.
-
-    The "Login to View Wishlist" block will no longer be necessary if
-    you allow guest wishlists via Local Storage.
-{% endcomment %}
-
 <section id="wishlist-section" class="wishlist-section space-100-top">
     <div class="row">
         <div class="container">
@@ -22,7 +11,7 @@
         <div class="container">
             <div class="columns small-12">
                 <div id="wishlist-items-container" class="card-grid space-100">
-                    {# Wishlist items will be rendered here by JavaScript #}
+                    <!-- Wishlist items will be rendered here by JavaScript -->
                     <p class="p block text-center empty-wishlist-message" style="display: none;">Your wishlist is empty.</p>
                 </div>
                 <div class="wishlist-actions text-center space-50-top">
