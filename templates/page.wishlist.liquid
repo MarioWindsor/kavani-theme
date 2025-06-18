@@ -27,9 +27,11 @@
         const wishlistContainer = document.getElementById('wishlist-items-container');
         const emptyMessage = wishlistContainer.querySelector('.empty-wishlist-message');
 
+        console.log("MEWMEW");
         // Ensure the global wishlist object is available
         if (window.wishlistInstance) {
             const items = window.wishlistInstance.getWishlistItems();
+            console.log("UWUUwU");
 
             if (items.length > 0) {
                 emptyMessage.style.display = 'none'; // Hide empty message
