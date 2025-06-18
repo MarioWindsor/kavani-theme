@@ -146,44 +146,120 @@ class Wishlist {
 
 			items.forEach(item => {
 				const productCardHtml = `
+
+					<style>
+					.product-card { position: relative; }
+
+					.product-card .thumbnail {
+						position: relative;
+						padding-top: 125%;
+						background-size: cover;
+						background-repeat: no-repeat;
+						background-position: center center;
+					}
+					.product-card .thumbnail .second-image {
+						position: absolute;
+						padding-top: 125%;
+						background-size: cover;
+						background-repeat: no-repeat;
+						background-position: center center;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						opacity: 0;
+						transition: .3s ease-out;
+					}
+
+					.product-card:hover .thumbnail .second-image,
+					.product-card:focus-within .thumbnail .second-image {
+						opacity: 1;
+					}
+
+					.product-card .wishlist {
+						position: absolute;
+						top: var(--space-50);
+						right: var(--space-50);
+					}
+					.product-card .wishlist .icon-button {
+						cursor: pointer;
+						position: relative;
+						width: var(--space-175);
+						height: var(--space-175);
+						border-radius: 100%;
+						background-color: rgba(var(---white), 0.666);
+						font-size: 0;
+						padding: 0;
+					}
+
+
+					/* CSS for the wishlist button state */
+					.wishlist-button.in-wishlist i.bx-heart {
+					    display: none; /* Hide empty heart when in wishlist */
+					}
+					.wishlist-button.in-wishlist i.bxs-heart {
+					    display: block; /* Show filled heart when in wishlist */
+					}
+					.wishlist-button i.bxs-heart {
+					    display: none; /* Hide filled heart by default (only show if .in-wishlist) */
+					}
+
+
+					.product-card .wishlist .icon-button * { pointer-events: none; }
+
+					.product-card .wishlist .icon-button i {
+						font-size: var(--h3);
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -46%);
+					}
+
+					@media( min-width: 640px )  {}
+					@media( min-width: 1040px ) {
+						.product-card .wishlist .icon-button {
+							width: var(--space-125);
+							height: var(--space-125);
+						}
+						.product-card .wishlist .icon-button i {
+							font-size: var(--h5);
+						}
+					}
+					@media( min-width: 1480px ) {}
+					</style>
+
 					<div class="card-grid-item">
-						<div class="card product-card fill-white radius-25 box-shadow-red no-overflow">
+					
+						<div class="card product-card fill-white no-overflow">
 							<a class="block" href="${item.url}">
 								${item.image ? `
-								<div class="thumbnail block no-whitespace" style="padding-top: 100%; background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('${item.image}');"></div>
+								<div class="thumbnail block no-whitespace" style="background-image: url('{{ product.featured_image | img_url: 'large' }}');"></div>
 								` : ''}
-								<div class="text-center space-75-top space-75-left-right">
-									<div class="title h6 text-uppercase no-overflow-text space-min-bottom">${item.title}</div>
-									<div class="price label text-red strong">${this.formatMoney(item.price, window.Shopify.moneyFormat)}/-</div> {# Use formatMoney helper #}
+								<div class="text-center space-75">
+									<div class="title label text-uppercase space-min-bottom no-overflow-text">${item.title}</div>
+									<div class="price small text-red strong">${item.price}/-</div>
 								</div>
 							</a>
-							<div class="product-actions row space-25 no-whitespace">
-								<div class="wishlist columns small-6 space-25">
-									<button
-										type="button"
-										class="button block fill-red text-white wishlist-button in-wishlist" {# Force in-wishlist state for remove button #}
-										tabindex="0"
-										data-product-id="${item.id}"
-										data-product-handle="${item.handle}"
-										data-product-title="${item.title}"
-										data-product-image="${item.image}"
-										data-product-price="${item.price}"
-										data-product-url="${item.url}"
-										aria-label="Remove from wishlist"
-									>
-										<i class='bx bx-heart text-white' style="display: none;"></i> {# Empty heart (hidden) #}
-										<i class='bx bxs-heart text-white' style="display: block;"></i> {# Filled heart (visible) #}
-										<span class="visuallyhidden">Remove from Wishlist</span>
-									</button>
-								</div>
-								<div class="cart columns small-6 space-25">
-									<form action="/cart/add" method="post" enctype="multipart/form-data">
-										<input type="hidden" name="id" value="${item.id}"> {# Assuming product ID is also the default variant ID #}
-										<button class="button block fill-dark text-white box-shadow-black" type="submit">Add to Cart</button>
-									</form>
-								</div>
+							<div class="wishlist">
+								<button
+									type="button"
+									class="wishlist-button icon-button"
+									tabindex="0"
+									data-product-id="${item.id }"
+									data-product-handle="${item.handle}"
+									data-product-title="${item.title}"
+									data-product-image="${item.image}"
+									data-product-price="${item.price}"
+									data-product-url="${item.url}"
+									aria-label="Add to wishlist"
+								>
+									<i class='bx bx-heart text-red'></i> {# Empty Heart #}
+									<i class='bx bxs-heart text-red'></i> {# Filled Heart #}
+									<span class="visuallyhidden">Toggle Wishlist</span>
+								</button>
 							</div>
 						</div>
+
 					</div>
 				`;
 				wishlistContainer.insertAdjacentHTML('beforeend', productCardHtml);
