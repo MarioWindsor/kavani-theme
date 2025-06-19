@@ -26,6 +26,7 @@ Page/Module Testing :
 - [x] Wishlist
 - [ ] Contact
 - [ ] Collection - Filtration
+- [ ] RESET PASSWORD
 
 
 
