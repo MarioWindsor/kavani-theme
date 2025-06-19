@@ -82,10 +82,10 @@
 <div class="card product-card fill-white no-overflow">
 	<a class="block" href="{{ product.url }}">
 		{% if product.featured_image %}
-		<div class="thumbnail block no-whitespace" style="background-image: url('{{ product.featured_image | img_url: 'large' }}');">
+		<div class="thumbnail block no-whitespace" style="background-image: url('{{ product.featured_image | img_url: 'grande' }}');">
 			{% assign second_image = product.images[1] %}
 			{% if second_image != blank %}
-			<div class="second-image block no-whitespace" style="background-image: url('{{ second_image | img_url: 'large' }}');"></div>
+			<div class="second-image block no-whitespace" style="background-image: url('{{ second_image | img_url: 'grande' }}');"></div>
 			{% endif %}
 		</div>
 		{% endif %}
@@ -102,7 +102,7 @@
 			data-product-id="{{ product.id }}"
 			data-product-handle="{{ product.handle }}"
 			data-product-title="{{ product.title | escape }}"
-			data-product-image="{{ product.featured_media | img_url: 'large' }}"
+			data-product-image="{{ product.featured_media | img_url: 'grande' }}"
 			data-product-price="{{ product.price }}"
 			data-product-url="{{ product.url }}"
 			aria-label="Add to wishlist"
