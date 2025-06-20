@@ -26,7 +26,8 @@ Page/Module Testing :
 - [x] Wishlist
 - [ ] Contact
 - [ ] Collection - Filtration
-- [ ] RESET PASSWORD
+- [ ] RESET/FORGOT PASSWORD
+- [ ] Product Page Color Variant Swatches
 
 
 
