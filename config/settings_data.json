@@ -10,8 +10,8 @@
 {
   "current": {
     "logo": "shopify://shop_images/logo-combination-legacy-brown-black.png",
-    "popuptext": "₹2,000 Discount",
-    "popupcode": "FIRST2K",
+    "popuptext": "WEEKEND OFFER",
+    "popupcode": "OFFER",
     "popupimage": "shopify://shop_images/lace.jpg",
     "sections": {
       "header": {
