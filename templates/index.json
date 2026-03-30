@@ -153,7 +153,8 @@
             "state": "Kerala, India",
             "maps_url": "https://www.google.com/maps?ll=9.587216,76.539209&z=16&t=m&hl=en&gl=IN&mapclient=embed&cid=5918541066698894661",
             "page_url": "shopify://pages/kottayam",
-            "background_type": "video",
+            "background_type": "image",
+            "background_image": "shopify://shop_images/04_480x480_926e74e7-d7f0-4c53-9221-2cd63d34a657.webp",
             "video_id": "N1RsTQ9MvV8"
           }
         }
