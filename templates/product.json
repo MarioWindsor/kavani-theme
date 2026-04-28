@@ -25,7 +25,7 @@
             "primary_color": "#000000",
             "style": "filled",
             "full_width": false,
-            "size": "medium",
+            "size": "large",
             "corner_radius": "medium",
             "icon_type": "sparkles",
             "disable_on_out_of_stock": false,
