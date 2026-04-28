@@ -15,6 +15,29 @@
         "process_video_id": "ZfUWZJi28s8"
       }
     },
+    "1777384184760be077": {
+      "type": "apps",
+      "blocks": {
+        "genlook_virtual_try_on_genlook_button_KbJcwL": {
+          "type": "shopify://apps/genlook-virtual-try-on/blocks/genlook-button/01997bc6-1dc6-7c96-853a-98a7952a6ec3",
+          "settings": {
+            "button_text": "DEFAULT",
+            "primary_color": "#000000",
+            "style": "filled",
+            "full_width": false,
+            "size": "medium",
+            "corner_radius": "medium",
+            "icon_type": "sparkles",
+            "disable_on_out_of_stock": false,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "genlook_virtual_try_on_genlook_button_KbJcwL"
+      ],
+      "settings": {}
+    },
     "collection_carousel": {
       "type": "collection-carousel",
       "settings": {
@@ -53,6 +76,7 @@
   },
   "order": [
     "product",
+    "1777384184760be077",
     "collection_carousel",
     "related_products_carousel",
     "177738418101584b07"
