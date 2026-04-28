@@ -42,6 +42,11 @@
         "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
         "disabled": false,
         "settings": {}
+      },
+      "16445118900870725264": {
+        "type": "shopify://apps/genlook-virtual-try-on/blocks/genlook-global/01997bc6-1dc6-7c96-853a-98a7952a6ec3",
+        "disabled": false,
+        "settings": {}
       }
     }
   }
